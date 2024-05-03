@@ -1,0 +1,123 @@
+#button {
+    height: 50px;
+    width: 170px;
+    font-family: "Noto Sans KR", sans-serif;
+    border: none;
+    background: none;
+    font-size: 15px;
+    border-radius: 20px;
+    color: black;
+    cursor: pointer;
+}
+
+
+
+#container {
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#container > div:first-child {
+    margin-top: 100px;
+    height: 100px;
+}
+
+#container > div:nth-child(2) {
+    margin-bottom: 80px;
+}
+
+
+
+
+
+
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,600);
+figure.snip1425 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+  -webkit-perspective: 50em;
+  perspective: 50em;
+}
+figure.snip1425 * {
+  -webkit-box-sizing: padding-box;
+  box-sizing: padding-box;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+figure.snip1425 img {
+  max-width: 100%;
+  vertical-align: top;
+}
+figure.snip1425 figcaption {
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  -webkit-transform: translate(-10%, -70%);
+  transform: translate(-10%, -70%);
+}
+figure.snip1425 h2,
+figure.snip1425 h4 {
+  margin: 0;
+}
+figure.snip1425 h2 {
+  font-weight: 600;
+}
+figure.snip1425 h4 {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+figure.snip1425 i {
+  font-size: 32px;
+}
+figure.snip1425:after {
+  background-color: #ffffff;
+  position: absolute;
+  content: "";
+  display: block;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: rotate3d(1, -1, 0, 100deg);
+  transform: rotate3d(1, -1, 0, 100deg);
+  opacity: 0;
+}
+figure.snip1425 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+figure.snip1425:hover figcaption,
+figure.snip1425.hover figcaption {
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+figure.snip1425:hover:after,
+figure.snip1425.hover:after {
+  -webkit-transform: rotate3d(0, 0, 0, 0deg);
+  transform: rotate3d(0, 0, 0, 0deg);
+  opacity: 0.9;
+}

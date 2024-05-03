@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEBEGBOO 메인페이지</title>
+
+
+    <th:block th:replace="~{common/common}"></th:block>
+
+</head>
+<body>
+    <main>
+        <th:block th:replace="~{common/header}"></th:block>
+        
+
+        <!-- 메인 배너 -->
+        <div class='container'>
+            <h2 class="fadeup">WE ARE BEBEGIBOO</h2>
+            <div class='reveal'>
+              <div class="image-wrap">
+                <img src='https://images.unsplash.com/photo-1496865534669-25ec2a3a0fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'>
+              </div>
+            </div>
+          </div>
+          <div class='container'>
+            <h2 class="fadeup">WE SAVE CHILDREN</h2>
+            <div class='reveal'>
+              <div class="image-wrap">
+                <img src='https://images.unsplash.com/photo-1493552152660-f915ab47ae9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'>
+              </div>
+            </div>
+          </div>
+          <div class='container'>
+            <h2 class="fadeup">WITH US</h2>
+            <div class='reveal'>
+              <div class="image-wrap">
+                <img src='https://images.unsplash.com/photo-1496198253360-4c44aa485f6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'>
+              </div>
+            </div>
+          </div>
+          <div class='container'>
+            <h2 class="fadeup" id="donate-color">DONATE YOUR THINGS</h2>
+            <div class='reveal'>
+              <div class="image-wrap">
+                <img src='https://images.unsplash.com/photo-1494058303350-0bd5a9ecc5d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'>
+              </div>
+            </div>
+          </div>
+
+
+        <button class="button" id="main-banner-donate" style="display: none;">기부하러 가기</button>
+        
+
+
+
+        <div id="line-container">
+            <div id="line"></div>
+        </div>
+
+        <div id="who-container" class="showBox">
+
+            <div><img src="/images/logo-black.png" id="who-logo"></div>
+            <div id="who-text">
+                <div id="who-title">We are BEBEGIBOO!</div>
+                <div><img src="/images/whoweare-bebegiboo.JPG" id="who-content"></div>
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- 중간 배너 2-->
+        <div id="confirm">
+            <div class="line"></div>
+            <div><button class="button" id="confirm-button">인증 페이지로 이동</button></div>
+            <div class="line"></div>
+        </div>
+
+
+
+        <!-- 기부하는 방법 글씨-->
+        <div id="howtodonate"><div class="text">|베베기부에 기부하는 방법|</div></div>
+
+        <!-- 기부하는 방법 순서 블럭 -->
+        <div id="container" class="showBox">
+            <div id="donate-box">
+    
+                <div class="donate-container" id="container1">
+                    <div class="title">1</div>
+                    <div class="text content">기부 가능 물품</div>
+                </div>
+    
+                <div class="donate-container" id="container2">
+                    <div class="title">2</div>
+                    <div class="text content">포장 및 배송 방법</div>
+                </div>
+    
+                <div class="donate-container" id="container3">
+                    <div class="title">3</div>
+                    <div class="text content">신청서 작성</div>
+                </div>
+    
+                <div class="donate-container" id="container4">
+                    <div class="title">4</div>
+                    <div class="text content">물품 발송</div>
+                </div>
+    
+            </div>
+        </div>
+
+
+        <!-- 기부하는 방법 -->
+        <div id="img-container">
+            <img src="/images/main-explain.png" id="ex-img">
+        </div>
+
+
+        <!-- 게시판 이동 -->
+        <div class="buttons-container showBox">
+            <div class="text" style="font-weight: bold;">게시판 이동</div>
+            <div><button class="text button botton-button">FAQ 게시판</button></div>
+            <div><button class="text button botton-button">후기 인증 게시판</button></div>
+        </div>
+
+
+
+        
+
+
+        <!-- 맨 위로가는 버튼 -->
+        <div class="text" id="top-button">↑</div>
+
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/main.js"></script>
+
+    
+
+</body>
+</html>
