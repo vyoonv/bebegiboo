@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.faqboard.model.mapper.FaqMapper">
+
+	<!-- 게시글 수 조회 -->
+	<select id="getListCount">
+		SELECT COUNT(*)
+		FROM "FAQ"
+	</select>
+	
+	<select id="selectFaqBoardList">
+		SELECT Q_NO, QUESTION, ANSWER, CATEGORY_NO
+		FROM FAQ
+		ORDER BY Q_NO
+	</select>
+	
+	
+</mapper>

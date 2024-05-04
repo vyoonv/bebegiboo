@@ -110,3 +110,9 @@ window.addEventListener("scroll", () => {
 
 
 
+//--------------FAQ게시판 이동버튼---------------
+const faqBoardBtn = document.querySelector("#faqBoardBtn"); 
+
+faqBoardBtn.addEventListener("click", ()=> {
+  location.href = "/faqBoard/faqBoard"; 
+}); 

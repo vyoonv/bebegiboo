@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ MAIN</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/faqBoard/faqBoard.css">
+</head>
+<body>
+    <main>
+        <!-- HEADER -->
+        <th:block th:replace="~{common/header}"></th:block>
+
+        <section class="faqList">
+            <div class="faqLogo"><span>FAQ</span></div>
+            
+            <div class="list-area">
+                <table class="faqHeader">
+                    <tbody>
+                    <tr>
+                        <td>전체</td>
+                        <td>|</td>
+                        <td><a>1.기부</a></td>
+                        <td><a>2.택배관련</a></td>
+                        <td><a>3.봉사활동 인증</a></td>
+                        <td><a>4.홈페이지</a></td>
+                        <td><a>5.기타</a></td>
+                    </tr>
+                    </tbody>
+                </table>        
+                <table class="faq-list">  
+                    <tbody>
+                    <tr th:each="faqBoard : ${faqList}">
+                        <td>
+                            <details>
+                                <summary th:text="|[${faqBoard.categoryNo}] # ${faqBoard.question}|" id="question">
+                                    질문명</summary>
+                                <figure th:text="${faqBoard.answer}" id="answer"></figure>
+                            </details>
+                        </td>
+                    </tr>
+                    </tbody>   
+                </table>        
+            </div>
+
+            <!-- 페이지네이션 -->
+			<div class="pagination-area">
+
+				<ul class="pagination" th:object="${pagination}">
+
+					<!-- 첫 페이지로 -->
+					<li><a th:href="@{/faqBoard(cp=1)}">&lt;&lt;</a></li>
+
+					<!-- 이전 목록 마지막 번호로-->
+					<li><a th:href="@{/faqBoard/(cp=*{prevPage})}">&lt;</a></li>
+
+					<!-- 특정 페이지로 -->
+					
+					<th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+						
+						<!-- 현재 페이지 -->
+						<li th:if="${i} == *{currentPage}">
+							<a class="current" th:text="${i}">현재페이지</a>
+						</li>
+						
+						<!-- 나머지 페이지 -->
+						<li th:unless="${i} == *{currentPage}">
+							<a th:href="@{/faqBoard/(cp=${i})}" 
+								th:text="${i}">이동할 페이지</a>
+						</li>
+					</th:block>
+						
+
+
+					
+					<!-- 다음 목록 시작 번호로 -->
+					<li><a th:href="@{/faqBoard/(cp=*{nextPage})}">&gt;</a></li>
+
+					<!-- 끝 페이지로-->
+					<li><a th:href="@{/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
+				</ul>
+			</div>
+
+        </section>    
+        
+
+
+
+
+
+    </main>
+
+    <!-- FOOTER -->
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/faqBoard/faqBoard.js"></script>
+</body>
+</html>
