@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Insert</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/faqBoard/insertFaq.css">
+</head>
+<body>
+    <main>
+        <!-- HEADER -->
+        <th:block th:replace="~{common/header}"></th:block>
+
+        <form action="/faqBoard/insertFaq" method="POST" class="insertFaq" id="insertFaq">
+
+            <span>작성하기</span>
+
+            <section class="insertFaqForm">
+                <table>
+                    <tr>
+                        <td><span>질문제목</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="question" id="question" value="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>내용</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="answer" class="answer"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            
+                <div>
+                    <button>입력</button>
+                    <button>취소</button>
+                </div>
+            </section>
+
+        </form>
+
+
+
+
+
+
+
+    </main>
+    
+        <!-- FOOTER -->
+        <th:block th:replace="~{common/footer}"></th:block>
+
+        <script src="/js/faqBoard/faqBoard.js"></script>  
+</body>
+</html>

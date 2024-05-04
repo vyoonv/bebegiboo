@@ -37,6 +37,12 @@ public class FaqController {
 		
 	}
 	
+	@GetMapping("/insertFaq")
+	public String insertFaqPage() {
+		
+		return "/faqBoard/insertFaq"; 
+	}
+
 	
 	
 

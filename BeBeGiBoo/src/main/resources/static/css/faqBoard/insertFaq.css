@@ -1,0 +1,22 @@
+.insertFaq{
+    margin: 120px auto;
+    width: 900px;
+    min-height: 670px;
+}
+
+.insertFaqForm{
+    border: 1px solid gray;
+    padding: 30px;
+    width: 900px;
+    min-height: 650px;
+}
+
+#question{
+    width: 800px;
+    height: 30px;
+}
+
+.answer{
+    width: 800px;
+    height: 600px;
+}

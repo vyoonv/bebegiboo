@@ -15,5 +15,6 @@ public class CertificationController {
 		return "/certification/certification";
 		
 	}
-
+	
+	
 }
