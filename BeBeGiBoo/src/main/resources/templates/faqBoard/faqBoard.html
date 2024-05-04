@@ -50,10 +50,12 @@
                                 <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
                                 <div th:if="${session.loginMember != null and session.loginMember.authority == 3}"
                                     id="buttons">
-                                    <a href="#" id="editBtn">수정</a>
+                                    <a href="/faqBoard/editBoard" id="editBtn">수정</a>
                                     <a href="#" id="deleteBtn">삭제</a>
                                 </div>  
-                                <figure th:text="${faqBoard.answer}" id="answer"></figure>
+                                <figure>
+                                    <pre th:text="${faqBoard.answer}" id="answer"></pre>
+                                </figure>
                                 
                             </details>
                         </td>

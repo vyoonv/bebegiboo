@@ -14,4 +14,10 @@ public interface FaqService {
 	 */
 	Map<String, Object> FaqBoardList(int cp);
 
+	/** faq 작성 
+	 * @param inputFaq
+	 * @return
+	 */
+	int insertFaq(FaqBoard inputFaq);
+
 }

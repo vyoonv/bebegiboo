@@ -23,4 +23,10 @@ public interface FaqMapper {
 	 */
 	List<FaqBoard> selectFaqBoardList(RowBounds rowBounds);
 
+	/** faq 작성 
+	 * @param inputFaq
+	 * @return
+	 */
+	int insertFaq(FaqBoard inputFaq);
+
 }

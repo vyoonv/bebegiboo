@@ -24,6 +24,9 @@ public class FaqServiceImpl implements FaqService{
 	
 	
 
+	/**
+	 * faq 목록
+	 */
 	@Override
 	public Map<String, Object> FaqBoardList(int cp) {
 		
@@ -33,6 +36,7 @@ public class FaqServiceImpl implements FaqService{
 		
 		int limit = pagination.getLimit(); 
 		int offset = (cp-1)*limit; 
+		
 		RowBounds rowBounds= new RowBounds(offset, limit); 
 		
 		List<FaqBoard> faqList = mapper.selectFaqBoardList(rowBounds); 
@@ -43,6 +47,21 @@ public class FaqServiceImpl implements FaqService{
 		map.put("faqList", faqList); 
 		
 		return map;
+	}
+
+
+
+	/**
+	 * faq 작성 
+	 */
+	@Override
+	public int insertFaq(FaqBoard inputFaq) {
+		
+		int result = mapper.insertFaq(inputFaq); 
+		
+		int qNo = inputFaq.getQNo(); 
+		
+		return qNo;
 	}
 
 }

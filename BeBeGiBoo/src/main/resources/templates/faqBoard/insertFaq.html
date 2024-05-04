@@ -15,12 +15,24 @@
 
         <form action="/faqBoard/insertFaq" method="POST" class="insertFaq" id="insertFaq">
 
-            <span>작성하기</span>
+           
+            <div class="faqLogo"><span>FAQ</span></div>
+           
+            <div id="write"><span>작성하기</span></div>
 
             <section class="insertFaqForm">
                 <table>
-                    <tr>
-                        <td><span>질문제목</span></td>
+                    <tr class="qTitleNo">
+                        <td id="qTitle"><span>질문제목</span></td>
+                        <td id="category">
+                            <select name="categoryNo" id="categoryNo">
+                                <option value="1">1.기부</option>
+                                <option value="2">2.택배관련</option>
+                                <option value="3">3.봉사활동 인증</option>
+                                <option value="4">4.홈페이지</option>
+                                <option value="5">5.기타</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -37,9 +49,9 @@
                     </tr>
                 </table>
             
-                <div>
-                    <button>입력</button>
-                    <button>취소</button>
+                <div class="buttons">
+                    <button id="insertBtn">입력</button>
+                    <button id="cancelBtn">취소</button>
                 </div>
             </section>
 
@@ -56,6 +68,6 @@
         <!-- FOOTER -->
         <th:block th:replace="~{common/footer}"></th:block>
 
-        <script src="/js/faqBoard/faqBoard.js"></script>  
+        <script src="/js/faqBoard/insertFaq.js"></script>  
 </body>
 </html>

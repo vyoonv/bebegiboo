@@ -1,22 +1,87 @@
+
+/* main 영역 */
 .insertFaq{
     margin: 120px auto;
     width: 900px;
     min-height: 670px;
 }
 
+/* faq 게시판 이름 영역 */
+.faqLogo {
+    margin: 60px auto;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    height: 60px;
+    background-color: #1c3359;
+    color: white;
+}
+
+/* 작성하기 */
+#write{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 작성 폼 영역 */
 .insertFaqForm{
     border: 1px solid gray;
     padding: 30px;
     width: 900px;
-    min-height: 650px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* 질문제목 / 카테고리 */
+.qTitleNo{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 제목 input */
 #question{
-    width: 800px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 750px;
     height: 30px;
 }
 
+/* 답변 textarea */
 .answer{
-    width: 800px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 750px;
     height: 600px;
+}
+
+
+/* 버튼 */
+.buttons{
+    align-self: flex-end;
+    margin-right: 30px;
+}
+
+#insertBtn, #cancelBtn{
+    background-color: #1c3359;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#insertBtn:hover, #cancelBtn:hover {
+    background-color: white;
+    border: 1px solid #1c3359;
+    color: #1c3359;
+}
+
+#insertBtn{
+    margin-right: 10px;
 }

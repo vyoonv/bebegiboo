@@ -20,4 +20,5 @@ public class FaqBoard {
 	private String answer; 
 	private int categoryNo; 
 
+	private int memberNo; 
 }
