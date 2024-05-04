@@ -52,7 +52,7 @@ a{
 
     width: 300px;
     height: 60px;
-    background-color: #325388;
+    background-color: #1c3359;
     color: white;
 }
 
@@ -72,12 +72,14 @@ a{
     border-collapse: collapse;
 }
 
+
+/* 전체 ~ 기타  카테고리 영역 */
 .faqHeader {
     width: 100%;
     height: 44px;
     border: 1px solid #0d387c;
 
-    padding: 20px;
+    padding: 12px;
 }
 
 .faqHeader > tbody > tr > td:nth-of-type(1) {
@@ -106,7 +108,7 @@ a{
 }
 
 
-
+/* 질문 리스트 영역 */
 .faq-list {
     width: 100%;
     margin-top: 15px;
@@ -120,7 +122,7 @@ a{
 }
 
 
-
+/* 질문 제목 */
 details > summary {
     cursor: pointer;
     text-decoration: none;
@@ -134,15 +136,18 @@ details > summary {
     transition: background 0.5s;
 }
 
+/* 답변 */
 details > figure {
 
     cursor: pointer;
-    background-color: #325388;
-    color: white;
+    background-color: #e9edf3;
+    color: black;
     padding: 15px;
 
 }
 
+
+/* 질문 + 답변 영역 +애니메이션 */
 summary::-webkit-details-marker { /* Safari 브라우저용 사용자 정의 스타일 */
     display: none;
 }
@@ -169,11 +174,6 @@ details[open] > summary ~ * {
 
 
 
-
-
-
-
-
 /* Pagination */
 
 
@@ -197,7 +197,7 @@ details[open] > summary ~ * {
 }
 
 .current{
-    background-color: #325388;
+    background-color: #1c3359;
     border-radius: 50%;
     color: white !important;
     letter-spacing: 0 !important;
@@ -210,4 +210,26 @@ details[open] > summary ~ * {
 
 body.authority3 {
     background-color: rgb(237, 237, 237);
+}
+
+#buttons{
+    background-color: #e9edf3;
+    text-align: right; 
+}
+
+#editBtn, #deleteBtn {
+
+    display: inline-block;
+    border: 1px solid #1c3359;
+    padding: 5px;
+    color: black !important;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#editBtn {
+    margin-right: 5px;
+}
+#deleteBtn{
+    margin-right: 15px;
 }

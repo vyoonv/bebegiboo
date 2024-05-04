@@ -48,10 +48,11 @@
                                     질문명</summary>
 
                                 <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
-                                <div th:if="${session.loginMember != null and session.loginMember.authority == 3}">
+                                <div th:if="${session.loginMember != null and session.loginMember.authority == 3}"
+                                    id="buttons">
                                     <a href="#" id="editBtn">수정</a>
                                     <a href="#" id="deleteBtn">삭제</a>
-                                </div>      
+                                </div>  
                                 <figure th:text="${faqBoard.answer}" id="answer"></figure>
                                 
                             </details>
