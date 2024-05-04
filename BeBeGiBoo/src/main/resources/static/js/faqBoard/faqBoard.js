@@ -6,3 +6,4 @@ function toggleAnswer(element) {
         answerDiv.style.display = 'none';  // 답변 숨기기
     }
 }
+

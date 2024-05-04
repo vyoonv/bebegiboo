@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Form</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/certification/certification.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+
+        <main>
+   
+            <section class="certification">
+
+                <div><span>봉사 인증 신청서</span></div>
+
+                <form action="/certification/certification" method="POST" name="certificationForm" id="certificationForm">
+
+                    <table>
+                        <tr>
+                            <td>봉사자 아이디</td>
+                            <td>
+                                <input type="text" name="memberId" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>봉사자 이름</td>
+                            <td>
+                                <input type="text" name="memberName" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>생년월일</td>
+                            <td>
+                                <input type="text" name="memberBirth" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>핸드폰 번호</td>
+                            <td>
+                                <input type="text" name="phone" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>주소</td>
+                        </tr>
+
+                        <tr>
+                            <td>우퍈번호</td>
+                            <td>
+                                <input type="text" name="address" id="postcode" required>
+                            </td>
+                            <td><button>찾기</button></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="text" name="address" id="mainAddress" required>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="text" name="address" id="detailAddress" required>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>봉사활동 인증 사진(3장 이상 업로드)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="c-img">
+                                    <label for="img1">
+                                        <img class="preview" id="previewImg1" src=""> 
+                                        <span onclick="document.getElementById('img1').click()">+</span> 
+                                    </label>
+                                    <input type="file" name="boardImg" class="inputImage" id="img1" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg1')"> 
+                                </div>
+                            </td>
+                            <td>
+                                <div class="c-img">
+                                    <label for="img1">
+                                        <img class="preview" id="previewImg2" src=""> 
+                                        <span onclick="document.getElementById('img2').click()">+</span> 
+                                    </label>
+                                    <input type="file" name="boardImg" class="inputImage" id="img2" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg2')"> 
+                                </div>
+                            </td>
+                            <td>
+                                <div class="c-img">
+                                    <label for="img1">
+                                        <img class="preview" id="previewImg3" src=""> 
+                                        <span onclick="document.getElementById('img3').click()">+</span> 
+                                    </label>
+                                    <input type="file" name="boardImg" class="inputImage" id="img3" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg3')"> 
+                                </div>
+                            </td>
+                            
+                            
+                                    
+                        </tr>
+                    </table>
+                </form>
+
+
+            </section>
+
+
+
+        </main>
+
+    <!-- FOOTER -->
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/"></script>
+    
+</body>
+</html>

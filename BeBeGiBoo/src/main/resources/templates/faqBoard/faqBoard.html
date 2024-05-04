@@ -17,16 +17,25 @@
             <div class="faqLogo"><span>FAQ</span></div>
             
             <div class="list-area">
+
+                <div class="btn-area">
+                    <!-- 로그인 상태일 때만 글쓰기 버튼 노출 -->
+                    <button id="insertBtn" 
+                            th:if="${session.loginMember != null and session.loginMember.authority == 3}">
+                            글쓰기</button>
+                </div>
+    
                 <table class="faqHeader">
                     <tbody>
                     <tr>
-                        <td>전체</td>
+                        <td><a>전체</a></td>
                         <td>|</td>
                         <td><a>1.기부</a></td>
                         <td><a>2.택배관련</a></td>
                         <td><a>3.봉사활동 인증</a></td>
                         <td><a>4.홈페이지</a></td>
                         <td><a>5.기타</a></td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>        
@@ -37,7 +46,14 @@
                             <details>
                                 <summary th:text="|[${faqBoard.categoryNo}] # ${faqBoard.question}|" id="question">
                                     질문명</summary>
+
+                                <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
+                                <div th:if="${session.loginMember != null and session.loginMember.authority == 3}">
+                                    <a href="#" id="editBtn">수정</a>
+                                    <a href="#" id="deleteBtn">삭제</a>
+                                </div>      
                                 <figure th:text="${faqBoard.answer}" id="answer"></figure>
+                                
                             </details>
                         </td>
                     </tr>
@@ -91,6 +107,22 @@
 
 
     </main>
+
+    <!-- 관리자모드인 경우 설정 -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener('DOMContentLoaded', function() {
+            var loginMemberAuthority = /*[[${session.loginMember?.authority}]]*/ "관리자모드";
+
+            // 권한이 3인 멤버인 경우 배경색 변경
+            if (loginMemberAuthority === 3) {
+                document.body.classList.add('authority3');
+            }
+
+        });
+        /*]]>*/
+    </script>
+
 
     <!-- FOOTER -->
     <th:block th:replace="~{common/footer}"></th:block>
