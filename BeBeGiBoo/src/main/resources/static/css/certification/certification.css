@@ -1,4 +1,8 @@
 
+/* 베베기부 로고 */
+#font-logo-area{
+    margin: 30px auto; 
+}
 
 /* section */
 .certification{
@@ -23,13 +27,31 @@
 
 
 .certificationTable {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
  
     padding: 30px;
     border: 1px solid rgb(185, 185, 185);
-    width: 700px;
-    height: 900px;
+    width: 840px;
+    height: 1100px;
 
 }
+
+/* 정보 입력 칸*/
+.info-input > tbody > tr > td > input {
+    margin-left: 50px;
+    width: 300px;
+    height: 28px;
+    border: 1px solid rgb(185, 185, 185);
+}
+
+.info-input{
+    margin-bottom: 60px;
+}
+
 
 /* 테이블 */
 table{
@@ -38,15 +60,35 @@ table{
 
 }
 
-/* Input */
-input{
-    width: 300px;
-    height: 28px;
-    border: 1px solid rgb(185, 185, 185);
+
+
+/* 봉사 인증 신청서 letter */
+#certificate{
+    margin: 30px auto;
 }
+
+
 
 /* 이미지 영역 */
 
+#imageupload{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.image-area{
+    width: 700px;
+    margin-bottom: 60px;
+}
+.image-area tbody > tr > td:nth-of-type(1) {  
+    padding-left: 95px;
+}
+.image-area > tbody > tr > td:nth-of-type(2) {  
+    padding-right: 20px;
+   
+}
+.image-area > tbody > tr > td:nth-of-type(3) {  
+    padding-right: 50px ;
+}
 
 .c-img{
     width: 100px;
@@ -64,10 +106,17 @@ input{
 }
 
 
+/* 주소 letter */
 #addressLetter{
     border-bottom: 1px solid rgb(185, 185, 185);
     padding: 10px;
 }
+
+/* 동의 영역 */
+.agree > td > input {
+    margin-right: 13px;
+}
+
 
 
 

@@ -13,16 +13,26 @@
     <!-- HEADER -->
     <th:block th:replace="~{common/header}"></th:block>
 
-
+ 
         <main>
    
             <section class="certification">
 
-                <div><span>봉사 인증 신청서</span></div>
+                   <!-- 로고 -->
+                <div id="font-logo-area">
+                    <a href="/" id="font-logo">
+                        <img src="/images/font-logo.png" alt="font-logo">
+                    </a>
+                </div>
+
+
+                <div id="certificate"><span>봉사 인증 신청서</span></div>
 
                 <form action="/certification/certification" method="POST" name="certificationForm" id="certificationForm">
 
-                    <table class="certificationTable">
+                    <div class="certificationTable">
+
+                    <table class="info-input">
                         <tr>
                             <td>봉사자 아이디</td>
                             <td>
@@ -79,11 +89,16 @@
                             </td>
                             <td></td>
                         </tr>
+                    </table>
+                    <table>
                         <tr>
-                            <td>봉사활동 인증 사진(3장 이상 업로드)</td>
+                            <td></td>
+                            <td id="imageupload">봉사활동 인증 사진(3장 이상 업로드)</td>
+                            <td></td>
                         </tr>
-                        <tr class="image-area">
-                           
+                    </table>
+                    <table class="image-area">  
+                        <tr>
                             <td>
                                 <div class="c-img">
                                     <label for="img1">
@@ -93,7 +108,7 @@
                                     <input type="file" name="boardImg" class="inputImage" id="img1" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg1')"> 
                                 </div>
                             </td>
-                            <td>
+                            <td>   
                                 <div class="c-img">
                                     <label for="img2">
                                         <img class="preview" id="previewImg2" src=""> 
@@ -101,8 +116,8 @@
                                     </label>
                                     <input type="file" name="boardImg" class="inputImage" id="img2" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg2')"> 
                                 </div>
-                            </td>
-                            <td>
+                            </td> 
+                            <td>  
                                 <div class="c-img">
                                     <label for="img3">
                                         <img class="preview" id="previewImg3" src=""> 
@@ -110,10 +125,19 @@
                                     </label>
                                     <input type="file" name="boardImg" class="inputImage" id="img3" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg3')"> 
                                 </div>
+                            </td>      
+                        </tr>        
+                    </table>
+                    <table>
+                        <tr class="agree">
+                            <td>
+                                <input type="checkbox">
+                                <span><a>이용약관</a>과<a>개인정보취급방침</a>에 동의합니다.</span>
                             </td>
-    
                         </tr>
                     </table>
+
+                    </div>
 
                     <div><button id="submitBtn">제출하기</button></div>
 
