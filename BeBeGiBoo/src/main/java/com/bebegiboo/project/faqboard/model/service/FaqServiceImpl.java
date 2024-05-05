@@ -59,9 +59,43 @@ public class FaqServiceImpl implements FaqService{
 		
 		int result = mapper.insertFaq(inputFaq); 
 		
-		int qNo = inputFaq.getQNo(); 
+		return result;
+	}
+
+
+
+	/**
+	 * faq 조회 
+	 */
+	@Override
+	public FaqBoard selectOne(int qNo) {
 		
-		return qNo;
+		return mapper.selectOne(qNo);
+	}
+
+
+
+	/**
+	 * faq 수정 
+	 */
+	@Override
+	public int updateFaq(FaqBoard inputFaq) {
+		
+		int result = mapper.updateFaq(inputFaq); 
+		
+		return result; 
+		
+	}
+
+
+
+	/**
+	 * faq 삭제 
+	 */
+	@Override
+	public int faqDelete(int qNo) {
+		
+		return mapper.faqDelete(qNo);
 	}
 
 }

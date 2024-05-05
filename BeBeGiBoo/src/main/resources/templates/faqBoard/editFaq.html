@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ Insert</title>
+    <title>FAQ Edit</title>
 
     <th:block th:replace="~{common/common}"></th:block>
-    <link rel="stylesheet" href="/css/faqBoard/insertFaq.css">
+    <link rel="stylesheet" href="/css/faqBoard/editFaq.css">
 </head>
 <body>
     <main>
         <!-- HEADER -->
         <th:block th:replace="~{common/header}"></th:block>
 
-        <form action="/faqBoard/insertFaq" method="POST" class="insertFaq" id="insertFaq">
+        <form th:action="@{editFaq}" th:object="${faqBoard}" method="POST" class="editFaq" id="editFaq">
 
+            <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
            
             <div class="faqLogo"><span>FAQ</span></div>
            
-            <div id="write"><span>작성하기</span></div>
+            <div id="update"><span>수정하기</span></div>
 
-            <section class="insertFaqForm">
+            <section class="editFaqForm">
                 <table>
                     <tr class="qTitleNo">
                         <td id="qTitle"><span>질문제목</span></td>
@@ -36,7 +37,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="question" id="question">
+                            <input type="text" name="question" id="question" th:value="${faqBoard.question}">
                         </td>
                     </tr>
                     <tr>
@@ -44,18 +45,22 @@
                     </tr>
                     <tr>
                         <td>
-                            <textarea name="answer" class="answer" id="answer"></textarea>
+                            <textarea name="answer" class="answer" th:text="${faqBoard.answer}" id="answer"></textarea>
                         </td>
                     </tr>
                 </table>
             
                 <div class="buttons">
-                    <button id="insertBtn">입력</button>
-                    <button type="button" id="cancelBtn" onclick="history.back()">취소</button>
+                    <button id="updateBtn">수정</button>
+                    <button id="cancelBtn" onclick="history.back()">취소</button>
                 </div>
             </section>
 
         </form>
+
+
+
+
 
 
 
@@ -64,6 +69,6 @@
         <!-- FOOTER -->
         <th:block th:replace="~{common/footer}"></th:block>
 
-        <script src="/js/faqBoard/insertFaq.js"></script>  
+        <script src="/js/faqBoard/editFaq.js"></script>  
 </body>
 </html>

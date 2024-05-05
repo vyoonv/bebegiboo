@@ -9,6 +9,7 @@
 
 *{
     font-family: 'NEXON Lv2 Gothic';
+    line-height: 1.5;
 }
 
 
@@ -46,6 +47,7 @@ a{
 /* faq 게시판 이름 영역 */
 .faqLogo {
     margin: 60px auto;
+    margin-bottom: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,7 +113,7 @@ a{
 /* 질문 리스트 영역 */
 .faq-list {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .faq-list > tbody > tr {
@@ -119,6 +121,7 @@ a{
     width: 100%;
     height: 60px;
     border: 1px solid rgb(157, 157, 157);
+
 }
 
 
@@ -144,6 +147,11 @@ details > figure {
     color: black;
     padding: 15px;
 
+    margin-bottom: 20px;
+}
+
+details{
+    margin-bottom: 20px;
 }
 
 
@@ -176,6 +184,10 @@ details[open] > summary ~ * {
 
 /* Pagination */
 
+
+.pagination-area{
+    margin-top: 80px;
+}
 
 .pagination{
     list-style: none;
@@ -214,22 +226,38 @@ body.authority3 {
 
 #buttons{
     background-color: #e9edf3;
-    text-align: right; 
+    display: ruby-text;
+    text-align: right;
 }
 
-#editBtn, #deleteBtn {
+#editBtn {
 
     display: inline-block;
     border: 1px solid #1c3359;
     padding: 5px;
-    color: black !important;
+    color: black;
     margin-top: 10px;
     margin-bottom: 5px;
-}
-
-#editBtn {
     margin-right: 5px;
 }
+
 #deleteBtn{
-    margin-right: 15px;
+    display: inline-block;
+    border: 1px solid #1c3359;
+    width: 40px;
+    height: 36px;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: #e9edf3;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#editBtn:hover, #deleteBtn:hover {
+
+    background-color: #0d387c;
+    color: white;
+
 }

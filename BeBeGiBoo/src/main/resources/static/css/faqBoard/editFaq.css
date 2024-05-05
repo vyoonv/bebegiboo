@@ -7,7 +7,7 @@ body{
 }
 
 /* main 영역 */
-.insertFaq{
+.editFaq{
     margin: 120px auto;
     width: 900px;
     min-height: 670px;
@@ -28,13 +28,13 @@ body{
 }
 
 /* 작성하기 */
-#write{
+#update{
     margin-bottom: 30px;
     text-align: center;
 }
 
 /* 작성 폼 영역 */
-.insertFaqForm{
+.editFaqForm{
     border: 1px solid gray;
     padding: 30px;
     width: 900px;
@@ -74,7 +74,7 @@ body{
     margin-right: 30px;
 }
 
-#insertBtn, #cancelBtn{
+#updateBtn, #cancelBtn{
     background-color: #1c3359;
     color: white;
     width: 80px;
@@ -83,12 +83,14 @@ body{
     cursor: pointer;
 }
 
-#insertBtn:hover, #cancelBtn:hover {
+#updateBtn:hover, #cancelBtn:hover {
     background-color: white;
     border: 1px solid #1c3359;
     color: #1c3359;
 }
 
-#insertBtn{
+#updateBtn{
     margin-right: 10px;
 }
+
+

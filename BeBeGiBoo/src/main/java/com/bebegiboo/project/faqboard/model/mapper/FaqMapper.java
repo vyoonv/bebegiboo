@@ -1,6 +1,7 @@
 package com.bebegiboo.project.faqboard.model.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
@@ -28,5 +29,23 @@ public interface FaqMapper {
 	 * @return
 	 */
 	int insertFaq(FaqBoard inputFaq);
+
+	/** faq 조회 
+	 * @param qNo
+	 * @return
+	 */
+	FaqBoard selectOne(int qNo);
+
+	/** faq 수정 
+	 * @param inputFaq
+	 * @return
+	 */
+	int updateFaq(FaqBoard inputFaq);
+
+	/** faq 삭제 
+	 * @param map
+	 * @return
+	 */
+	int faqDelete(int qNo);
 
 }

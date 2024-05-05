@@ -44,14 +44,17 @@
                     <tr th:each="faqBoard : ${faqList}">
                         <td>
                             <details>
+                                <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
                                 <summary th:text="|[${faqBoard.categoryNo}] # ${faqBoard.question}|" id="question">
                                     질문명</summary>
 
                                 <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
                                 <div th:if="${session.loginMember != null and session.loginMember.authority == 3}"
                                     id="buttons">
-                                    <a href="/faqBoard/editBoard" id="editBtn">수정</a>
-                                    <a href="#" id="deleteBtn">삭제</a>
+                                    <a th:href="@{editFaq(qNo=${faqBoard.qNo})}" id="editBtn">수정</a>
+                                    <form th:action="@{deleteFaq/{qNo}(qNo=${faqBoard.qNo})}" method="post" id="deleteForm">
+                                        <button id="deleteBtn">삭제</button>
+                                    </form>
                                 </div>  
                                 <figure>
                                     <pre th:text="${faqBoard.answer}" id="answer"></pre>
@@ -70,10 +73,10 @@
 				<ul class="pagination" th:object="${pagination}">
 
 					<!-- 첫 페이지로 -->
-					<li><a th:href="@{/faqBoard(cp=1)}">&lt;&lt;</a></li>
+					<li><a th:href="@{/faqBoard/faqBoard(cp=1)}">&lt;&lt;</a></li>
 
 					<!-- 이전 목록 마지막 번호로-->
-					<li><a th:href="@{/faqBoard/(cp=*{prevPage})}">&lt;</a></li>
+					<li><a th:href="@{/faqBoard/faqBoard(cp=*{prevPage})}">&lt;</a></li>
 
 					<!-- 특정 페이지로 -->
 					
@@ -86,7 +89,7 @@
 						
 						<!-- 나머지 페이지 -->
 						<li th:unless="${i} == *{currentPage}">
-							<a th:href="@{/faqBoard/(cp=${i})}" 
+							<a th:href="@{/faqBoard/faqBoard(cp=${i})}" 
 								th:text="${i}">이동할 페이지</a>
 						</li>
 					</th:block>
@@ -95,10 +98,10 @@
 
 					
 					<!-- 다음 목록 시작 번호로 -->
-					<li><a th:href="@{/faqBoard/(cp=*{nextPage})}">&gt;</a></li>
+					<li><a th:href="@{/faqBoard/faqBoard(cp=*{nextPage})}">&gt;</a></li>
 
 					<!-- 끝 페이지로-->
-					<li><a th:href="@{/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
+					<li><a th:href="@{/faqBoard/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
 				</ul>
 			</div>
 

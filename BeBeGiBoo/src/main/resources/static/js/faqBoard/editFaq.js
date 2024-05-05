@@ -1,13 +1,8 @@
 const question = document.querySelector("#question"); 
 const answer = document.querySelector("#answer"); 
-const categoryNo = document.querySelector("#categoryNo"); 
+const categoryNo = document.querySelector("#categoryNo");  
 
-
-
-
-document.getElementById('insertBtn').addEventListener("click", e => {
-
-  
+document.getElementById('updatetBtn').addEventListener("submit", e => {
 
     if(categoryNo.value == null ) {
         alert("카테고리 선택!!"); 
@@ -30,4 +25,3 @@ document.getElementById('insertBtn').addEventListener("click", e => {
     }
   
 }); 
-

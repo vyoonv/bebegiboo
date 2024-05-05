@@ -20,4 +20,22 @@ public interface FaqService {
 	 */
 	int insertFaq(FaqBoard inputFaq);
 
+	/** faq 조회 
+	 * @param qNo
+	 * @return
+	 */
+	FaqBoard selectOne(int qNo);
+
+	/** faq 수정 
+	 * @param inputFaq
+	 * @return
+	 */
+	int updateFaq(FaqBoard inputFaq);
+
+	/** faq 삭제 
+	 * @param qNo
+	 * @return
+	 */
+	int faqDelete(int qNo);
+
 }
