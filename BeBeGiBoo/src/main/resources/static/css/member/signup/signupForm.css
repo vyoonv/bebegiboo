@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-weight: 400;
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: 'Pretendard-Regular';
+  font-family: 'NEXON Lv1 Gothic OTF';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -40,9 +40,9 @@
 /* 첫번째 폼 */
 .signUp-info{
   box-sizing: border-box;
-  padding: 30px;
+  padding: 50px;
   background: #FFFFFF;
-  border: 2px solid #AFAFAF;
+  border: 1px solid #AFAFAF;
   width: 800px;
 }
 
@@ -50,9 +50,9 @@
 .signUp-email{
   margin-top: 80px;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 50px;
   background: #FFFFFF;
-  border: 2px solid #AFAFAF;
+  border: 1px solid #AFAFAF;
   width: 800px;
 }
 
@@ -61,9 +61,9 @@
   width: 800px;
   margin-top: 80px;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 50px;
   background: #FFFFFF;
-  border: 2px solid #AFAFAF;
+  border: 1px solid #AFAFAF;
 }
 
 /* input */
@@ -130,6 +130,7 @@
   width: 150px;
   height: 25px;
 
+  margin-left: 100px;
   margin-bottom: 7px;
 
   font-size: 12px;
@@ -144,7 +145,7 @@
   width: 380px;
   height: 25px;
 
-  margin-left: 155px;
+  margin-left: 100px;
   margin-bottom: 7px;
 
   font-size: 12px;
@@ -154,11 +155,11 @@
   outline: none;
 }
 
-/* 우편번호 input */
-#postcode {
-  margin-left: 85px;
+#postcode::placeholder, #mainAddress::placeholder, #detailAddress::placeholder{
+  font-size: 12px;
+  font-weight: lighter;
+  color: #bbbbbb;
 }
-
 
 /* 유효성 검사 메세지 */
 .signUp-message {

@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 }
   
 * {
-font-family: 'Pretendard-Regular';
+    font-family: 'NEXON Lv1 Gothic OTF';
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -30,7 +30,7 @@ box-sizing: border-box;
     box-sizing: border-box;
     padding: 30px;
     background: #FFFFFF;
-    border: 2px solid #AFAFAF;
+    border: 1px solid #AFAFAF;
     width: 500px;
     height: 400px;
 
@@ -49,7 +49,7 @@ box-sizing: border-box;
 
 
 /* 기부자 체크박스 */
-#authority{
+input{
     margin-right: 20px;
 }
 
@@ -81,3 +81,4 @@ box-sizing: border-box;
     margin: 120px auto; 
     margin-bottom: 0;
 }
+
