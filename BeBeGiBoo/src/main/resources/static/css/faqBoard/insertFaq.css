@@ -11,6 +11,10 @@ body{
     margin: 120px auto;
     width: 900px;
     min-height: 670px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* faq 게시판 이름 영역 */
@@ -24,7 +28,10 @@ body{
     width: 300px;
     height: 60px;
     background-color: #1c3359;
-    color: white;
+}
+
+.faqLogo > a {
+    color: white !important;
 }
 
 /* 작성하기 */
@@ -37,7 +44,7 @@ body{
 .insertFaqForm{
     border: 1px solid gray;
     padding: 30px;
-    width: 900px;
+    width: 700px;
     height: 900px;
     display: flex;
     flex-direction: column;
@@ -55,7 +62,7 @@ body{
 #question{
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 750px;
+    width: 580px;
     height: 30px;
 }
 
@@ -63,7 +70,7 @@ body{
 .answer{
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 750px;
+    width: 580px;
     height: 600px;
 }
 
@@ -91,4 +98,9 @@ body{
 
 #insertBtn{
     margin-right: 10px;
+}
+
+input, textarea, select {
+    background-color: rgb(246, 246, 246);
+    border: 1px solid rgb(180, 180, 180);
 }
