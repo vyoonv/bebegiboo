@@ -38,4 +38,8 @@ public interface FaqService {
 	 */
 	int faqDelete(int qNo);
 
+	
+
+	
+
 }

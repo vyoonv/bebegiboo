@@ -98,4 +98,11 @@ public class FaqServiceImpl implements FaqService{
 		return mapper.faqDelete(qNo);
 	}
 
+
+
+
+
+
+	
+
 }

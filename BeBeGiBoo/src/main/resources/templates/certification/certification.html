@@ -22,7 +22,7 @@
 
                 <form action="/certification/certification" method="POST" name="certificationForm" id="certificationForm">
 
-                    <table>
+                    <table class="certificationTable">
                         <tr>
                             <td>봉사자 아이디</td>
                             <td>
@@ -47,17 +47,23 @@
                                 <input type="text" name="phone" required>
                             </td>
                         </tr>
+                        <tr>
+                            <td>1365 아이디</td>
+                            <td><input type="text" name="1365id" required></td>
+                        </tr>
+
+                        <tr></tr>
 
                         <tr>
-                            <td>주소</td>
+                            <td id="addressLetter">주소</td>
                         </tr>
 
                         <tr>
-                            <td>우퍈번호</td>
+                            <td>우편번호</td>
                             <td>
                                 <input type="text" name="address" id="postcode" required>
                             </td>
-                            <td><button>찾기</button></td>
+                            <td><button id="searchBtn">찾기</button></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -76,7 +82,8 @@
                         <tr>
                             <td>봉사활동 인증 사진(3장 이상 업로드)</td>
                         </tr>
-                        <tr>
+                        <tr class="image-area">
+                           
                             <td>
                                 <div class="c-img">
                                     <label for="img1">
@@ -88,7 +95,7 @@
                             </td>
                             <td>
                                 <div class="c-img">
-                                    <label for="img1">
+                                    <label for="img2">
                                         <img class="preview" id="previewImg2" src=""> 
                                         <span onclick="document.getElementById('img2').click()">+</span> 
                                     </label>
@@ -97,18 +104,19 @@
                             </td>
                             <td>
                                 <div class="c-img">
-                                    <label for="img1">
+                                    <label for="img3">
                                         <img class="preview" id="previewImg3" src=""> 
                                         <span onclick="document.getElementById('img3').click()">+</span> 
                                     </label>
                                     <input type="file" name="boardImg" class="inputImage" id="img3" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg3')"> 
                                 </div>
                             </td>
-                            
-                            
-                                    
+    
                         </tr>
                     </table>
+
+                    <div><button id="submitBtn">제출하기</button></div>
+
                 </form>
 
 

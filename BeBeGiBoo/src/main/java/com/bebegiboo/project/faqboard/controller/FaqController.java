@@ -1,17 +1,17 @@
 package com.bebegiboo.project.faqboard.controller;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,6 +20,7 @@ import com.bebegiboo.project.faqboard.model.service.FaqService;
 import com.bebegiboo.project.member.model.dto.Member;
 
 import lombok.RequiredArgsConstructor;
+
 
 @RequiredArgsConstructor
 @RequestMapping("faqBoard")
@@ -167,6 +168,12 @@ public class FaqController {
 	
 	
 	
+	/** faq 삭제 
+	 * @param qNo
+	 * @param loginMember
+	 * @param ra
+	 * @return
+	 */
 	@PostMapping("/deleteFaq/{qNo}")
 	public String faqDelete(@PathVariable("qNo") int qNo,
 							@SessionAttribute("loginMember") Member loginMember,
@@ -189,5 +196,7 @@ public class FaqController {
 		return "redirect:/faqBoard/faqBoard"; 
 	}
 	
+	
+	 
 
 }
