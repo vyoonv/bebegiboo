@@ -4,7 +4,7 @@ const categoryNo = document.querySelector("#categoryNo");
 
 
 
-
+/* 글쓰기 유효성 검사 */
 document.getElementById('insertBtn').addEventListener("click", e => {
 
   
