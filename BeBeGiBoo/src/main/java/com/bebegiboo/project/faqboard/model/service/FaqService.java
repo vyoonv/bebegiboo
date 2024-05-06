@@ -38,6 +38,8 @@ public interface FaqService {
 	 */
 	int faqDelete(int qNo);
 
+	List<FaqBoard> getFaqByCategory(int categoryNo);
+
 	
 
 	

@@ -28,19 +28,19 @@
                 <table class="faqHeader">
                     <tbody>
                     <tr>
-                        <td><a>전체</a></td>
+                        <td><a href="/faqBoard/faqBoard">전체</a></td>
                         <td>|</td>
-                        <td><a>1.기부</a></td>
-                        <td><a>2.택배관련</a></td>
-                        <td><a>3.봉사활동 인증</a></td>
-                        <td><a>4.홈페이지</a></td>
-                        <td><a>5.기타</a></td>
+                        <td><a class="category-link" data-category="1">1.기부</a></td>
+                        <td><a class="category-link" data-category="2">2.택배관련</a></td>
+                        <td><a class="category-link" data-category="3">3.봉사활동 인증</a></td>
+                        <td><a class="category-link" data-category="4">4.홈페이지</a></td>
+                        <td><a class="category-link" data-category="5">5.기타</a></td>
                         <td></td>
                     </tr>
                     </tbody>
-                </table>        
+                </table>      
                 <table class="faq-list">  
-                    <tbody>
+                    <tbody id="faqListTable">
                     <tr th:each="faqBoard : ${faqList}">
                         <td>
                             <details>
@@ -64,11 +64,11 @@
                         </td>
                     </tr>
                     </tbody>   
-                </table>        
+                </table>      
             </div>
 
             <!-- 페이지네이션 -->
-			<div class="pagination-area">
+			<div class="pagination-area" id="pagination">
 
 				<ul class="pagination" th:object="${pagination}">
 

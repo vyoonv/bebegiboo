@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,8 +21,9 @@ import com.bebegiboo.project.faqboard.model.service.FaqService;
 import com.bebegiboo.project.member.model.dto.Member;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("faqBoard")
 @Controller
@@ -48,6 +50,19 @@ public class FaqController {
 		
 		return "faqBoard/faqBoard"; 
 		
+	}
+	
+	@ResponseBody
+	@GetMapping("/getFaqByCategory")
+	public List<FaqBoard> getFaqByCategory(@RequestParam("categoryNo") int categoryNo) {
+	   
+		log.debug("categoryNo : " + categoryNo);  
+		
+	    List<FaqBoard> faqList = service.getFaqByCategory(categoryNo);
+	    
+	    log.debug("faqList :" + faqList);
+	    
+	    return faqList;
 	}
 	
 	/** faq 삽입 화면 

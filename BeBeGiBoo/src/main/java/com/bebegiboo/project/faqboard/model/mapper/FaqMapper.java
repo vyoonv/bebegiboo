@@ -48,4 +48,6 @@ public interface FaqMapper {
 	 */
 	int faqDelete(int qNo);
 
+	List<FaqBoard> getFaqByCategory(int categoryNo);
+
 }

@@ -100,6 +100,14 @@ public class FaqServiceImpl implements FaqService{
 
 
 
+	@Override
+	public List<FaqBoard> getFaqByCategory(int categoryNo) {
+		
+		return mapper.getFaqByCategory(categoryNo);
+	}
+
+
+
 
 
 

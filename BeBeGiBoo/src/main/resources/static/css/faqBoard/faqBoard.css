@@ -32,7 +32,6 @@ a{
 .btn-area{
     display: flex;
     justify-content: end;
-    
 }
 
 #insertBtn{
@@ -42,6 +41,12 @@ a{
     border-radius: 12px;
     width: 80px;
     height: 30px;
+    cursor: pointer;
+}
+
+#insertBtn:hover{
+    background-color: #e9edf3;
+    color: black;
 }
 
 /* faq 게시판 이름 영역 */

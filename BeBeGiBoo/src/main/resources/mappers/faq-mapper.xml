@@ -48,5 +48,13 @@
 		WHERE Q_NO = #{qNo}
 	</update>
 	
+	<!-- 카테고리 별 목록 조회 -->
+    <select id="getFaqByCategory">
+        SELECT Q_NO, QUESTION, ANSWER, CATEGORY_NO
+        FROM FAQ
+        WHERE CATEGORY_NO = #{categoryNo} 
+        AND FAQ_DEL_FL = 'N'
+        ORDER BY Q_NO
+    </select>
 	
 </mapper>
