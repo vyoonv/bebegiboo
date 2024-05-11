@@ -61,12 +61,19 @@ document.addEventListener('DOMContentLoaded', function() {
                             const details = document.createElement('details');
                             const summary = document.createElement('summary');
                             const figure = document.createElement('figure');
-                            summary.textContent = "[" + faqBoard.categoryNo + "] " + faqBoard.question;
+                            //summary.textContent = "[" + faqBoard.categoryNo + "]" + "   " + faqBoard.question;
+                            summary.innerHTML = "<span class='category-no'>[" + faqBoard.categoryNo + "]  </span> " + faqBoard.question;
                             figure.textContent = faqBoard.answer;
                             details.appendChild(summary);
                             details.appendChild(figure);
                             tr.appendChild(details);
                             faqListTable.appendChild(tr);
+
+                            summary.classList.add('categoryNo');
+                            figure.classList.add('addFigure');
+                           
+                            // 엔터 적용 
+                            figure.innerHTML = faqBoard.answer.replace(/\n/g, "<br>");
                         });
                     })
                     .catch(error => {
@@ -75,4 +82,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+});
+
+
+const detailsList = document.querySelectorAll('#faqDetails');
+detailsList.forEach(details => {
+    details.addEventListener('click', () => {
+        const plus = details.querySelector('#plus');
+
+        if (details.open) {
+            plus.innerText = "+"; 
+        } else {
+            plus.innerText = "-"; 
+        }
+    });
 });

@@ -70,6 +70,13 @@ input{
     border-radius: 20px;
 }
 
+#submitBtn:hover{
+    background-color: white;
+    border: 2px solid #E5EDF8;
+    cursor: pointer;
+  
+}
+
 /* 회원가입 글씨 */
 #signUp{
     margin-bottom: 40px;

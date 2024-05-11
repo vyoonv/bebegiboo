@@ -101,7 +101,10 @@
   border-radius: 10px;
   cursor: pointer;
 }
-
+.signUp-content button:hover{
+  background-color: #6987C9;
+  color: white;
+}
 /*회원가입 버튼*/
 #signUpBtn{
 
@@ -118,7 +121,11 @@
 
   border: none;
   border-radius: 20px;
-
+}
+#signUpBtn:hover{
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #E5EDF8;
 }
 
 

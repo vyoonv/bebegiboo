@@ -61,7 +61,7 @@ table{
     padding: 40px;
 }
 
-#update-form{
+#updateForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +97,7 @@ table{
     justify-content: center;
     align-items: center;
     width: 800px;
-    height: 300px;
+    height: 150px;
     border: 1px solid rgb(207, 207, 207);
     padding: 40px;
 }
@@ -108,9 +108,8 @@ table{
     text-align: center;
 }
 
-#resign-form{
+#resignForm{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -126,13 +125,24 @@ table{
     width: 80px;
     height: 28px;
     border-radius: 10px;
-    font-weight: bold;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 12px;
+}
+#seachBtn:hover{
+    background-color: #6987C9;
 }
 
-#editBtn, #resignBtn{
-    margin-top: 30px;
+#resignBtn{
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 11px;
+    background-color: white;
+}
+
+#editBtn{
+    margin-top: 35px;
   
     width: 180px;
     height: 50px;

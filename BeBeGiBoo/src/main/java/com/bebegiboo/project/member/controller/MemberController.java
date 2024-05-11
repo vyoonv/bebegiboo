@@ -64,6 +64,7 @@ public class MemberController {
 		return "/member/signup/signupTerm"; 
 	}
 	
+	
 	/** 회원가입폼 입력창 이동 
 	 * @param authority
 	 * @param model

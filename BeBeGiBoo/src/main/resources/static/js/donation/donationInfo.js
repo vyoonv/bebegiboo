@@ -1,12 +1,12 @@
 const detailsList = document.querySelectorAll('#donation-detail');
 detailsList.forEach(details => {
     details.addEventListener('click', () => {
-        const arrow = details.querySelector('#arrow');
+        const plus = details.querySelector('#plus');
 
         if (details.open) {
-            arrow.innerText = "+"; 
+            plus.innerText = "+"; 
         } else {
-            arrow.innerText = "-"; 
+            plus.innerText = "-"; 
         }
     });
 });

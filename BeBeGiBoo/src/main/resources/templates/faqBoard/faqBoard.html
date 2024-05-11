@@ -32,7 +32,7 @@
                 <table class="faqHeader">
                     <tbody>
                     <tr>
-                        <td><a href="/faqBoard/faqBoard">전체</a></td>
+                        <td><a href="/faqBoard/faqBoard" id="selectAll">전체</a></td>
                         <td>|</td>
                         <td><a class="category-link" data-category="1">1.기부</a></td>
                         <td><a class="category-link" data-category="2">2.택배관련</a></td>
@@ -47,11 +47,14 @@
                     <tbody id="faqListTable">
                     <tr th:each="faqBoard : ${faqList}">
                         <td>
-                            <details>
+                            <details id="faqDetails">
                                 <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
                                 <summary id="question">
-                                    <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
-                                    <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
+                                    <div>
+                                        <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
+                                        <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
+                                    </div>
+                                    <span id="plus">+</span>
                                 </summary>
 
                                 <!-- 관리자인 경우 수정/삭제 버튼 노출 -->

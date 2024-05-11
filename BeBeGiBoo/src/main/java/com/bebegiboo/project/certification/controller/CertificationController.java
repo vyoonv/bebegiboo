@@ -61,7 +61,7 @@ public class CertificationController {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	@PostMapping("certification")
+	@PostMapping("certification-complete")
 	@ResponseBody
 	public String certificationSubmit(@RequestParam("address") String[] memberAddress,
 										Certification inputCertification,
@@ -77,6 +77,8 @@ public class CertificationController {
 		
 		int result = service.certificationSubmit(inputCertification, memberAddress, images); 
 		
+		// 주소 ^^^ 없애기 
+		
 		session.setAttribute("certification", inputCertification);
 		session.setAttribute("images", images);
 		
@@ -85,15 +87,15 @@ public class CertificationController {
 		
 		if(result > 0) {
 			message = "신청완료"; 
-			path = "/certification/certification-complete";    // 완료 화면으로 변경 
+			path = "certification/certification-complete";    // 완료 화면으로 변경 
 		} else {
 			message = "신청 실패.."; 
 			path = "certification/certification-main"; 
 		}
 		
-		ra.addFlashAttribute("message",message); 
+		ra.addFlashAttribute("message", message); 
 		
-		return "redirect:" + path; 
+		return "redirect:/" + path; 
 		
 		
 	}
