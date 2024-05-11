@@ -63,6 +63,8 @@ public class DonationInfoController {
 		model.addAttribute("donationInfo", donationInfo); 
 		
 		
+		
+		
 		log.info("record : " + recordList); 
 		log.info("delivery : " + deliveryList ); 
 		log.info("product : " + productList );

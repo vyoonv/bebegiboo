@@ -23,7 +23,7 @@
                             <td>
                                 <details id="donation-detail">
                                     <summary id="donation-date">
-                                        <span th:text="${donationInfo.recordList[recordIndex.index].recordDate}">신청 날짜</span>
+                                        <span th:text="${record.recordDate}">신청 날짜</span>
                                         <span id="plus">+</span>
                                     </summary>  
                                     <figure>
@@ -31,9 +31,9 @@
                                             <tr>
                                                 <td>기부 물품</td>
                                                 <td>
-                                                    <span th:each="product : ${donationInfo.productList}" th:text="|${product.productName} |"></span>
+                                                    <span th:text="|${donationInfo.productList[recordIndex.index].productName} |"></span>                    
                                                     <br>
-                                                    <span th:text="|총 ${donationInfo.productList.size}박스|"></span>
+                                                    <span th:text="|총 ${donationInfo.productList[recordIndex.index].boxNo}박스|"></span> 
                                                 </td>
                                             </tr>
                                             <tr>
@@ -79,6 +79,7 @@
 
 
         </main>
+
 
         <!-- 푸터 -->
         <th:block th:replace="~{common/footer}"></th:block>

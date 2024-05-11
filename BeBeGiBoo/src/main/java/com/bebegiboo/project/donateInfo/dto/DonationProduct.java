@@ -23,6 +23,8 @@ public class DonationProduct {
 	private int typeNo; 
 	private int recordNo; 
 	
+	private int boxNo; 
+	
 	private List<DonationProduct> productList;
 
 }

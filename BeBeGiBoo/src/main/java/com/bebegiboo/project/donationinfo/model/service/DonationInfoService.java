@@ -36,4 +36,5 @@ public interface DonationInfoService {
 	List<PaymentInfo> getPaymentInfo(int memberNo);
 
 
+
 }

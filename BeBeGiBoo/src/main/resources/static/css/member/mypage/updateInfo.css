@@ -128,7 +128,7 @@ table{
     cursor: pointer;
     font-size: 12px;
 }
-#seachBtn:hover{
+#searchBtn:hover{
     background-color: #6987C9;
 }
 
@@ -154,4 +154,10 @@ table{
   
     border: none;
     border-radius: 15px;
+}
+
+#editBtn:hover{
+    background-color: white;
+    border: 2px solid #E5EDF8;
+    cursor: pointer;
 }

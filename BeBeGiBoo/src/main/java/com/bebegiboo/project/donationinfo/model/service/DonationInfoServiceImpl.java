@@ -12,7 +12,7 @@ import com.bebegiboo.project.donateInfo.dto.PaymentInfo;
 import com.bebegiboo.project.donationinfo.model.mapper.DonationInfoMapper;
 
 import lombok.RequiredArgsConstructor;
-
+import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Transactional
@@ -37,14 +37,15 @@ public class DonationInfoServiceImpl implements DonationInfoService{
 	public List<DonationProduct> getProductInfo(int memberNo) {
 		
 		return mapper.getProductInfo(memberNo);
+		
+		
 	}
 
 	@Override
 	public List<PaymentInfo> getPaymentInfo(int memberNo) {
 		
 		return mapper.getPaymentInfo(memberNo);
-	} 
-	
+	}
 	
 	
 

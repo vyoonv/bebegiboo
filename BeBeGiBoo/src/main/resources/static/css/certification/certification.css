@@ -1,4 +1,13 @@
+@font-face {
+    font-family: 'YESGothic-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/YESGothic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
+*{
+    font-family: 'YESGothic-Regular';
+}
 /* 베베기부 로고 */
 #font-logo-area{
     margin: 30px auto; 
@@ -12,7 +21,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 
@@ -156,6 +164,11 @@ table{
   margin-left: 15px;
 }
 
+#searchBtn:hover{
+    background-color: #6987C9;
+    color: black;
+}
+
 #submitBtn{
 
   margin-top: 150px;
@@ -171,6 +184,11 @@ table{
   border: none;
   border-radius: 20px;
 
+}
+#submitBtn:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid #E5EDF8;
 }
 
 

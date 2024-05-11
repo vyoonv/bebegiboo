@@ -79,6 +79,7 @@ public class CertificationController {
 		
 		// 주소 ^^^ 없애기 
 		
+		
 		session.setAttribute("certification", inputCertification);
 		session.setAttribute("images", images);
 		

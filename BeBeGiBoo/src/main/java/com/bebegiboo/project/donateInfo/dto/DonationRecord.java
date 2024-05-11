@@ -24,5 +24,5 @@ public class DonationRecord {
 	private String acceptorName;
 	
 	private List<DonationRecord> recordList;
-
+	private List<DonationProduct> productList;
 }
