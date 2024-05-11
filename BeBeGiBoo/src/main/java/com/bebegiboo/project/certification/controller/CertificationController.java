@@ -1,6 +1,7 @@
 package com.bebegiboo.project.certification.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -45,10 +46,9 @@ public class CertificationController {
 	
 	@GetMapping("certification-complete")
 	public String certificationComplete() {
-		
 		return "/certification/certification-complete";
 	}
-	
+
 
 	/** 인증 신청 폼 제출 
 	 * @param memberAddress
@@ -62,7 +62,6 @@ public class CertificationController {
 	 * @throws IOException
 	 */
 	@PostMapping("certification-complete")
-	@ResponseBody
 	public String certificationSubmit(@RequestParam("address") String[] memberAddress,
 										Certification inputCertification,
 										@SessionAttribute("loginMember") Member loginMember,
@@ -76,11 +75,25 @@ public class CertificationController {
 		inputCertification.setMemberNo(loginMember.getMemberNo());
 		
 		int result = service.certificationSubmit(inputCertification, memberAddress, images); 
+		log.info("memberAddress" + Arrays.toString(memberAddress));
 		
 		// 주소 ^^^ 없애기 
+		// 주소 입력된 경우 
+				if( !inputCertification.getAddress().equals(",,") ) {
+					
+					String address = String.join(" ", memberAddress);
+					inputCertification.setAddress(address);
+				} else {
+					
+					inputCertification.setAddress(null);
+				}
+				
+
+		log.info("memberAddress" + Arrays.toString(memberAddress));
 		
-		
+		model.addAttribute("address", memberAddress); 
 		session.setAttribute("certification", inputCertification);
+		session.setAttribute("address", memberAddress);
 		session.setAttribute("images", images);
 		
 		String path; 
@@ -88,16 +101,15 @@ public class CertificationController {
 		
 		if(result > 0) {
 			message = "신청완료"; 
-			path = "certification/certification-complete";    // 완료 화면으로 변경 
+			path = "/certification/certification-complete";    // 완료 화면으로 변경 
 		} else {
 			message = "신청 실패.."; 
-			path = "certification/certification-main"; 
+			path = "/certification/certification-main"; 
 		}
 		
 		ra.addFlashAttribute("message", message); 
 		
-		return "redirect:/" + path; 
-		
+		return path; 
 		
 	}
 	
