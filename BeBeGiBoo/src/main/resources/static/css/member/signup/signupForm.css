@@ -44,6 +44,8 @@
   background: #FFFFFF;
   border: 1px solid #AFAFAF;
   width: 800px;
+
+  border-spacing: 3px;
 }
 
 /* 이메일 폼 */

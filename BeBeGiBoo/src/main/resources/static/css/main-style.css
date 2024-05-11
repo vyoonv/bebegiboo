@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
+html,
+body {
+    height: 100vh;
+    width: 100%;
+}
 
 *{
     margin: 0;
@@ -59,19 +63,7 @@ a {
     color: #1a292c;
     text-transform: lowercase;
   }
-  
-  .container:nth-child(2) {
-    background: #3c564f;
-  }
-  .container:nth-child(1) {
-    background: #b69187;
-  }
-  .container:nth-child(4) {
-    background: #bcb8ad;
-  }
-  .container:nth-child(3) {
-    background: #b6916d;
-  }
+
   
 .image-wrap  img {
     height: 100%;
@@ -138,7 +130,7 @@ a {
   }
 
 #donate-color {
-    -webkit-text-stroke: 2px rgb(129, 129, 129);
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
 }
 
 #line-container {
@@ -337,7 +329,7 @@ a {
     height: 35px;
     width: 35px;
     background-color: white;
-    box-shadow: 5px 5px 5px gray;
+    box-shadow:5px 5px 5px gray;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -356,6 +348,8 @@ a {
     top: 0;
     width: 100%;
     z-index: 90;
+    backdrop-filter: blur(10px);
+    box-shadow : 0 0 10px 0 rgba(0,0,0,0.3);
 }
 
 #logo {
@@ -389,10 +383,6 @@ a {
     align-items: center;
 }
 
-#hamburger {
-    cursor: pointer;
-}
-
 @keyframes fadeInDown {
     0% {
         opacity: 0;
@@ -404,40 +394,85 @@ a {
     }
 }
 
-#nav-container {
+#nav-container-null {
     margin-left: 93%;
     position: absolute;
     position: fixed;
     z-index: 100;
-    visibility: hidden;
-    
+    visibility: hidden;   
+}
+
+#nav-container {
+    margin-top: 55px;
+    display: flex;
+    margin-left: 89%;
+    position: absolute;
+    position: fixed;
+    z-index: 100;
+    visibility: hidden;   
 }
 
 .act-down {
     animation: fadeInDown 0.5s;
 }
 
-#nav-container > div:first-child{
+#nav-container-null > div:first-child{
     margin-top: 55px;
 }
 
-#nav-container > div {
+#nav-container-null > div {
     font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75px;
+    width: 100px;
     height: 65px;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(254, 245, 220);
 }
 
-#nav-container > div > a:hover {
+#nav-container-null > div > a:hover {
     color: rgb(44, 178, 255);
     text-decoration: underline;
+    transition-duration: 0.5s;
 }
 
+#nav-container-null > div > div:first-child{
+    margin-top: 55px;
+}
 
+#nav-container > div:nth-child(2) > div {
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 65px;
+    background-color: rgb(254, 245, 220);
+}
 
+#nav-container > div > div > a:hover {
+    color: rgb(44, 178, 255);
+    text-decoration: underline;
+    transition-duration: 0.5s;
+}
+
+.nav-child {
+    font-size: 13px;
+    height: 33px;
+    width: 110px;
+    background-color: rgb(254, 245, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-child > div:first-child {
+    margin-top: 5px;
+}
+
+#hamburger {
+    cursor: pointer;
+}
 
 
 
@@ -502,3 +537,78 @@ a {
     font-size: 12px;
     line-height: 25px;
 }
+
+
+/**************심플 푸터*************/
+#simpleFooter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+#simpleLogo img{
+    width : 30px;
+}
+
+
+
+/*************기부완료 페이지*******************/
+#donation-main {
+    margin-top: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#donation-firstBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+#checkImg {
+    height: 100px;
+}
+
+#checkTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.donation-container-1 {
+    border: 1px black solid;
+    width: 1500px;
+    height: 150px;
+    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.donation-container-1 > table {
+    margin-left: 100px;
+}
+
+
+.donation-container-2 {
+    border: 1px black solid;
+    width: 1500px;
+    height: 600px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.donation-container-2 > div {
+    margin-left: 100px;
+}
+
+
+
+

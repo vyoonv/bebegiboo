@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Complete</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/certification/certification.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <main>
+        <div>
+            <div>
+                <img id="checkImg" src="/images/check-icon.png">
+            </div>
+            <div>
+                <span>봉사 인증 신청이 완료되었습니다.</span>
+                <span>신청 정보는 <a href="https://www.1365.go.kr/vols/main.do">1365 페이지</a>에서 확인 가능합니다.</span>
+            </div>
+        </div>
+
+        <!-- 간단한 신청정보 -->
+        <div>
+            <div>신청 내역</div>
+            <div th:text="${session.certification.memberId}">봉사자 아이디</div>
+            <div th:text="${session.certification.memberName}">이름</div>
+            <div th:text="${session.certification.certificationId}">1365 아이디</div>
+            <div th:text="${session.certification.memberBirth}">생년월일</div>
+            <div th:text="${session.certification.phone}">핸드폰번호</div>
+            <div th:text="${session.certification.address}">주소</div>
+        </div>
+    </main>
+    
+    <!-- FOOTER -->
+    <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

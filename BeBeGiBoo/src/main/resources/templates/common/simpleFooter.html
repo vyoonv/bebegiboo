@@ -1,0 +1,24 @@
+<footer>
+	<div id="simpleFooter">
+		<div>
+		    <span><a>회사소개</a></span> |
+		    <span><a>이용 가이드</a></span> |
+		    <span><a>FAQ</a></span> |
+		    <span><a>기부하기</a></span>
+		</div>
+		
+		<!-- 로고부분 -->
+		<div id="simpleLogo">
+		    <img src="/images/logo-black.png">
+		    <span>Copyright © BeBeGiBoo Corp. All Rights Reserved.</span>
+		</div>
+	</div>
+
+</footer>
+<script th:inline="javascript">
+	const message = /*[[${message}]]*/ "전달받은메세지";
+	
+	if(message != null){
+		alert(message);
+	}
+</script>

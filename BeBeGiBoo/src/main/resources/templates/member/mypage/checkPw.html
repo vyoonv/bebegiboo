@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Password</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/member/mypage/checkpw.css">
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <th:block th:replace="~{common/header}"></th:block>
+
+
+    <main>
+        <!-- 로고 -->
+    <div id="font-logo-area">
+        <a href="/" id="font-logo">
+            <img src="/images/font-logo.png" alt="font-logo">
+        </a>
+    </div>
+
+        <!-- 비밀번호 확인-->
+        <div id="check-text">
+            <span>비밀번호 확인</span>
+        </div>
+
+        <!-- 비밀번호 체크 폼-->
+        <section class="checkpw">
+           <div>
+                <form action="/member/mypage/checkPw" method="POST" class="checkPwForm">
+                    <table>
+                        <tr>
+                            <td id="text">
+                                <span>비밀번호를 입력해주세요</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="input-area">
+                                    <input type="password" name="memberPw" required>
+                                </div>
+                            </td>
+                        </tr>                      
+                    </table>
+
+                    <!-- 버튼 -->
+                    <div>
+                        <button id="submitBtn">제출하기</button>
+                    </div>
+                </form>    
+           </div>
+        </section>
+
+
+
+
+
+
+
+    </main>   
+
+
+     <!-- 푸터 -->
+     <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

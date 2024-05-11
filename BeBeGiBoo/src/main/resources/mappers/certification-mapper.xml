@@ -2,7 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.bebegiboo.project.certification.model.mapper.CertificationMapper">
 
+	<!-- 인증서 폼 제출 -->
+	<insert id="certificationSubmit">
+	
+	<selectKey order="BEFORE" resultType="_int" keyProperty="cNo">
+		SELECT SEQ_C_NO.NEXTVAL FROM DUAL
+	</selectKey>
+		INSERT INTO "CERTIFICATION"
+		VALUES(
+			#{cNo},
+			#{memberId},
+			#{memberName},
+			#{certificationId},
+			#{memberBirth},
+			#{phone},
+			#{address}, 
+			#{memberNo}	)
+	</insert>
+	
+	
+	
 
-
+	<!-- 이미지  -->
+	<insert id="insertUploadList" parameterType="list">
+	    INSERT INTO "CERTIFICATION_IMG"
+	    <foreach collection="list" item="img" open="(" close=")"
+		 		 separator=" UNION ">
+		 SELECT NEXT_IMG_NO(), 
+		 		#{img.cImgPath}, 
+		 		#{img.cImgOriginalName}, 
+		 		#{img.cImgRename}, 
+		 		#{img.cImgOrder}, 
+		 		#{img.cNo} 
+		  FROM DUAL
+		</foreach>			
+	</insert>
+	
 
 </mapper>

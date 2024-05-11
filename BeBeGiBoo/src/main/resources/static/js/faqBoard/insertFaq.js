@@ -31,3 +31,8 @@ document.getElementById('insertBtn').addEventListener("click", e => {
   
 }); 
 
+document.getElementById('cancelBtn').addEventListener('click', e =>{
+    e.preventDefault(); 
+    location.href = "faqBoard"; 
+});
+

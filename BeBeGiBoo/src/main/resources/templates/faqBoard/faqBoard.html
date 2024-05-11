@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,10 @@
     <main>
         <!-- HEADER -->
         <th:block th:replace="~{common/header}"></th:block>
+
+        <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
 
         <section class="faqList">
             <div class="faqLogo"><a href="/faqBoard/faqBoard">FAQ</a></div>
@@ -45,19 +49,21 @@
                         <td>
                             <details>
                                 <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
-                                <summary th:text="|[${faqBoard.categoryNo}] # ${faqBoard.question}|" id="question">
-                                    질문명</summary>
+                                <summary id="question">
+                                    <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
+                                    <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
+                                </summary>
 
                                 <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
                                 <div th:if="${session.loginMember != null and session.loginMember.authority == 3}"
                                     id="buttons">
-                                    <a th:href="@{editFaq(qNo=${faqBoard.qNo})}" id="editBtn">수정</a>
+                                    <form><a th:href="@{editFaq(qNo=${faqBoard.qNo})}" id="editBtn">수정</a></form>
                                     <form th:action="@{deleteFaq/{qNo}(qNo=${faqBoard.qNo})}" method="post" id="deleteForm">
-                                        <button id="deleteBtn">삭제</button>
+                                        <a id="deleteBtn">삭제</a>
                                     </form>
                                 </div>  
                                 <figure>
-                                    <pre th:text="${faqBoard.answer}" id="answer"></pre>
+                                    <pre th:text="${faqBoard.answer}" id="answer">답변</pre>
                                 </figure>
                                 
                             </details>

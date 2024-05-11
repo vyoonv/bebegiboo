@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update My Info</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/member/mypage/updateInfo.css">
+</head>
+<body>
+     <!-- 헤더 -->
+     <th:block th:replace="~{common/header}"></th:block>
+
+
+    <main>
+
+        <!-- 로고 -->
+        <div id="font-logo-area">
+            <a href="/" id="font-logo">
+                <img src="/images/font-logo.png" alt="font-logo">
+            </a>
+        </div>
+        
+        <div class="text">
+            <span>회원정보 수정</span>
+        </div>
+
+      <section class="update">
+        <form action="updateMyInfo" method="post" name="update-form" id="updateForm">
+            <table class="info-input-area">
+                <tr>
+                    <td>이메일</td>
+                    <td><input name="email" id="email" th:value="${session.loginMember.email}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>핸드폰 번호</td>
+                    <td><input name="phone" id="phone" th:value="${session.loginMember.phone}"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>비밀번호 수정</td>
+                    <td><input type="password" name="newPw" id="newPw" placeholder="수정할 비밀번호"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" name="newPwConfirm" id="newPwConfirm" placeholder="다시 한 번 입력해주세요"></td>
+                    <td></td>
+                </tr>
+            </table>
+            <table class="address-input-area">                                
+                <tr>
+                    <td>주소</td>
+                    <td>
+                        <input name="address" id="postcode" th:value="${postcode}">
+                    </td>
+                    <td>
+                        <button id="searchBtn">주소 검색</button>
+                    </td>
+                </tr>
+            </table>
+            <table class="detail-input-area">
+                <tr>
+                    <td class="detail-address">
+                        <input name="address" id="mainAddress" th:value="${mainAddress}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="detail-address" >
+                        <input name="address" id="detailAddress" th:value="${detailAddress}">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <button id="editBtn">수정하기</button>
+            </div>
+        </form>
+      </section>
+
+      <div class="text">
+        <span>회원 탈퇴</span>
+      </div>
+
+      <section class="resign">
+      
+        <form id="resignForm" action="resign" method="post" name="resignForm">
+            <table class="resign-input-area">
+                <tr>
+                    <td>
+                        <span>비밀번호를 입력해주세요</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input name="memberPw" type="password" id="memberPw">
+                    </td>
+                </tr>
+            </table>
+
+            <div>
+                <button id="resignBtn">회원탈퇴</button>
+            </div>
+        </form>
+
+      </section>
+
+    </main>   
+
+
+     <!-- 푸터 -->
+     <th:block th:replace="~{common/footer}"></th:block>
+
+     <script src="/js/member/mypage/updateMyInfo"></script>
+</body>
+</html>

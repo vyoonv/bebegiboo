@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,10 @@
     <main>
         <!-- HEADER -->
         <th:block th:replace="~{common/header}"></th:block>
+
+        <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
 
         <form th:action="@{editFaq}" th:object="${faqBoard}" method="POST" class="editFaq" id="editFaq">
 
@@ -52,7 +56,7 @@
             
                 <div class="buttons">
                     <button id="updateBtn">수정</button>
-                    <button id="cancelBtn" onclick="history.back()">취소</button>
+                    <button id="cancelBtn">취소</button>
                 </div>
             </section>
 

@@ -11,17 +11,46 @@
 <body>
 
     <th:block th:replace="~{common/header}"></th:block>
-    <header>
-        <div class="inner"></div>
-    </header>
-      <section>
-        <img src="/images/whoweare-bebegiboo.JPG">    
-      </section>
 
-      <div class="boardname">
-        <div class="col-md-12">
+    <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
+    
+
+    <section class="hero-section">
+      <div class="loop-container">
+        <div class="item">WE ARE BEBEGIBOO WE SAVE CHILDREN ALL OVER THE WORLD</div>
+        <div class="item">WE ARE BEBEGIBOO WE SAVE CHILDREN ALL OVER THE WORLD</div>
+      </div>
+    </section>
+    <section class="image-section">
+      <div class="second-loop-container">
+        <div class="images-wrapper">
+          <div class="image-container"><img src="/images/volunteer-1.jpeg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-2.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-3.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-4.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-5.jpg" alt=""></div>
+        </div>
+        <div class="images-wrapper">
+          <div class="image-container"><img src="/images/volunteer-6.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-7.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-8.jpeg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-9.jpg" alt=""></div>
+          <div class="image-container"><img src="/images/volunteer-10.jpg" alt=""></div>
         </div>
       </div>
+    </section>
+    
+    
+    
+    <div class="exContainer">
+      <img id="info-logo" src="/images/logo-black.png">
+      <img src="/images/whoweare-bebegiboo.JPG">
+    </div>
+
+
+
 
       <div id="text-container"><p id="text">UNICEF HOPE 홍보영상</p></div>
       <div id="video-container">

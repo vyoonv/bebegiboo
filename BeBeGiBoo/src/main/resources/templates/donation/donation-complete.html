@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymepeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기부완료 화면</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+</head>
+<body>
+    <main>
+        <th:block th:replace="~{common/header}"></th:block>
+
+        <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
+
+
+        <div id="donation-main">
+            <!-- 기부완료 글씨 -->
+            <div id="donation-firstBox" style="border-bottom: 2px rgb(210, 231, 255) solid; padding-bottom: 20px;">
+                <div>
+                    <img id="checkImg" src="/images/check-icon.png">
+                </div>
+                <div id="checkTitle">
+                    <div id="checkMain" class="text" style="font-size: 25px;">기부 신청이 완료되었습니다</div>
+                    <div id="checkSub" class="text" style="font-size: 13px;">신청정보는 마이페이지에서 확인 가능합니다</div>
+                </div>
+
+            </div>
+
+            <!-- 결제정보 -->
+            <div id="donation-secondBox">
+                <div class="text">결제 정보</div>
+                <div class="donation-container-1">
+                    <table class="text" style="font-size: 15px;">
+                        <tr>
+                            <td>결제 내역</td>
+                            <td><div th:text="${session.payment.price}" style="color: rgb(57, 192, 255); margin-left: 30px;"></div></td>
+                        </tr>
+                        <tr>
+                            <td>결제 수단</td>
+                            <td><div th:text="${session.payment.method}" style="margin-left: 30px;"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        
+        <!-- 개인정보 -->
+            <div id="donation-thirdBox">
+                <div class="text">신청 정보</div>
+                <div class="donation-container-2 text" style="font-size: 15px;">
+                    <div style="color: gray; margin-bottom: 10px;">기부된 용품들</div>
+                    <div style="margin-bottom: 40px;">
+                        <div th:text="${session.things.daily}"></div>
+                        <div th:text="${session.things.cloth}"></div>
+                        <div th:text="${session.things.dish}"></div>
+                        <div th:text="${session.things.electronic}"></div>
+                        <div th:text="${session.things.toy}"></div>
+                    </div>
+
+                    <div style="color: gray; margin-bottom: 10px;">박스 수량</div>
+                    <div style="margin-bottom: 40px;">
+                        <div th:text="${session.boxCount}">
+                        </div>
+                    </div>
+
+                    <div style="color: gray; margin-bottom: 10px;">배송 정보</div>
+                    <div style="margin-bottom: 20px;">
+                        <div th:text="${session.delivery.name}"></div>
+                        <div th:text="${session.delivery.phone}"></div>
+                        <div th:text="${session.delivery.phone2}"></div>
+                        <div th:text="${session.delivery.address}"></div>
+                        <div th:text="${session.delivery.date}"></div>
+                        <div th:text="${session.delivery.memo}"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>

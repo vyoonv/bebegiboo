@@ -27,28 +27,6 @@ a{
 
 /* ------------------------------------------- */
 
-
-/* 글쓰기 버튼 */
-.btn-area{
-    display: flex;
-    justify-content: end;
-}
-
-#insertBtn{
-    margin-bottom: 20px;
-    background-color: #325388;
-    color: white;
-    border-radius: 12px;
-    width: 80px;
-    height: 30px;
-    cursor: pointer;
-}
-
-#insertBtn:hover{
-    background-color: #e9edf3;
-    color: black;
-}
-
 /* faq 게시판 이름 영역 */
 .faqLogo {
     margin: 60px auto;
@@ -59,10 +37,12 @@ a{
 
     width: 300px;
     height: 60px;
-    background-color: #1c3359;
-}
-.faqLogo > a {
-    color: white !important;
+    background-color: rgb(208, 227, 241);
+
+    box-shadow :rgba(0, 0, 0, 0.07) 0px 1px 2px,
+                rgba(0, 0, 0, 0.07) 0px 2px 4px,
+                rgba(0, 0, 0, 0.07) 0px 4px 8px;
+
 }
 
 
@@ -86,9 +66,13 @@ a{
 .faqHeader {
     width: 100%;
     height: 44px;
-    border: 1px solid #0d387c;
 
+    background-color: rgb(208, 227, 241);
     padding: 12px;
+
+    box-shadow :rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px;
 }
 
 .faqHeader > tbody > tr > td:nth-of-type(1) {
@@ -137,7 +121,7 @@ details > summary {
     cursor: pointer;
     text-decoration: none;
 
-    border: 1px solid #0d387c;
+    border: 2px solid rgb(208, 227, 241);
 
     height: fit-content;
     padding: 13px;
@@ -146,14 +130,23 @@ details > summary {
     transition: background 0.5s;
 }
 
+#qTitle{
+    margin-left: 10px;
+}
+
+#cateNo{
+    color: #447794;
+}
+
 /* 답변 */
 details > figure {
 
     cursor: pointer;
-    background-color: #e9edf3;
+    border: 2px solid rgb(208, 227, 241);
+    border-top: 0;
+    font-size: 14px;
     color: black;
-    padding: 15px;
-
+    padding: 20px;
     margin-bottom: 20px;
 }
 
@@ -201,11 +194,14 @@ details[open] > summary ~ * {
     display: flex;
     justify-content: center;
     padding: 0;
+    color: #447794;
+    font-weight: bold;
+
 }
 
 .pagination li{
     width: 20px;
-    margin: 0 5px;
+    margin: 0 7px;
     text-align: center;
 }
 
@@ -216,10 +212,8 @@ details[open] > summary ~ * {
 }
 
 .current{
-    background-color: #1c3359;
-    border-radius: 50%;
-    color: white !important;
-    letter-spacing: 0 !important;
+    color: rgb(0, 149, 250);
+    text-decoration: underline;   
 }
 
 
@@ -228,43 +222,53 @@ details[open] > summary ~ * {
 /* 관리자 모드인 경우 */
 
 body.authority3 {
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(250, 250, 250);
+}
+
+/* 글쓰기 버튼 */
+.btn-area{
+    display: flex;
+    justify-content: end;
+}
+
+#insertBtn{
+    margin-bottom: 20px;
+    border: 3px solid rgb(208, 227, 241);
+    background-color: white;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#insertBtn:hover{
+    background-color: rgb(208, 227, 241);
+    color: black;
 }
 
 #buttons{
-    background-color: #e9edf3;
-    display: ruby-text;
-    text-align: right;
+    border: 2px solid rgb(208, 227, 241);
+    border-top: 0px;
+    border-bottom: 0px;
+    display: flex;
+    justify-content: end;
+    padding: 15px;
 }
 
-#editBtn {
-
-    display: inline-block;
-    border: 1px solid #1c3359;
-    padding: 5px;
-    color: black;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
-
-#deleteBtn{
-    display: inline-block;
-    border: 1px solid #1c3359;
-    width: 40px;
-    height: 36px;
-    color: black;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    background-color: #e9edf3;
+#editBtn, #deleteBtn {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    border: 2px solid rgb(208, 227, 241);
+    border-radius: 12px;
+    padding: 7px;
+}
+
+#editBtn{
+    margin-right: 10px;
 }
 
 #editBtn:hover, #deleteBtn:hover {
-
-    background-color: #0d387c;
-    color: white;
-
+    background-color: rgb(208, 227, 241);
 }
+

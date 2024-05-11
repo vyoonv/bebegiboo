@@ -25,13 +25,14 @@
 }
 .s-text {
 	font-family: 'Pretendard-Regular';
-    font-size: 12px;
+    font-size: 17px;
 	text-decoration: none;
-	color:black;
+	color:#858585;
 }
 .divider {
-	font-size: 30px;
+	font-size: 20px;
 	margin: 0 20px;
+	color:#858585;
 }
 main {
 	display : flex;
@@ -53,7 +54,7 @@ main {
 main div:nth-child(2) {
 	display : flex;
 	justify-content: center;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 main div:nth-child(3){
 	display : flex;
@@ -63,15 +64,15 @@ main div:nth-child(3){
 }
 
 form {
-	width : 600px;
-	height : 500px;
+	width : 550px;
+	height : 400px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid #858585;
+	border: 1px solid #b4b4b4;
 	margin-bottom: 20px;
-
+	border-radius: 30px;
 }
 .nameInput {
 
@@ -104,7 +105,8 @@ li:nth-child(4) {
 }
 
 .input,
-input[name="memberName"] {
+input[name="memberName"],
+input[name="memberId"] {
 	margin-left: 12px;
 	width : 350px;
 	height: 30px;
@@ -121,7 +123,8 @@ input[name="memberName"] {
 input {
 	border : none;
 }
-#findBtn{
+#findIdBtn,
+#findPwBtn{
 	width: 400px;
 	height: 80px;
 	background-color: #DCEBFF;

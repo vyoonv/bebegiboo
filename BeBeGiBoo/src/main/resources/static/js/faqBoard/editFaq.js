@@ -3,7 +3,7 @@ const answer = document.querySelector("#answer");
 const categoryNo = document.querySelector("#categoryNo");  
 
 /* 수정하기 유효성 검사 */
-document.getElementById('updatetBtn').addEventListener("submit", e => {
+document.getElementById('editFaq').addEventListener("submit", e => {
 
     if(categoryNo.value == null ) {
         alert("카테고리 선택!!"); 
@@ -26,3 +26,9 @@ document.getElementById('updatetBtn').addEventListener("submit", e => {
     }
   
 }); 
+
+
+document.getElementById('cancelBtn').addEventListener('click', e =>{
+    e.preventDefault(); 
+    location.href = "faqBoard"; 
+});

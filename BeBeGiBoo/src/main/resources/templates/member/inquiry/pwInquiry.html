@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,27 +19,27 @@
 				<span class="l-text">비밀번호 찾기</span>
 		    </div>
 		    <div>
-				<form>
+				<form action="/inquiry/pwInquiry" method="POST">
 					<ul id="ulArea">
 						<li id="inputArea">
 							아이디
-							<input type="text" name="memberName" id="memberName"> 
+							<input type="text" name="memberId" id="memberId" required> 
 						</li>
 						<li>
 							<input type="radio" id="phoneNum" name = "check"> 휴대폰번호로 찾기
 						</li>
 						<li>
-							<input type="tel" class="input" id="phoneArea" placeholder="'-'를 포함해서 입력해주세요" style="display:none;">					</li>
+							<input type="tel" name="phone" class="input" id="phoneArea" placeholder="'-'를 포함해서 입력해주세요" style="display:none;">					</li>
 						<li> 
 							<input type="radio" id="email" name="check"> 이메일로 찾기
 						</li>
 						<li>
-							<input type="email" class="input" id="emailArea" placeholder="이메일 주소를 입력해주세요" style="display:none;">
+							<input type="email" name="email" class="input" id="emailArea" placeholder="이메일 주소를 입력해주세요" style="display:none;">
 						</li>
 					</ul>
 	
 					<section>
-						<button id="findBtn" class="text">비밀번호 찾기</button>
+						<button id="findPwBtn" class="text">비밀번호 찾기</button>
 					</section>
 				</form>
 		
@@ -52,7 +52,7 @@
 				</article>
 		    </div>
 		</main>
-		<th:block th:replace="~{common/footer}"></th:block>
+		<th:block th:replace="~{common/simpleFooter}"></th:block>
 		<script src="/js/member/inquiry.js"></script>
 </body>
 </html>

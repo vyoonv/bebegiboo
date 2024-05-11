@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.review.model.mapper.ReviewMapper">
+
+	<!-- 전체 게시글 개수 반환 -->
+	<select id="getListCount">
+		SELECT COUNT(*) FROM "CERTIFICATION_BOARD"
+	</select>
+	
+	<!-- 검색x 게시글 목록 조회 -->
+	<select id="SelectReivewList">
+		SELECT BOARD_NO, BOARD_TITLE, READ_COUNT, MEMBER_ID,
+		(SELECT COUNT(*) FROM "COMMENT" c WHERE m.BOARD_NO=c.BOARD_NO) COMMENT_COUNT,
+		<![CDATA[
+		CASE			
+			WHEN SYSDATE - BOARD_WRITE_DATE <1 / 24 -- 1시간 전에 작성한 경우  
+			THEN '1 시간 전' 
+			
+			WHEN SYSDATE - BOARD_WRITE_DATE <1 -- 하루 전에 작성한 경우  
+			THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24)|| '시간 전' 
+			
+			ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY-MM-DD')
+		END BOARD_WRITE_DATE
+		]]>
+	
+		FROM "CERTIFICATION_BOARD" m
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		ORDER BY BOARD_NO DESC
+	</select>
+
+
+	<!-- 검색o 게시글 개수 조회 -->
+	<select id="getSearchCount">
+	
+		SELECT COUNT(*)
+		FROM "CERTIFICATION_BOARD"
+		<!-- 작성자 검색인 경우 -->
+		<if test='key=="w"'>
+			JOIN "MEMBER" USING(MEMBER_NO)
+		</if>
+		
+		WHERE BOARD_DEL_FL = 'N'
+		
+		<!-- 검색 조건 -->
+		<choose>
+			<!-- 제목 검색인 경우-->
+			<when test='key == "t"'>
+				AND BOARD_TITLE LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 내용 검색인 경우-->
+			<when test='key == "c"'>
+				AND BOARD_CONTENT LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 제목+내용 검색인 경우 -->
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%' || #{query} || '%'
+					OR
+					BOARD_CONTENT LIKE '%' || #{query}|| '%'
+					)
+			</when>
+			
+			<!-- 작성자 검색인 경우 -->
+			<otherwise>
+				AND MEMBER_ID LIKE '%' || #{query} || '%'
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 검색 o 게시글 목록 조회 -->
+	<select id="selectSearchList">
+		SELECT BOARD_NO, BOARD_TITLE, READ_COUNT, MEMBER_ID,
+		(SELECT COUNT(*) FROM "COMMENT" c WHERE m.BOARD_NO=c.BOARD_NO) COMMENT_COUNT,
+		<![CDATA[
+		CASE
+			WHEN SYSDATE - BOARD_WRITE_DATE <1 / 24 -- 1시간 전에 작성한 경우  
+			THEN '1 시간 전' 
+			
+			WHEN SYSDATE - BOARD_WRITE_DATE <1 -- 하루 전에 작성한 경우  
+			THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24)|| '시간 전' 		
+			
+			ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY-MM-DD')
+		END BOARD_WRITE_DATE
+		]]>
+	
+		FROM "CERTIFICATION_BOARD" m
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		
+		<choose>
+			<!-- 제목 검색인 경우 -->
+			<when test='key == "t"'>
+				AND BOARD_TITLE LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 내용 검색인 경우 -->
+			<when test='key == "c"'>
+				AND BOARD_CONTENT LIKE '%' || #{query} || '%'
+			</when>
+			
+			<!-- 제목+내용 검색인 경우 -->
+			<when test='key == "tc"'>
+				AND (BOARD_TITLE LIKE '%' || #{query} || '%'
+					OR
+					BOARD_CONTENT LIKE '%' || #{query}|| '%'
+					)
+			</when>
+			
+			<!-- 작성자 검색인 경우 -->
+			<otherwise>
+				AND MEMBER_ID LIKE '%' || #{query} || '%'
+			</otherwise>			
+			
+		</choose>
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- 게시글 상세 조회 -->
+	<select id = "selectOne" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, READ_COUNT,
+		MEMBER_NO, MEMBER_ID,
+		<![CDATA[
+		CASE
+			WHEN SYSDATE - BOARD_WRITE_DATE <1
+			THEN TO_CHAR(BOARD_WRITE_DATE, 'HH24:MI:SS') 	
+			
+			ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY"." MM"." DD"." HH24:MI:SS')
+		END BOARD_WRITE_DATE
+		]]>,
+ 		
+ 		<![CDATA[
+		CASE
+			WHEN SYSDATE - BOARD_UPDATE_DATE <1 
+			THEN TO_CHAR(BOARD_UPDATE_DATE, 'HH24:MI:SS') 	
+			
+			ELSE TO_CHAR(BOARD_UPDATE_DATE, 'YYYY"." MM"." DD"." HH24:MI:SS')
+		END BOARD_UPDATE_DATE
+		]]>			 
+		FROM "CERTIFICATION_BOARD"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_NO = #{boardNo}
+	</select>
+	<resultMap type ="CertificationBoard" id = "board_rm">
+		
+		<id property = "boardNo" column="BOARD_NO"/>
+		
+		<collection
+		property="imageList"
+		select="selectImageList"
+		column = "BOARD_NO"
+		javaType = "java.util.ArrayList"
+		ofType = "BoardImg"/>
+		
+		<collection
+		property="commentList"
+		select="selectCommentlist"
+		column="BOARD_NO"
+		javaType="java.util.ArrayList"
+		ofType="Comment"/>
+	</resultMap>
+	
+	<select id="selectImageList" resultType="BoardImg">
+		SELECT * 
+		FROM "BOARD_IMG"
+		WHERE BOARD_NO = #{boardNo}
+		ORDER BY IMG_NO
+	</select>
+	<select id="selectCommentlist" resultType="Comment">
+		SELECT LEVEL, C.* FROM 
+			(SELECT COMMENT_NO, COMMENT_CONTENT,
+			    TO_CHAR(COMMENT_WRITE_DATE, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') COMMENT_WRITE_DATE,
+			    BOARD_NO, MEMBER_NO, MEMBER_ID, PARENT_COMMENT_NO, COMMENT_DEL_FL
+			FROM "COMMENT"
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE BOARD_NO = #{boardNo}) C
+		WHERE COMMENT_DEL_FL = 'N'
+		OR 0 != (SELECT COUNT(*) FROM "COMMENT" SUB
+						WHERE SUB.PARENT_COMMENT_NO = C.COMMENT_NO
+						AND COMMENT_DEL_FL = 'N')
+		START WITH PARENT_COMMENT_NO IS NULL
+		CONNECT BY PRIOR COMMENT_NO = PARENT_COMMENT_NO
+		ORDER SIBLINGS BY COMMENT_NO		
+	</select>
+	
+	
+	<update id="upadateReadCount">
+		UPDATE "CERTIFICATION_BOARD"
+		SET READ_COUNT = READ_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+</mapper>

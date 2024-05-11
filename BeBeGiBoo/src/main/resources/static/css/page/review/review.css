@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+main{ 
+    font-family: "Noto Sans KR", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titleArea {
+    margin-top: 100px;
+    width: 60%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#titleArea span{
+    padding : 30px;
+    font-size: 30px;
+    display : flex;
+    justify-content: center;
+    text-decoration: underline;
+    text-decoration-color: #858585;
+    text-decoration-thickness: 0.7px;
+    text-underline-offset: 15px;
+}
+
+#btnArea{
+    display: flex;
+    flex-direction: column;
+    margin-top : 100px;
+    margin-left: 20px;
+    width : 60%;
+    align-items: flex-start;
+}
+#btnArea_{
+    display : flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#insertBtn{
+    width : 30px;
+    margin-right: 5px;
+}
+
+#tableArea {
+    width : 60%;
+    margin-top: 20px;
+    margin-bottom : 60px;
+}
+table{
+    width: 100%;
+}
+
+thead{
+    background-color: #FFF6D6;
+}
+
+table td:first-child,
+table td:last-child {
+    width : 5%;
+}
+table td:nth-child(3),
+table td:nth-child(4){
+    width : 15%;
+}
+tr {
+    font-size: 16px;
+    height: 60px;
+    border-bottom: 1px solid #dddd;
+
+}
+
+td {
+    padding : 15px;
+    text-align: center;
+}
+
+
+#noneOfList{
+   height: 200px;
+}
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 60px;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#boardSearch {
+    display : flex;
+    flex-direction: row;
+}
+#searchKey {
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    border : 1px solid #dddd;
+}
+
+#searchQuery {
+    width: 400px;
+    height: 20px;
+    text-align: center;
+    border:none;
+}
+#searchQuery:focus{
+    outline: none;
+}
+
+#boardSearch button {
+    width : 35px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+}
+#serchArea{
+    height: 35px;
+    border : 1px solid #dddd;
+    margin-bottom: 60px;
+    margin-left: 20px;
+}
+.current{
+    font-weight: bold;
+    color: rgb(0, 149, 255) !important;
+    text-decoration: underline;
+}

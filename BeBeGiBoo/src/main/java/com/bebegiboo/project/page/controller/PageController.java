@@ -13,4 +13,9 @@ public class PageController {
 		return "page/info/page-info";
 	}
 	
+	@GetMapping("approach")
+	public String approach() {
+		return "page/page-approach";
+	}
+	
 }

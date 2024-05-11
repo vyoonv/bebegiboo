@@ -1,4 +1,4 @@
-package com.bebegiboo.project.faqboard.model.dto;
+package com.bebegiboo.project.faqboard.pagination;
 
 public class Pagination {
 	

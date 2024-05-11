@@ -1,0 +1,147 @@
+
+
+*{
+    font-size: 15px;
+}
+
+
+/* 전반적 설정 */
+main{
+    margin: 150px auto;
+    width: 900px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    width: 240px;
+    height: 25px;
+    padding: 10px;
+    border: 1px solid rgb(207, 207, 207);
+}
+
+table{
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+
+
+
+
+
+/* 베베기부 로고 */
+#font-logo-area{
+    margin: 150px auto; 
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.text{
+    align-self: flex-start;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+
+
+/* 회원정보 수정 영역 */
+.update{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 520px;
+    border: 1px solid rgb(207, 207, 207);
+    padding: 40px;
+}
+
+#update-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-input-area > tbody > tr > td > input {
+    margin-left: 50px;
+    margin-right: 40px;
+}
+.address-input-area > tbody > tr > td > input {
+    margin-left: 50px;
+    width: 100px;
+}
+.detail-input-area > tbody > tr > td > input {
+   border-spacing: 5px !important;
+   width: 320px;
+}
+
+.address-input-area{
+    border-spacing: 5px !important;
+    margin-top: 30px;
+}
+
+.detail-input-area{
+    margin-left: 40px;
+}
+
+
+/* 회원 탈퇴 영역 */
+.resign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 300px;
+    border: 1px solid rgb(207, 207, 207);
+    padding: 40px;
+}
+
+.resign-input-area{
+    border-collapse: separate;
+    border-spacing: 20px;
+    text-align: center;
+}
+
+#resign-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* 버튼들 */
+#searchBtn{
+    margin-left: 180px;
+    background-color: white;
+    border: 1.5px solid #6987C9;
+    width: 80px;
+    height: 28px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+#editBtn, #resignBtn{
+    margin-top: 30px;
+  
+    width: 180px;
+    height: 50px;
+    
+    font-weight: 400;
+    font-size: 15px;
+    color: black;
+    background-color: #E5EDF8;
+  
+    border: none;
+    border-radius: 15px;
+}

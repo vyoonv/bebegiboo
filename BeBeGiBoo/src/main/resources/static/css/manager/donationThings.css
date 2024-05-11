@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+body {
+    background-color: lightgray;
+}
+
+.donationThingsContainer {
+    height: 1500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#donationThingsTitle {
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    width: 300px;
+    height: 60px;
+    background-color: rgb(208, 227, 241);
+
+    box-shadow :rgba(0, 0, 0, 0.07) 0px 1px 2px,
+                rgba(0, 0, 0, 0.07) 0px 2px 4px,
+                rgba(0, 0, 0, 0.07) 0px 4px 8px;
+
+}
+
+
+
+#donationThingsBoard tr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 60px;
+    background-color: white;
+    margin-bottom: 40px;
+    transition-duration: 0.3s;
+}
+
+#donationThingsBoard tr > td:first-child {
+    flex-basis: 10%;
+    color: rgb(0,149,250);
+    text-align: center;
+}
+#donationThingsBoard tr > td:nth-child(2) {
+    flex-basis: 70%;
+}
+#donationThingsBoard tr > td:nth-child(3) {
+    flex-basis: 20%;
+}
+
+.managerButton {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 30px;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0,149,250);
+    border: none;
+    cursor: pointer;
+}
+
+.shadow {
+    box-shadow: 5px 5px 5px gray;
+}
+
+
+
+
+.viewLayer {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#donationThingsBoard {
+    height: 10px;
+    transition-duration: 0.5s;
+    width: 380px;
+}
+
+#donationThingsBox {
+    visibility: hidden;
+    margin-left: 300px;
+    width: 650px;
+    height: 700px;
+    background-color: white;
+    transition-duration: 0.5s;
+    box-shadow: 5px 5px 5px gray;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+#donationThings tr {
+    display: flex;
+    margin-top: 15px;
+    border: 1px gray solid;
+}
+
+.duration {
+    margin-left: 15px;
+    border: 1px gray solid;
+    transition-duration: 0.3s;
+    margin-top: 15px;
+}
+
+#donationThings tr {
+    display: flex;
+    font-size: 15px;
+    text-align: center;
+}
+
+#donationThings tr > td:first-child {
+    width: 100px;
+    color: rgb(0,149,250);
+    text-align: center;
+}
+
+#donationThings tr > td:nth-child(3) {
+   
+    width: 150px;
+}
+#donationThings tr > td:nth-child(3) {
+    width: 350px;
+}
+
+#donationThings tr > td:nth-child(4) {
+    width: 200px;
+}
+
+
+#donationThingsBox > table > tr > td:first-child {
+    flex-basis: 15%;
+    color: rgb(0,149,250);
+    text-align: center;
+}
+#donationThingsBox > table > tr > td:nth-child(2) {
+    flex-basis: 55%;
+}
+#donationThingsBox > table > tr > td:nth-child(3) {
+    flex-basis: 30%;
+}
+
+#acceptorBox {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px gray solid;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+#acceptorBox tr {
+    display: flex;
+    font-size: 15px;
+}
+
+#acceptorBox > tr > td:first-child {
+    text-align: center;
+    width: 100px;
+}
+#acceptorBox > tr > td:nth-child(2) {
+    text-align: center;
+    width: 50px;
+}
+#acceptorBox > tr > td:nth-child(3) {
+    text-align: center;
+    width: 190px;
+}
+#acceptorBox > tr > td:nth-child(4) {
+    text-align: center;
+    width: 140px;
+
+}
+#acceptorBox > tr > td:nth-child(5) {
+    width: 390px;
+}
+#acceptorBox > tr > td:nth-child(6) {
+    text-align: center;
+}
+
+
+
+.acceptorButton {
+    font-family: "Noto Sans KR", sans-serif;
+    height: 30px;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0,149,250);
+    border: 1px rgb(0,149,250) solid;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.donateButton {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 15px;
+    height: 25px;
+    width: 45px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0,149,250);
+    border: 1px rgb(0,149,250) solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+/* 수정 모달창 */
+.popup-layer {
+    display: none;
+    top: 250px;
+    position: fixed;
+    height: 600px;
+    width: 900px;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 10px 10px 10px gray;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+}
+
+.popup-close {
+    display: flex;
+    justify-content: end;
+    transition-duration: 0.2s;
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#membershipPagenation {
+    height: 300px;
+}
+
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-bottom: 60px;
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#boardSearch {
+    display : flex;
+    flex-direction: row;
+}
+#searchKey {
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    border : 1px solid #dddd;
+}
+
+#searchQuery {
+    width: 400px;
+    height: 20px;
+    text-align: center;
+    border:none;
+}
+#searchQuery:focus{
+    outline: none;
+}
+
+#boardSearch button {
+    width : 35px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+}
+#serchArea{
+    height: 35px;
+    border : 1px solid #dddd;
+    margin-bottom: 60px;
+    margin-left: 20px;
+}
+.current{
+    font-weight: bold;
+    color: rgb(0, 149, 255) !important;
+    text-decoration: underline;
+}

@@ -28,7 +28,7 @@
 
                 <div id="certificate"><span>봉사 인증 신청서</span></div>
 
-                <form action="/certification/certification" method="POST" name="certificationForm" id="certificationForm">
+                <form action="/certification/certification" method="POST" enctype="multipart/form-data" name="certificationForm" id="certificationForm">
 
                     <div class="certificationTable">
 
@@ -47,7 +47,7 @@
                         </tr>
                         <tr>
                             <td>1365 아이디</td>
-                            <td><input type="text" name="1365id" required></td>
+                            <td><input type="text" name="certificationId" required></td>
                         </tr>
                         <tr>
                             <td>생년월일</td>
@@ -75,21 +75,21 @@
                         <tr>
                             <td>우편번호</td>
                             <td>
-                                <input type="text" name="address" id="postcode" required>
+                                <input type="text" name="address" id="postcode" placeholder="우편번호" required readonly>
                             </td>
                             <td><button id="searchBtn">찾기</button></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="text" name="address" id="mainAddress" required>
+                                <input type="text" name="address" id="mainAddress" placeholder="도로명 / 지번 주소" required readonly>
                             </td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="text" name="address" id="detailAddress" required>
+                                <input type="text" name="address" id="detailAddress" placeholder="상세주소" required>
                             </td>
                             <td></td>
                         </tr>
@@ -109,7 +109,8 @@
                                         <img class="preview" id="previewImg1" src=""> 
                                         <span onclick="document.getElementById('img1').click()">+</span> 
                                     </label>
-                                    <input type="file" name="boardImg" class="inputImage" id="img1" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg1')"> 
+                                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*" style="display: none;"> 
+                                    <span class="delete-image">&times;</span>
                                 </div>
                             </td>
                             <td>   
@@ -118,7 +119,8 @@
                                         <img class="preview" id="previewImg2" src=""> 
                                         <span onclick="document.getElementById('img2').click()">+</span> 
                                     </label>
-                                    <input type="file" name="boardImg" class="inputImage" id="img2" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg2')"> 
+                                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*" style="display: none;"> 
+                                    <span class="delete-image">&times;</span>
                                 </div>
                             </td> 
                             <td>  
@@ -127,7 +129,8 @@
                                         <img class="preview" id="previewImg3" src=""> 
                                         <span onclick="document.getElementById('img3').click()">+</span> 
                                     </label>
-                                    <input type="file" name="boardImg" class="inputImage" id="img3" accept="image/*" style="display: none;" onchange="previewImage(event, 'previewImg3')"> 
+                                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*" style="display: none;"> 
+                                    <span class="delete-image">&times;</span>
                                 </div>
                             </td>      
                         </tr>        

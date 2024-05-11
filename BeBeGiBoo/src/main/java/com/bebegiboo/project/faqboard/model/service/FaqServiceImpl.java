@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bebegiboo.project.faqboard.model.dto.FaqBoard;
-import com.bebegiboo.project.faqboard.model.dto.Pagination;
 import com.bebegiboo.project.faqboard.model.mapper.FaqMapper;
+import com.bebegiboo.project.faqboard.pagination.Pagination;
 
 import lombok.RequiredArgsConstructor;
 
@@ -100,6 +100,9 @@ public class FaqServiceImpl implements FaqService{
 
 
 
+	/**
+	 * 카테고리 목록 
+	 */
 	@Override
 	public List<FaqBoard> getFaqByCategory(int categoryNo) {
 		

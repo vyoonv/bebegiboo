@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/page/review/reviewDetail.css"></link>
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+        <th:block th:replace="~{common/manager-bar}"></th:block>
+    </th:block>
+    <main>    
+
+        <section class="board-detail" th:object="${board}">  
+            <div id="titleArea">
+                <span id="reviewBoard">후기 게시판</span>
+                <h1 class="board-title" th:text="*{boardTitle}">게시글 제목</h1>
+            </div>
+
+
+            <div class="board-header">
+                <div class="board-writer">
+                    <span class ="writer" th:text="*{memberId}">작성자 닉네임</span>
+                    <p class="readCount"> 조회수[[*{readCount}]]</p>  
+                </div>
+
+                <div class="board-info">
+                    <p> <span></span>[[*{boardWriteDate}]]</p>     
+
+                    <!-- 수정한 게시글인 경우 -->
+
+                    <!-- 참조하는 객체가 있으면 true, 없으면 false -->
+                    <p th:if="*{boardUpdateDate}"> 
+                        <span>업데이트</span> [[*{boardUpdateDate}]]
+                    </p>
+                                      
+                </div>
+            </div>
+
+
+
+            <!-- ====================== 이미지가 있을 경우 출력하는 구문  ====================== -->
+           
+            <th:block th:if="${#lists.size(board.imageList)>0}" id="imageArea">
+                <th:block th:if="${ #lists.size(board.imageList)>start}"><!--썸네일만 이미지리스트에 있으면 출력 X-->
+                    <h5>업로드 이미지</h5>    <!--숫자 배열 만들어줌--><!--imageList 크기까지-->
+                    <th:block th:each="i : ${#numbers.sequence(start, #lists.size(board.imageList) - 1)}">
+                        <div class="img-box">
+                            <div class="boardImg">
+    
+                                <img th:src="|${board.imageList[i].imgPath}${board.imageList[i].imgRename}|"
+                                    >  
+    
+                                <a th:href="|${board.imageList[i].imgPath}${board.imageList[i].imgRename}|"
+                                th:download="${board.imageList[i].imgOriginalName}"
+                                >다운로드</a>                
+                            </div>
+                        </div>
+                    </th:block>                                      
+                </th:block>  
+            </th:block>
+
+                
+            <!-- ====================== 이미지가 있을 경우 출력하는 구문 ====================== -->
+            
+            <!-- 내용 -->
+            <div class="board-content" th:text="*{boardContent}">내용</div>
+
+
+
+            
+            <!-- 버튼 영역-->
+            <div class="board-btn-area">
+                <!--로그인 한 사람(게시글 작성한 회원의 번호와 같아야함) 버튼을 볼 수 있도록-->
+                <th:block th:if="${board.memberNo==session.loginMember?.memberNo}"><!--안전 탐색 연산자:null아닌경우 뒤에 접근가능-->
+                    <button id="updateBtn">수정</button>
+                    <button id="deleteBtn">삭제(GET)</button>
+                    <button id="deleteBtn2">삭제(POST)</button>                
+                </th:block>
+
+                <button id="goToListBtn">목록으로</button>
+				
+            </div>
+
+        </section>
+
+
+        <!-- 댓글 영역-->
+        <th:block th:replace="~{review/comment}"></th:block>
+
+    </main>
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:inline="javascript">
+        const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
+
+        const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
+    </script>
+    <script src="/js/page/review/comment.js"></script>
+
+</body>
+</html>

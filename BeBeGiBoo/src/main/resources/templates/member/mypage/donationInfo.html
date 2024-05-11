@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Check Donation Info</title>
+
+        <th:block th:replace="~{common/common}"></th:block>
+        <link rel="stylesheet" href="/css/member/mypage/donationInfo.css">
+    </head>
+    <body>
+         <!-- 헤더 -->
+         <th:block th:replace="~{common/header}"></th:block>
+
+        <main>
+            <section class="form-area">
+
+                <div class="donationList-logo"><a href="/member/mypage/donationInfo">기부 내역</a></div>
+  
+                <table class="donation-list">
+                    <tbody id="donationListTable">
+                        <tr th:each="record, recordIndex : ${donationInfo.recordList}">
+                            <td>
+                                <details id="donation-detail">
+                                    <summary id="donation-date">
+                                        <span th:text="${donationInfo.recordList[recordIndex.index].recordDate}">신청 날짜</span>
+                                        <span id="arrow">+</span>
+                                    </summary>  
+                                    <figure>
+                                        <table class="content">
+                                            <tr>
+                                                <td>기부 물품</td>
+                                                <td>
+                                                    <span th:each="product : ${donationInfo.productList}" th:text="|${product.productName} |"></span>
+                                                    <br>
+                                                    <span th:text="|총 ${donationInfo.productList.size}박스|"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>전화번호</td>
+                                                <td th:text="${donationInfo.deliveryList[recordIndex.index].phone}">전화번호</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2차 전화번호</td>
+                                                <td th:text="${donationInfo.deliveryList[recordIndex.index].phone2}">백업전화번호</td>
+                                            </tr>
+                                            <tr>
+                                                <td>주소</td>
+                                                <td th:text="${donationInfo.deliveryList[recordIndex.index].address}">주소</td>
+                                            </tr>    
+                                            <tr>    
+                                                <td>희망 배송일자</td>
+                                                <td th:text="${donationInfo.deliveryList[recordIndex.index].pickupDate}">수령날짜</td>
+                                            </tr>
+                                            <tr>
+                                                <td>배송메모</td>
+                                                <td th:if="${donationInfo.deliveryList[recordIndex.index].memo == '.'}">없음</td>
+                                                <td th:unless="${donationInfo.deliveryList[recordIndex.index].memo == '.'}" 
+                                                        th:text="${donationInfo.deliveryList[recordIndex.index].memo}">배송메모</td>
+
+                                            </tr>  
+                                        </table>  
+                                    </figure>
+                                </details>
+                            </td>
+                        </tr>
+                    </tbody>   
+                </table>
+                
+                
+                
+
+
+
+            </section>
+
+
+
+
+
+        </main>
+
+        <!-- 푸터 -->
+        <th:block th:replace="~{common/footer}"></th:block>
+
+        <!-- js -->
+        <script src="/js/donation/donationInfo.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.donationinfo.model.mapper.DonationInfoMapper">
+
+	<select id="findNo">
+		SELECT MEMBER_NO
+		FROM "MEMBER"
+		WHERE MEMBER_ID = #{cookieValue}
+	</select>
+
+	<!-- 기부내역 레코드 조회 -->
+	<select id="getDonationRecord">
+		SELECT RECORD_NO, TO_CHAR(RECORD_DATE,'YYYY"년" MM"월" DD"일"') "RECORD_DATE", DONATOR_NO, ACCEPTOR_NO
+		FROM DONATION_RECORD
+		LEFT JOIN "MEMBER" ON (DONATOR_NO = MEMBER_NO)
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 배송 정보 조회 -->
+	<select id="getDeliveryInfo">
+		SELECT DONATOR_NAME, PHONE, PHONE2, ADDRESS, TO_CHAR(PICKUP_DATE,'YYYY"년" MM"월" DD"일"') "PICKUP_DATE", MEMO, MEMBER_NO
+		FROM DELIVERY_INFO
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+
+	<!-- 기부 물품 내역 조회 -->
+	<select id="getProductInfo">
+		SELECT PRODUCT_NO, PRODUCT_NAME, MEMBER_NO, TYPE_NAME, RECORD_NO
+		FROM DONATION_PRODUCT
+		JOIN PRODUCT_TYPE USING(TYPE_NO)
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<select id="getPaymentInfo">
+		SELECT PAY_NO, PRICE, METHOD, MEMBER_NO, RECORD_NO
+		FROM PAYMENT
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+</mapper>

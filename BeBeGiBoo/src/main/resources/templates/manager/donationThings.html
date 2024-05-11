@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" mlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기부내역 관리 페이지</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+
+    <link rel="stylesheet" href="/css/manager/donationThings.css">
+</head>
+<body>
+    <main>
+        <th:block th:replace="~{common/header}"></th:block>
+        <th:block th:replace="~{common/manager-bar}"></th:block>
+
+        <div class="donationThingsContainer">
+
+            <div id="donationThingsTitle" class="text" style="color: black;">
+                기부내역 관리
+            </div>
+
+
+
+
+            <div class="viewLayer">
+                <div id="donationThingsBoard"></div>
+
+
+                <div id="donationThingsBox">
+                    <div id="viewTitle" class="text" style="text-align: center; margin: 30px;"></div>
+                    <table>
+                        <tr class="text" style="border: none; font-size: 15px; text-align: center;">
+                            <td style="width: 130px;">기부번호</td>
+                            <td style="width: 120px;">기부날짜</td>
+                            <td>피기부자 이름</td>
+                        </tr>
+                    </table>
+
+                    <div id="donationThings" style="margin-right: 10px;"></div>
+                </div>
+            </div>
+
+
+            <!-- 수정 모달창 -->
+            <div class="popup-layer">
+                <div class="popup-close">x</div>
+                <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;" class="text">피기부자 연결하기</div>
+
+                <table class="text" style="font-size: 15px; text-align: center; margin-bottom: 40px;">
+                    <tr style="color: rgb(0,149,250);">
+                        <td style="width: 450px;">기부자 이름</td>
+                        <td style="width: 450px;">기부물품</td>
+                    </tr>
+                    <tr>
+                        <td id="donatorName"></td>
+                        <td id="donateThings"></td>
+                    </tr>
+                </table>
+
+                <div class="text" style="text-align: center; font-size: 17px; margin-bottom: 20px;">피기부자 목록</div>
+                <div id="acceptorBox">
+                    <table class="text" style="text-align: center; margin-bottom: 15px;">
+                        <tr style="color: rgb(0,149,250);">
+                            <td style="width: 90px;">ID</td>
+                            <td style="width: 50px;">이름</td>
+                            <td style="width: 190px;">이메일</td>
+                            <td style="width: 140px;">전화번호</td>
+                            <td style="width: 390px;">주소</td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div>
+
+
+
+
+
+
+            <!--
+            <div id="membershipPagenation">
+
+                <div class="paginationArea">
+
+                    <ul class = "pagination" th:unless="${param.key}" th:object="${pagination}">
+                        <li><a th:href="@{/review(cp=1)}">&lt;&lt;</a></li>
+                        <li><a th:href="@{/review(cp=*{prevPage})}">&lt;</a></li>
+            
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+
+                            <li th:if="${i} == *{currentPage}">
+                                <a class="current" th:text="${i}">현재페이지</a>
+                            </li>
+
+                            <li th:unless="${i} == *{currentPage}">
+                                <a th:href="@{/review(cp=${i})}"
+                                th:text="${i}">이동할 페이지</a>
+                            </li>
+                            
+                        </th:block>
+            
+                    
+                        <li>
+                            <a th:href="@{/review(cp=*{nextPage})}">&gt;</a>
+                        </li>
+                        <li><a th:href="@{/review(cp=*{maxPage})}">&gt;&gt;</a></li>
+                    </ul>
+
+
+                    <ul class="pagination" th:if="${param.key}" th:object="${pagination}">
+
+                        <li><a th:href="@{/review(cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
+
+                        <li><a th:href="@{/review(cp=*{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
+
+                        
+                        <th:block th:if="*{startPage lt endPage}" th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            
+
+                            <li th:if="${i} == *{currentPage}">
+                                <a class="current" th:text="${i}">현재페이지</a>
+                            </li>
+                            
+
+                            <li th:unless="${i} == *{currentPage}">
+                                <a th:href="@{/review(cp=${i}, key=${param.key}, query=${param.query})}"
+                                    th:text="${i}">이동할 페이지</a>
+                            </li>
+                        </th:block>
+                        
+                        
+ 
+                        <th:block th:unless="*{startPage lt endPage}">
+                            <li>
+                                <a class="current">1</a>
+                            </li>
+                        </th:block>
+                        
+
+                        <li><a th:href="@{/board(cp=*{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
+
+                        <li><a th:href="@{/board(cp=*{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
+                    </ul>           
+
+
+                </div>
+            </div>
+            -->
+
+
+        </div>
+
+
+
+
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/manager/donationThings.js"></script>
+    
+</body>
+</html>

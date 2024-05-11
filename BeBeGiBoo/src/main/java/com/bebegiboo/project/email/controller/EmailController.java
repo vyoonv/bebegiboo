@@ -21,6 +21,10 @@ public class EmailController {
 	private final EmailService service; 
 	
 	
+	/** 인증메일 보내기 
+	 * @param email
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("signup")
 	public int signup(@RequestBody String email) {
@@ -36,6 +40,10 @@ public class EmailController {
 		return 0;
 	}
 	
+	/** 이메일 인증번호 체크 
+	 * @param map
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("checkAuthKey")
 	public int checkAuthKey(@RequestBody Map<String, Object> map) {

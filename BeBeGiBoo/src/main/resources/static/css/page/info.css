@@ -11,63 +11,80 @@
     padding: 0;
   }
 
-  
 
-  .boardname{
-  
-    position: absolute;
-    z-index: 9;
-    color: white;
-    font-size: 50px;
-    top: 120vh;
-    text-align: center;
-    width: 100%;
-}
-  header {
-    width: 100%;
-    height: 500px;
+
+  .hero-section {
+    position: relative;
     overflow: hidden;
-    background-color: rgb(255, 217, 0);
+    display: flex;
+    align-items: space-around;
+    min-height: 25vh;
   }
   
-  .inner {
-    margin-top: 200px;
+  .loop-container {
+    margin-top: 100px;
+    white-space: nowrap;
+    font-size: 5vw;
+    letter-spacing: 1px;
+  }
+  
+  .item {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("/images/page-info.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    color: black;
   }
   
-  #header-front
-  {
-    top: 25.3125vw;
-      left: calc(52.65% - 65.98958333333333vw / 2);
-      width: 65.98958vw;
-      position: absolute;
-      z-index: 3;
-      height: auto;
+  /* -------------------------------------------- */
+  
+  .image-section {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      min-height: 55vh;
   }
   
-  #header-stones
-  {
-        position: absolute;
-      top: 35.08333vw;
-      left: 0;
+  .second-loop-container {
+      display: flex;
+      flex-direction: row;
       width: 100%;
-      height: auto;
   }
   
-  section {
-    width: 100%;
-    height: 1000px;
+  .images-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      padding-right: 2rem;
+      position: absolute;
+  }
+  
+  .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 300px;
+      height: 440px;
+  }
+  
+  .image-container img {
+      object-fit: cover;
+      min-width: 100%;
+      min-height: 100%;
+  }
+
+
+
+
+
+
+  .exContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 200px;
+  }
+
+  #info-logo {
+    height: 200px;
   }
 
   #text-container {

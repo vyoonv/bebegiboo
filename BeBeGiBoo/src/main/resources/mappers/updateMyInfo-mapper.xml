@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.mypage.model.mapper.UpdateMyInfoMapper">
+
+	<!-- 비밀번호 체크 -->
+	<select id="checkPw">
+		SELECT MEMBER_PW
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_NO = #{memberNo}
+	</select>
+
+	
+	<!-- 정보 수정 -->
+	<update id="updateInfo">
+		UPDATE "MEMBER" SET 
+		EMAIL = #{email}, 
+		PHONE = #{phone}, 
+		MEMBER_PW = #{encPw},
+		ADDRESS = #{address}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 비밀번호 null일 때 정보 수정 -->
+	<update id="updateNoPw">
+		UPDATE "MEMBER" SET 
+		EMAIL = #{email}, 
+		PHONE = #{phone}, 
+		ADDRESS = #{address}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="resign">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+</mapper>

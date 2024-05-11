@@ -46,10 +46,37 @@ memberId.addEventListener( "input", (e) => {
         return; 
     }
 
+    const inputId = e.target.value;   
+    console.log(inputId); 
+
+
     // 유효한 경우 중복 검사 
     fetch("/member/checkId?memberId=" + inputId)
     .then(resp => resp.text())
     .then(result => {
+
+			
+	    const inputId = e.target.value;   
+	    console.log(inputId); 
+	
+	    if(result == 1) {
+	        idMessage.innerText = "이미 사용중인 아이디입니다."; 
+	        idMessage.classList.add("error"); 
+	        idMessage.classList.remove("confirm"); 
+	        checkObj.memberId = false; 
+	        return; 
+	    }
+	
+	    idMessage.innerText = "사용 가능한 아이디입니다~!!"; 
+	    idMessage.classList.add("confirm"); 
+	    idMessage.classList.remove("error"); 
+	    checkObj.memberId = true; 
+	
+	    }); 
+
+
+
+
 
     if(result == 1) {
         idMessage.innerText = "이미 사용중인 아이디입니다."; 
@@ -65,7 +92,7 @@ memberId.addEventListener( "input", (e) => {
 
     }); 
 
-}); 
+
 
 
 
@@ -115,7 +142,7 @@ memberPw.addEventListener("input", e => {
 
     // 유효하지 않은 경우 
     if( !regExp.test(inputPw) ) {
-        pwMessage.innerText = "비밀번호가 유효하지 않습니다"; 
+        pwMessage.innerText = "영어, 숫자, 특수문자(-,_)8~12글자 이내로 입력해주세요."; 
         pwMessage.classList.add('error'); 
         pwMessage.classList.remove('confirm'); 
         checkObj.memberPw = false; 
@@ -123,7 +150,7 @@ memberPw.addEventListener("input", e => {
     }
 
     // 유효한 경우 
-    pwMessage.innerText = "유효한 비밀번호입니다"; 
+    pwMessage.innerText = "사용 가능합니다"; 
     pwMessage.classList.add('confirm'); 
     pwMessage.classList.remove('error'); 
     checkObj.memberPw = true; 
@@ -177,7 +204,7 @@ memberName.addEventListener("input", e => {
     
     // 유효하지 않은 경우 
     if( !regExp.test(inputName) ) {
-        nameMessage.innerText = "이름이 유효하지 않습니다"; 
+        nameMessage.innerText = "한글, 영어로만 입력해주세요"; 
         nameMessage.classList.add('error'); 
         nameMessage.classList.remove('confirm'); 
         checkObj.memberName = false; 
@@ -373,7 +400,7 @@ sendEmailBtn.addEventListener("click", e => {
     authKeyMessage.innerText = ""; 
 
     if(!checkObj.email) {
-        emailMessage.innerText = "유효한 이메일이 아닙니다"; 
+        emailMessage.innerText = "메일을 보낼 수 없습니다"; 
         return; 
     }
 
@@ -486,23 +513,16 @@ checkAuthKeyBtn.addEventListener("click", e => {
 function DaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
+            var addr = ''; 
 
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+            if (data.userSelectedType === 'R') { 
                 addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+            } else { 
                 addr = data.jibunAddress;
             }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('postcode').value = data.zonecode;
             document.getElementById("mainAddress").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
             document.getElementById("detailAddress").focus();
         }
     }).open();
@@ -536,23 +556,23 @@ signUpBtn.addEventListener("submit", e => {
 
             switch(key) {
                 case "memberId" : 
-                    str = "아이디가 유효하지 않습니다"; break; 
+                    str = "아이디를 확인해주세요"; break; 
                 case "memberPw" : 
-                    str = "비밀번호가 유효하지 않습니다"; break; 
+                    str = "비밀번호를 확인해주세요"; break; 
                 case "memberPwConfirm" :
                     str = "비밀번호가 일치하지 않습니다"; break;
                 case "memberName" : 
-                    str = "이름이 유효하지 않습니다" ; break; 
+                    str = "이름을 확인해주세요" ; break; 
                 case "memberBirth" : 
-                    str = "생년월일이 유효하지 않습니다"; break; 
+                    str = "생년월일을 확인해주세요"; break; 
                 case "phone" : 
-                    str = "핸드폰번호가 유효하지 않습니다"; break;         
+                    str = "핸드폰번호를 확인해주세요"; break;         
                 case "email" :
-                    str = "이메일이 유효하지 않습니다"; break;               
+                    str = "이메일을 확인해주세요"; break;               
                 case "authKey" : 
                     str = "이메일이 인증되지 않았습니다"; break;
                 case "address" : 
-                    str = "주소가 유효하지 않습니다"; break; 
+                    str = "주소를 확인해주세요"; break; 
             }
 
             alert(str);

@@ -1,34 +1,76 @@
-const inner = document.querySelector(".inner");
-const section = document.querySelector("section");
-
-window.onscroll = function() {
-  let value = window.pageYOffset / section.offsetTop + 1;
-  inner.style.transform = `scale(${value})`;
-};
-
-
-(function(){
-  
-  var $window = $(window);    //Window object
-  
-  var scrollTime = 1.2;     //Scroll time
-  var scrollDistance = 170;   //Distance. Use smaller value for shorter scroll and greater value for longer scroll
+class LoopingElement {
+  constructor(element, currentTranslation, speed) {
+    this.element = element
+    this.currentTranslation = currentTranslation
+    this.speed = speed
+    this.direction = true
+    this.scrollTop = 0
+    this.metric = 100
     
-  $window.on("mousewheel DOMMouseScroll", function(event){
+    this.lerp = {
+      current: this.currentTranslation,
+      target: this.currentTranslation,
+      ease: 0.2
+    }
     
-    event.preventDefault(); 
-                    
-    var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
-    var scrollTop = $window.scrollTop();
-    var finalScroll = scrollTop - parseInt(delta*scrollDistance);
-      
-    TweenMax.to($window, scrollTime, {
-      scrollTo : { y: finalScroll, autoKill:true },
-        ease: Power1.easeOut, //For more easing functions see https://api.greensock.com/js/com/greensock/easing/package-detail.html
-        autoKill: true,
-        overwrite: 5              
-      });
-          
-  });
+    this.events()
+    this.render()
+  }
   
-});
+  events() {
+    window.addEventListener("scroll", (e) => {
+      let direction = window.pageYOffset || document.documentElement.scrollTop
+      if (direction > this.scrollTop) {
+        this.direction = true
+        this.lerp.target += this.speed * 5
+      } else {
+        this.direction = false
+        this.lerp.target -= this.speed * 5
+      }
+      this.scrollTop = direction <= 0 ? 0 : direction
+    })
+  }
+  
+  lerpFunc(current, target, ease) {
+    this.lerp.current = current * (1 - ease) + target * ease
+  }
+  
+  right() {
+    this.lerp.target += this.speed
+    if(this.lerp.target > this.metric) {
+      this.lerp.current -= this.metric * 2
+      this.lerp.target -= this.metric * 2
+    }
+  }
+  
+   left() {
+    this.lerp.target -= this.speed
+    if(this.lerp.target < -this.metric) {
+      this.lerp.current -= -this.metric * 2
+      this.lerp.target -= -this.metric * 2
+    }
+  }
+  
+  animate() {
+    this.direction ? this.right() : this.left()
+    this.lerpFunc(this.lerp.current, this.lerp.target, this.lerp.ease)
+    
+    this.element.style.transform = `translateX(${this.lerp.current}%)`
+  }
+  
+  render() {
+    this.animate()
+    window.requestAnimationFrame(() => this.render())
+  }
+}
+
+let elements = document.querySelectorAll(".item")
+
+new LoopingElement(elements[0], 0, 0.1)
+new LoopingElement(elements[1], -100, 0.1)
+
+let imagesArray = document.querySelectorAll(".images-wrapper")
+
+new LoopingElement(imagesArray[0], 0, 0.1);
+new LoopingElement(imagesArray[1], -100, 0.1);
+

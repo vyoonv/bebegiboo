@@ -19,6 +19,43 @@
 		AND EMAIL = #{email}
 	</select>
  
+	<!-- 휴대폰 중복 검사 -->
+	<select id="checkPhone" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL ='N'
+		AND PHONE = #{phoneNum}
+	</select>
+	
+	
+		
+	<!-- 회원 이름 존재 유무 검사 -->
+	<select id="checkName" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL ='N'
+		AND MEMBER_NAME = #{memberName}
+	</select>
+	
+	<!-- 이름으로 메일검색 -->
+	<select id="checkEmailWithName">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL='N'
+		AND MEMBER_NAME = #{memberName}
+		AND EMAIL = #{email}
+	</select>
+	
+	<!-- 아이디로 메일검색 -->
+	<select id="checkEmailWithId">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_ID = #{memberId}
+		AND EMAIL = #{email}
+	</select>
+
+	
  	<!-- 로그인 -->
 	<select id="login">
 		SELECT MEMBER_NO,MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH, EMAIL, PHONE, ADDRESS,
@@ -28,6 +65,22 @@
 		AND MEMBER_DEL_FL='N'
 	</select>
 	
+	<!-- 아이디 찾기 -->
+	<select id="getId">
+		SELECT MEMBER_ID
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND EMAIL= #{email}
+	</select>
+
+	<!-- 비밀번호 암호화 업데이트 -->	
+	<update id="updateNewPw">
+		UPDATE "MEMBER" SET MEMBER_PW = #{encNewPw}
+		WHERE EMAIL = #{email}
+	</update>
+
+
+		
 	<!-- 회원가입 -->
 	<insert id="signup">
 		INSERT INTO "MEMBER"
@@ -44,8 +97,6 @@
 			 #{authority}
 		)
 	</insert>
-	
-	
-	
-	
+
+
 </mapper>

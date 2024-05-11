@@ -1,0 +1,64 @@
+main{
+    margin: 150px auto;
+    width: 800px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 베베기부 로고 */
+#font-logo-area{
+    margin: 150px auto; 
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+/* 폼 자체 */
+.checkPwForm{
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgb(207, 207, 207);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*비밀번호 확인*/
+#check-text{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+/*비밀번호 입력해주세요*/
+#text{
+    margin-bottom: 20px;
+}
+
+/* INPUT */
+input{
+    width: 250px;
+    height: 28px;
+    padding: 10px;
+    border: 1px solid rgb(207, 207, 207);
+}
+
+/* 제출하기 버튼 */
+#submitBtn{
+
+    margin-top: 90px;
+  
+    width: 280px;
+    height: 80px;
+    
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+    background-color: #E5EDF8;
+  
+    border: none;
+    border-radius: 20px;
+}

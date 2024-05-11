@@ -1,3 +1,29 @@
+
+.main	{
+  overflow: auto;
+}
+.main::before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/images/deliveryBackground.JPG");
+    background-size: cover;
+    -webkit-filter: blur(10px); 
+    -moz-filter: blur(10px); 
+    -o-filter: blur(10px); 
+    -ms-filter: blur(10px); 
+    filter: blur(10px);
+    transform: scale(1.02);
+    z-index: -1; 
+    content: "";
+}
+
+input {
+  border: none;
+}
+
 #button {
     height: 50px;
     width: 170px;
@@ -10,26 +36,137 @@
     cursor: pointer;
 }
 
+.kakao {
+  border: none;
+  background-color: #F7E600;
+  width: 150px;
+  height: 35px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.text2 {
+  color: white;
+}
 
-#container {
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.donation-container {
+  margin: 0;
+  width: 100%;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 1s;
 
 }
 
-#container > div:first-child {
+.donation-container > div:first-child {
     margin-top: 100px;
     height: 100px;
 }
 
-#container > div:nth-child(2) {
+.donation-container > div:nth-child(2) {
     margin-bottom: 80px;
 }
 
+.order-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-line {
+  width: 700px;
+  border: 2px white solid;
+}
+
+.order-line {
+  display: flex;
+}
+
+.order-line > div {
+  margin: 0 60px;
+  margin-bottom: 10px;
+  height: 15px;
+  border: 1px white solid;
+}
+
+.order-text {
+  display: flex;
+  justify-content: center;
+}
+
+.order-text > div {
+  width: 122px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+}
+
+
+.donation-box {
+  border: 2px white solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.donation-box > div:first-child {
+  margin-bottom: 30px;
+}
+
+#parentsNumber {
+  display: flex;
+}
+
+
+.preNext {
+  position: fixed;
+  top: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.preNext > button:first-child {
+  margin-right: 20px;
+}
+#previous {
+  top: 90%;
+  position: fixed;
+  cursor: pointer;
+  margin-right: 80px;
+}
+#next {
+  top: 90%;
+  position: fixed;
+  cursor: pointer;
+  margin-left: 80px;
+
+}
+
+label {
+  margin-right: 30px;
+}
+
+
+
+
+#submit {
+  top: 90%;
+  position: fixed;
+}
+
+
+input:disabled {
+  background-color: white;
+}
 
 
 

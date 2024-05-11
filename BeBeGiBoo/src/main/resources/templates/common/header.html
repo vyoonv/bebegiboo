@@ -12,21 +12,52 @@
     
         <!-- 환영합니다 문구 -->
 
-        <!-- 회원가입 페이지 이동 버튼-->
-        <span><a href="/member/signup/signupMain">회원가입</a></span>
-    
-        <!-- 햄버거 버튼 -->
-        <span><img src="/images/hamburger.png" style="width: 40px;" id="hamburger"></span>
+        <!--로그인 X-->
+		<th:block th:if="${session.loginMember == null}">
+			<!-- 회원가입 페이지 이동 버튼-->
+	       <span><a href="/member/login">로그인</a></span>
+		</th:block>
+		
+		<!--로그인 O-->
+		<th:block th:unless="${session.loginMember == null}">
+			<span th:text="|${session.loginMember.memberName}님 안녕하세요|">회원이름</span>
+			<span class="text" style="width: 80px;"><a style="font-size: 15px;" href="/member/logout">로그아웃</a></span>
+
+		</th:block>
+		
+		<!-- 햄버거 버튼 -->
+		<span><img src="/images/hamburger.png" style="width: 40px;" id="hamburger"></span>
     </div>
   
-    <div id="nav-container">
-        <div class="text"><a href="/member/login">로그인</a></div>
-        <div class="text"><a href="/page/info">페이지 소개</a></div>
-        <div class="text"><a href="/page/approach">이용방법</a></div>
-        <div class="text"><a href="/postscript">후기 인증</a></div>
-        <div class="text"><a href="/donation">기부하기</a></div>
-        <div class="text"><a href="/faqBoard/faqBoard">FAQ</a></div>
-    </div>
+	<th:block th:if="${session.loginMember == null}">
+		<div id="nav-container-null">
+		    <div class="text"><a href="/member/signup/signupMain">회원가입</a></div>
+		    <div class="text"><a href="/donation">기부하기</a></div>
+		    <div class="text"><a href="/page/info">페이지 소개</a></div>
+		    <div class="text"><a href="/page/approach">이용방법</a></div>
+		    <div class="text"><a href="/review">후기게시판</a></div>
+			<div class="text"><a href="/certification/certification-main">봉사 인증 신청</a></div>
+		    <div class="text"><a href="/faqBoard/faqBoard">FAQ</a></div>
+		</div>
+	</th:block>
+
+	<th:block th:unless="${session.loginMember==null}">
+		<div id="nav-container">
+			<div class="nav-container-child">
+				<div class="text nav-child" style="visibility: hidden;" id="hover1"><a href="/member/mypage/checkPw">회원정보 수정</a></div>
+				<div class="text nav-child" style="visibility: hidden;" id="hover2"><a href="/member/mypage/donationInfo">기부내역 조회</a></div>
+			</div>
+			<div class="nav-container-child">
+				<div class="text"><a href="#" id="myPage">마이페이지</a></div>
+				<div class="text"><a href="/donation" class="noHover">기부하기</a></div>
+				<div class="text"><a href="/page/info" class="noHover">페이지 소개</a></div>
+				<div class="text"><a href="/page/approach" class="noHover">이용방법</a></div> 
+				<div class="text"><a href="/review" class="noHover">후기게시판</a></div>
+				<div class="text"><a href="/certification/certification-main" class="noHover">봉사 인증 신청</a></div>
+				<div class="text"><a href="/faqBoard/faqBoard" class="noHover">FAQ</a></div>
+			</div>
+		</div>
+	</th:block>
 
     <script src="/js/header.js"></script>
 </header>

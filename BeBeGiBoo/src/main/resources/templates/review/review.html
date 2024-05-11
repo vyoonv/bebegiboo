@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>review</title>
+
+    <th:block th:replace="~{common/common}"></th:block>
+    <link rel="stylesheet" href="/css/page/review/review.css"></link>
+    <script src="https://kit.fontawesome.com/4b505ed7b7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
+
+    <main>
+        <!--제목 배너-->
+        <div id="titleArea">
+            <span>후기 게시판</span>
+        </div>
+    
+        <!--작성 버튼-->
+        <div id="btnArea">
+            <a id = "btnArea_" th:if="${session.loginMember}">
+                <img id = "insertBtn" src="/images/insertBtn.png">
+                <span>작성하기</span>
+            </a>
+        </div>
+
+        <!--메인 내용-->
+        <section id="tableArea">
+            <table>
+                <thead>
+                    <tr id = "titleRow">
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--게시글 X-->
+                    <th:block th:if="${#lists.isEmpty(reviewList)}">
+                        <tr id="noneOfList"> 
+                            <th colspan="5">게시글이 존재하지 않습니다.</th>
+                        </tr>
+                    </th:block>
+                    <!--게시글 O-->
+                    <th:block th:unless="${#lists.isEmpty(reviewList)}">
+                        <tr th:each="review : ${reviewList}" th:object="${review}">
+                            <td th:text="*{boardNo}">게시글 번호</td>
+                            <td>
+                                <!--검색 O-->
+                                <a th:unless="${param.key}" th:href="@{/review/{boardNo} (boardNo = *{boardNo}, cp=${pagination.currentPage})}" th:text="*{boardTitle}">게시글 제목</a>
+                                <!--검색 X-->
+                                <a th:if="${param.key}" th:href="@{/review/{boardNo} (boardNo=*{boardNo},cp=${pagination.currentPage})}",
+                                key="${param.key}" query="${param.query}" th:text="*{boardTitle}">게시글 제목</a>
+
+                                <th:block th:text="|[*{commentCount}]|" id="commentCount">댓글 수</th:block>
+                            </td>
+                            <td>
+                                <a th:text="*{memberId}">작성자 아이디</a>
+                            </td>
+                            <td>
+                                <a th:text="*{boardWriteDate}">2025-01-01</a>
+                            </td>
+                            <td>
+                                <a th:text="*{readCount}">0</a>
+                            </td>
+
+                        </tr>
+                    </th:block>
+
+                </tbody>
+    
+            </table>
+        </section>
+        
+        <!--페이지네이션: 게시글이 있을 때만 보이도록-->
+        <div class="paginationArea">
+            <!--검색 안한 경우-->
+            <ul class = "pagination" th:unless="${param.key}" th:object="${pagination}">
+                <li><a th:href="@{/review(cp=1)}">&lt;&lt;</a></li>
+                <li><a th:href="@{/review(cp=*{prevPage})}">&lt;</a></li>
+    
+                <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+
+                    <li th:if="${i} == *{currentPage}">
+                        <a class="current" th:text="${i}">현재페이지</a>
+                    </li>
+
+                    <li th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/review(cp=${i})}"
+                        th:text="${i}">이동할 페이지</a>
+                    </li>
+                    
+                </th:block>
+    
+            
+                <li>
+                    <a th:href="@{/review(cp=*{nextPage})}">&gt;</a>
+                </li>
+                <li><a th:href="@{/review(cp=*{maxPage})}">&gt;&gt;</a></li>
+            </ul>
+
+            <!--검색인 경우-->
+            <ul class="pagination" th:if="${param.key}" th:object="${pagination}">
+                <!-- 첫 페이지로 이동 -->
+                <li><a th:href="@{/review(cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
+                <!-- 이전 목록 마지막 번호로 이동 -->
+                <li><a th:href="@{/review(cp=*{prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
+                <!-- 특정 페이지로 이동 -->
+                
+                <th:block th:if="*{startPage lt endPage}" th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                    
+                    <!-- 현재 보고있는 페이지 -->
+                    <li th:if="${i} == *{currentPage}">
+                        <a class="current" th:text="${i}">현재페이지</a>
+                    </li>
+                    
+                    <!-- 보고있지 않은 페이지 -->
+                    <li th:unless="${i} == *{currentPage}">
+                        <a th:href="@{/review(cp=${i}, key=${param.key}, query=${param.query})}"
+                            th:text="${i}">이동할 페이지</a>
+                    </li>
+                </th:block>
+                
+                
+                <!--일치하는 게시글이 없는 경우-->
+                <th:block th:unless="*{startPage lt endPage}">
+                    <li>
+                        <a class="current">1</a>
+                    </li>
+                </th:block>
+                
+                <!-- 다음 목록 시작 번호로 이동 -->
+                <li><a th:href="@{/board(cp=*{nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
+                <!-- 끝 페이지로 이동 -->
+                <li><a th:href="@{/board(cp=*{maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
+            </ul>           
+
+
+        </div>  
+        
+        
+        <form action="review"method="get" id="boardSearch">
+            <select name="key" id="searchKey">
+                <option value="t">제목</option>
+                <option value="c">내용</option>
+                <option value="tc">제목+내용</option>
+                <option value="w">작성자 아이디</option>
+            </select>
+            <section id="serchArea">
+                <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요.">
+                <button class="fa-solid fa-magnifying-glass" style="cursor: pointer;"></button>
+            </section>
+            
+        </form>
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/review/reivew.js"></script>
+</body>
+
+
+</html>

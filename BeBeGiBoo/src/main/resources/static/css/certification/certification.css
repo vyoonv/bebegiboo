@@ -79,19 +79,31 @@ table{
     margin-bottom: 60px;
 }
 .image-area tbody > tr > td:nth-of-type(1) {  
-    padding-left: 95px;
+    padding-left: 54px;
 }
 .image-area > tbody > tr > td:nth-of-type(2) {  
-    padding-right: 20px;
+    padding-right: 3px;
    
 }
 .image-area > tbody > tr > td:nth-of-type(3) {  
-    padding-right: 50px ;
+    padding-right: 25px ;
 }
 
-.c-img{
-    width: 100px;
-    height: 100px;
+
+.c-img {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+
+.c-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .c-img >label {
@@ -103,6 +115,17 @@ table{
     border: 1px solid rgb(185, 185, 185);
     cursor: pointer;
 }
+
+/* 삭제 버튼 */
+.delete-image{
+    position: relative;
+    top: -150px;
+    right: -126px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
 
 
 /* 주소 letter */
@@ -223,4 +246,10 @@ table{
     width: 620px;
     height: 400px;
     text-align:left;
+}
+
+
+input::placeholder{
+    color: #aaaaaa;
+    font-size: 11px;
 }

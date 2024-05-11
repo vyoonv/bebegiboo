@@ -9,15 +9,18 @@
     <th:block th:replace="~{common/common}"></th:block>
 </head>
 <body>
-    <main>
+    <main class="main">
 
         <th:block th:replace="~{common/header}"></th:block>
+
+        <th:block th:if="${session.loginMember != null} and ${session.loginMember.authority == 3}">
+          <th:block th:replace="~{common/manager-bar}"></th:block>
+        </th:block>
     
 
+        <div class="donation-container">
 
-        <div id="container">
-
-            <div class="text">기부신청</div>
+            <div class="text text2">기부신청</div>
 
 
             <div>
@@ -30,7 +33,277 @@
             </div>
 
 
-            <img src="/images/donation-bar.JPG" style="height: 70px;">
+            <div class="order-container">
+                <div class="main-line"></div>
+
+                <div class="order-line">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="text order-text ">
+                    <div>나이선택</div>
+                    <div>유아용품<br>종류선택</div>
+                    <div>박스수량 선택</div>
+                    <div>배송정보 입력</div>
+                    <div>결제수단 선택</div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <!-- 상단바 -->
+        <div class="donation-container" style="display: none;">
+            <div class="order-container">
+                <div class="main-line"></div>
+
+                <div class="order-line">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="text order-text ">
+                    <div>나이선택</div>
+                    <div>유아용품<br>종류선택</div>
+                    <div>박스수량 선택</div>
+                    <div>배송정보 입력</div>
+                    <div>결제수단 선택</div>
+                </div>
+            </div>
+
+            <!-- 제목 -->
+            <div id="donation-title" class="text text2">신청자 나이 선택</div>
+
+
+            <!-- 입력박스 -->
+
+            <!-- 나이선택칸 -->
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 500px;">
+                <div>
+                    <input type="radio" id="option1" name="option-age" value="0">
+                    <label for="option1" class="text text2">14세 미만</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="option2" name="option-age" value="1">
+                    <label for="option2" class="text text2">14세 이상</label>
+                </div>
+            </div>
+
+
+            <!-- 부모님동의 -->
+            <div class="donation-box donation-box-under14" style="height: 500px; width: 900px; display: none;">
+                <div>
+                    <label for="option1" class="text text2">이름</label>
+                    <input id="parentsName" type="text" style="height: 30px;">
+                </div>
+
+                <div id="parentsNumber" style="margin-bottom: 50px;">
+                    <label for="option2" class="text text2">휴대전화</label>
+                    <select name="firstNumber" style="margin-right: 5px;">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="019">019</option>
+                        <option value="012">012</option>
+                    </select>
+                    <p class="text text2" style="margin-right: 5px;">-</p>
+                    <input id="parentsMiddleNo" type="number" maxlength="4" style="margin-right: 5px; width: 70px;">
+                    <p class="text text2" style="margin-right: 5px;">-</p>
+                    <input id="parentsLastNo" type="number" maxlength="4" style="margin-right: 10px; width: 70px;">
+
+                    <button id="kakao" class="kakao" style="cursor: pointer;"><img src="/images/kakao.png" style="width: 20px;">카카오로 인증하기</button>
+                </div>
+
+                <div>
+                    <input id="parentsAgree" type="checkbox">
+                    <label class="text text2" style="font-size: 10px;">법정대리인 동의 또는 만 14세 이상 확인 절차 없음으로 인해 발생하는 법적 책임과 권한은 이용 기관에 있습니다.</label>
+                </div>
+            </div>
+
+
+            <!-- 유아용품 선택 -->
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 300px; width: 900px; margin-bottom: 30px; display: none;">
+                <div>
+                    <input type="checkbox" name="thing-type" id="oneCheck">
+                    <label for="option1" class="text text2">생활용품</label>
+                    <input type="checkbox" name="thing-type">
+                    <label for="option1" class="text text2">의류</label>
+                    <input type="checkbox" name="thing-type">
+                    <label for="option1" class="text text2">식기</label>
+                    <input type="checkbox" name="thing-type">
+                    <label for="option1" class="text text2">가전</label>
+                    <input type="checkbox" name="thing-type">
+                    <label for="option1" class="text text2">장난감</label>
+                </div>
+
+                <div class="text" style="color: white; font-size: 15px;">※ 다중선택 가능</div>
+
+                <div class="text" style="height: 180px; width: 850px; background-color: rgba(83, 83, 83, 0.5); color: white; font-size: 15px; line-height: 30px;">
+                    생활용품 : 기저귀(새상품), 손소독제, 유모차, 목욕용품, 마스크 ,미용세트, 안전용품, 물티슈, 담요, 보자기 등<br>
+                    의류 : 아우터, 내복, 실내복, 맨투맨, 후드, 셔츠, 하의, 수영복,  스커트, 원피스, 우비, 신발, 양말, 모자 등<br>
+                    식기 : 이유식기, 유아용 수저, 유아용 젓가락, 컵, 반찬통, 조리도구, 프라이팬, 냄비, 내열용 그릇 등<br>
+                    가전 : 공기청정기, 젖병소독기, 살균소독기, 제습기, 체온계, 분유포트, 유아용 전동칫솔 등<br>
+                    장난감 : 유아용 장난감 등
+                </div>
+                
+            </div>
+
+
+
+            <!-- 박스 내용물 입력 -->        
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 700px; display: none;">
+                <table>
+                    <tr name="content-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">생활용품</td>
+                        <td><input name="content-thing-input" id="daily" type="text" style="height: 30px; padding: 3px;"></td>
+                    </tr>
+                    <tr name="content-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">의류</td>
+                        <td><input name="content-thing-input" id="cloth" type="text" style="height: 30px; padding: 3px;"></td>
+                    </tr>
+                    <tr name="content-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">식기</td>
+                        <td><input name="content-thing-input" id="dish" type="text" style="height: 30px; padding: 3px;"></td>
+                    </tr>
+                    <tr name="content-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">가전</td>
+                        <td><input name="content-thing-input" id="electronic" type="text" style="height: 30px; padding: 3px;"></td>
+                    </tr>
+                    <tr name="content-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">장난감</td>
+                        <td><input name="content-thing-input" id="toy" type="text" style="height: 30px; padding: 3px;"></td>
+                    </tr>
+                </table>
+                <div class="text text2" style="font-size: 15px;">※유아용품을 작성하실 때에는 ','(콤마)로 구분해서 띄어쓰기 없이 작성해주세요</div>
+            </div>
+
+
+
+            <!-- 박스 수량 선택 -->
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 700px; display: none;">
+                <table>
+                    <tr name="count-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">생활용품</td>
+                        <td><input id="dailyBox" type="number" name="count-thing-value" value="1" min="1"></td>
+                        <td class="text text2">개</td>
+                    </tr>
+                    <tr name="count-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">의류</td>
+                        <td><input id="clothBox" type="number" name="count-thing-value" value="0" min="1"></td>
+                        <td class="text text2">개</td>
+                    </tr>
+                    <tr name="count-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">식기</td>
+                        <td><input id="dishBox" type="number" name="count-thing-value" value="0" min="1"></td>
+                        <td class="text text2">개</td>
+                    </tr>
+                    <tr name="count-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">가전</td>
+                        <td><input id="electronicBox" type="number" name="count-thing-value" value="0" min="1"></td>
+                        <td class="text text2">개</td>
+                    </tr>
+                    <tr name="count-thing" style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 150px;">장난감</td>
+                        <td><input id="toyBox" type="number" name="count-thing-value" value="0" min="1"></td>
+                        <td class="text text2">개</td>
+                    </tr>
+                </table>
+
+                <div class="text" style="color: white; font-size: 15px;">
+                    ※ 박스 하나 당 한 종류의 유아용품만 담을 수 있습니다<br>
+                    ※ 박스 하나 당 15kg을 넘을 수 없습니다
+                </div>
+            </div>
+
+
+            <!-- 배송정보 입력 -->
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 700px; display: none;">
+                <table>
+                    <tr style="margin-bottom: 20px;">
+                        <td class="text text2" style="width: 200px;">이름</td>
+                        <td><input type="text" id="name" style="height: 20px; width: 190px;"></td>
+                    </tr>
+                    <tr style="margin-bottom: 20px;">
+                        <td class="text text2" style="width: 200px;">핸드폰 번호</td>
+                        <td><input type="text" id="phone" style="height: 20px; width: 190px;"></td>
+                    </tr>
+                    <tr style="margin-bottom: 20px;">
+                        <td class="text text2" style="width: 200px;">추가 연락처 번호</td>
+                        <td><input type="text" id="phone2" style="height: 20px; width: 190px;"></td>
+                    </tr>
+                    <tr style="margin-bottom: 20px;">
+                        <td id="postcodeSection" class="text text2" style="width: 200px;">우편번호</td>
+                        <td>
+                            <input type="text" name="address" placeholder="우편번호" 
+                                                                maxlength="6" id="postcode" style="height: 20px; width: 190px;" disabled>
+                        </td>
+                        <td><button type="button" id="searchAddress" class="button">검색</button></td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="width: 200px;"></td>
+                        <td>
+                            <input type="text" name="address" placeholder="도로명/지번주소" id="mainAddress" style="height: 20px; width: 190px;" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 200px;"></td>
+                        <td>
+                            <input type="text" name="address" placeholder="상세주소" style="height: 20px; width: 190px;" id="detailAddress">
+                        </td>
+                    </tr>
+
+                    <tr style="margin-bottom: 20px;">
+                        <td class="text text2" style="width: 200px;">방문 희망일</td>
+                        <td><input type="date" id="date"></td>
+                    </tr>
+                    <tr style="margin-bottom: 10px;">
+                        <td class="text text2" style="width: 200px;">요구사항</td>
+                        <td><textarea id="memo" placeholder="요구사항이 없는경우 '.'을 입력해주세요." style="height: 70px; width: 200px;"></textarea></td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+            <!-- 결제정보 -->
+            <div class="donation-box donation-box-up14 donation-box-under14" style="height: 400px; width: 700px; display: none;">
+                <div class="text text2">
+                    총 배송비 : <span id="total"></span>원
+                </div>
+
+                <div>
+                    <label for="option2" class="text text2">결제수단</label>
+                    <select id="payment">
+                        <option value="신용카드">신용카드</option>
+                        <option value="휴대전화결제">휴대전화결제</option>
+                        <option value="무통장입금">무통장입금</option>
+                    </select>
+
+                    <button id="paymentButton" type="button" class="button">결제하기</button>
+                </div>
+
+                <div>
+                    <input id="paymentAgree" type="checkbox">
+                    <label class="text text2" style="font-size: 10px;">이용약관과 개인정보취급방침에 동의합니다.</label>
+                </div>
+            </div>
+
+
+            <!-- 이전, 다음버튼 -->
+            <button type="button" id="previous" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer;">← 이전</button>
+            <button type="button" id="next" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer;">다음 →</button>
+
+            <button id="submit" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer; margin-left: 100px; display: none;">제출하기</button>
 
 
         </div>
@@ -38,10 +311,13 @@
 
 
 
+
+
+
     </main>
     
  
-
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="/js/donation/donation-main.js"></script>
 
 </body>

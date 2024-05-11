@@ -24,13 +24,14 @@
 }
 .s-text {
 	font-family: 'Pretendard-Regular';
-    font-size: 12px;
+    font-size: 17px;
 	text-decoration: none;
-	color:black;
+	color:#858585;
 }
 .divider {
-	font-size: 30px;
+	font-size: 20px;
 	margin: 0 20px;
+	color:#858585;
 }
 main {
 	display : flex;
@@ -68,8 +69,9 @@ form {
 	flex-direction: column;
 
 	align-items: center;
-	border: 1px solid #858585;
+	border: 1px solid #b4b4b4;
 	margin-bottom: 20px;
+	border-radius: 30px;
 }
 
 table {
@@ -112,7 +114,7 @@ tbody tr:nth-child(4) {
 
 #saveIdArea{
 	width: 200px;
-	margin:0 0 100px 20px;
+	margin:15px 0 100px 20px;
 
 	display: flex;
 }
