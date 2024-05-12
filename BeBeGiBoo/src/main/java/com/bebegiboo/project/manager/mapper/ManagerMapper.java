@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.bebegiboo.project.certification.model.dto.Certification;
 import com.bebegiboo.project.donateInfo.dto.DonationProduct;
 import com.bebegiboo.project.donateInfo.dto.DonationRecord;
 import com.bebegiboo.project.manager.dto.DetailProduct;
@@ -58,5 +59,16 @@ public interface ManagerMapper {
 	 * @return
 	 */
 	int connectDonate(Map<String, Object> connectObj);
+
+	/** 봉사 인증 신청서 목록 조회 
+	 * @return
+	 */
+	List<Certification> certificationList();
+
+	/** 봉사 인증 신청서 정보 수정 
+	 * @param inputInfo
+	 * @return
+	 */
+	int infoUpdate(Certification inputInfo);
 
 }

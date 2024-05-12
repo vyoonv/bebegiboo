@@ -79,6 +79,7 @@ details > summary {
     padding: 12px;
     outline: 0;
     transition: background 0.5s;
+    color: #6987C9;
 
     display: flex;
     justify-content: space-between;

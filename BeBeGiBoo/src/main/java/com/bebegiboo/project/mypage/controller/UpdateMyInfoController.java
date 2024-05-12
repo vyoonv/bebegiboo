@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bebegiboo.project.member.model.dto.Member;
 import com.bebegiboo.project.mypage.model.service.UpdateMyInfoService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -62,7 +63,10 @@ public class UpdateMyInfoController {
 		
 		String address = loginMember.getAddress();
 		
+		log.info("address : " + address);
+		
 		if(address != null) {
+			
 			String[] arr = address.split("\\^\\^\\^"); 
 			
 			model.addAttribute("postcode", arr[0]); 
@@ -72,7 +76,6 @@ public class UpdateMyInfoController {
 				
 		if(result > 0) {
 			
-			message = "비밀번호 체크 성공!";
 			path = "/member/mypage/updateMyInfo";
 			
 		}
@@ -85,10 +88,6 @@ public class UpdateMyInfoController {
 		
 		return path;
 	}
-	
-	
-	
-
 	
 	/** 회원 정보 수정 
 	 * @param loginMember
@@ -152,10 +151,17 @@ public class UpdateMyInfoController {
 	}
 	
 	
+	/** 회원 탈퇴 
+	 * @param memberPw
+	 * @param loginMember
+	 * @param session
+	 * @param ra
+	 * @return
+	 */
 	@PostMapping("resign")
 	public String resign( @RequestParam("memberPw") String memberPw,
 						  @SessionAttribute("loginMember") Member loginMember,
-						  SessionStatus status,
+						  HttpSession session,
 						  RedirectAttributes ra) {
 		
 		int memberNo = loginMember.getMemberNo(); 
@@ -165,9 +171,8 @@ public class UpdateMyInfoController {
 		String message = null; 
 		
 		if(result > 0) {
-			message = "탈퇴되었습니다"; 
-			
-			status.setComplete();
+			message = "탈퇴되었습니다"; 		
+			session.invalidate();
 		}
 		else {
 			message = "비밀번호가 일치하지 않습니다."; 

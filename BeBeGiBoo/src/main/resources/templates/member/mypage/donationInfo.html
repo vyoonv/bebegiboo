@@ -59,6 +59,15 @@
                                                         th:text="${donationInfo.deliveryList[recordIndex.index].memo}">배송메모</td>
 
                                             </tr>  
+                                            <tr>
+                                                <td>기부 물품 전달 여부</td>
+                                                <td th:if="${record.acceptorNo}">
+                                                    <span>매칭 성공하여 전달하였습니다.</span>
+                                                </td>
+                                                <td th:unless="${record.acceptorNo}">
+                                                    <span>아직 피기부자가 정해지지 않았습니다.</span>
+                                                </td>
+                                            </tr>
                                         </table>  
                                     </figure>
                                 </details>

@@ -19,7 +19,7 @@ public class FilterConfig {
 		
 		filter.setFilter(new LoginFilter());
 
-		String[] filteringURL = {"/mypage/*", "/certification/*", "/donation/**"};
+		String[] filteringURL = {"/mypage/*", "/certification/*", "/donation/**", "/manager/**"};
 		
 		filter.setUrlPatterns( Arrays.asList(filteringURL));
 		

@@ -52,5 +52,23 @@
 		WHERE RECORD_NO = #{recordNo}
 	</update>
 	
+	<!--봉사인증신청 목록 조회 -->
+	<select id="certificationList">
+		SELECT C_NO, MEMBER_ID, CERTIFICATION_ID, 
+				TO_CHAR(MEMBER_BIRTH, 'YYYY-MM-DD') AS MEMBER_BIRTH, PHONE, MEMBER_NAME, ADDRESS, MEMBER_NO,
+				TO_CHAR(C_DATE, 'YYYY"년" MM"월" DD"일"') AS C_DATE
+		FROM CERTIFICATION
+		ORDER BY C_DATE DESC
+	</select>
+	
+	<update id="infoUpdate">
+		UPDATE CERTIFICATION SET
+		MEMBER_NAME = #{memberName},
+		CERTIFICATION_ID = #{certificationId},
+		MEMBER_BIRTH = #{memberBirth},
+		PHONE = #{phone},
+		ADDRESS = #{address}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 
 </mapper>

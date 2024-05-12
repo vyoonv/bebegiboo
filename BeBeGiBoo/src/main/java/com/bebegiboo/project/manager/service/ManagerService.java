@@ -3,6 +3,7 @@ package com.bebegiboo.project.manager.service;
 import java.util.List;
 import java.util.Map;
 
+import com.bebegiboo.project.certification.model.dto.Certification;
 import com.bebegiboo.project.donateInfo.dto.DonationProduct;
 import com.bebegiboo.project.donateInfo.dto.DonationRecord;
 import com.bebegiboo.project.manager.dto.DetailProduct;
@@ -44,5 +45,17 @@ public interface ManagerService {
 	 * @return
 	 */
 	int connectDonate(Map<String, Object> connectObj);
+
+	/** 봉사 인증 신청 목록 조회 
+	 * @return
+	 */
+	List<Certification> certificationList();
+
+	/** 인증신청 내용 수정 
+	 * @param inputInfo
+	 * @param memberNo 
+	 * @return
+	 */
+	int infoUpdate(Certification inputInfo, int memberNo);
 
 }

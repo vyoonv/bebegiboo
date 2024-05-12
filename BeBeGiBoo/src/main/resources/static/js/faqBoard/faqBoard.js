@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             details.appendChild(figure);
                             tr.appendChild(details);
                             faqListTable.appendChild(tr);
-
                             summary.classList.add('categoryNo');
                             figure.classList.add('addFigure');
                            

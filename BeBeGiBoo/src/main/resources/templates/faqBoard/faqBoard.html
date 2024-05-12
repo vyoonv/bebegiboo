@@ -128,11 +128,61 @@
         /*<![CDATA[*/
         document.addEventListener('DOMContentLoaded', function() {
             var loginMemberAuthority = /*[[${session.loginMember?.authority}]]*/ "관리자모드";
+            var categoryLinks = document.querySelectorAll('.category-link');
 
             // 권한이 3인 멤버인 경우 배경색 변경
             if (loginMemberAuthority === 3) {
                 document.body.classList.add('authority3');
             }
+
+            categoryLinks.forEach(function(link) {
+                
+            link.addEventListener('click', function() {
+            var categoryNo = this.getAttribute('data-category');
+            var pagination = document.getElementById('pagination');
+            pagination.style.display = 'none';
+
+            fetch("/faqBoard/getFaqByCategory?categoryNo=" + categoryNo)
+                .then(resp => resp.json())
+                .then(list => {
+                    var faqListTable = document.getElementById('faqListTable');
+                    faqListTable.innerHTML = '';
+
+                    list.forEach((faqBoard, index) => {
+                        const tr = document.createElement('tr');
+                        const details = document.createElement('details');
+                        const summary = document.createElement('summary');
+                        const figure = document.createElement('figure');
+                        const questionText = `<div>
+                                                <span class='category-no'>[${faqBoard.categoryNo}]</span> 
+                                                <span>${faqBoard.question}</span>
+                                            </div>`;
+
+                        summary.innerHTML = questionText;
+                        figure.innerHTML = faqBoard.answer.replace(/\n/g, "<br>");
+                        
+                        details.appendChild(summary);
+
+                        // 관리자 권한이 3인 경우 버튼 추가
+                        if (loginMemberAuthority === 3) {
+                            const buttonsDiv = document.createElement('div');
+                            buttonsDiv.innerHTML = `<form><a href='editFaq?qNo=${faqBoard.qNo}' id='editBtn'>수정</a></form>
+                                                    <form method='post' action='deleteFaq/${faqBoard.qNo}'><a href='javascript:;' id='deleteBtn'>삭제</a></form>`;
+                            buttonsDiv.id = 'buttons';
+                            details.appendChild(buttonsDiv);
+                        }
+
+                        details.appendChild(figure);
+                        tr.appendChild(details);
+                        faqListTable.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    });
+
 
         });
         /*]]>*/

@@ -24,6 +24,7 @@ public class Certification {
 	private String memberBirth; 
 	private String phone; 
 	private String address; 
+	private String cDate;
 	
 	//member
 	private int memberNo;

@@ -77,8 +77,7 @@ public class CertificationController {
 		int result = service.certificationSubmit(inputCertification, memberAddress, images); 
 		log.info("memberAddress" + Arrays.toString(memberAddress));
 		
-		// 주소 ^^^ 없애기 
-		// 주소 입력된 경우 
+		// 주소 구분 없애기 
 				if( !inputCertification.getAddress().equals(",,") ) {
 					
 					String address = String.join(" ", memberAddress);

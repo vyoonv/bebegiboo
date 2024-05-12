@@ -271,3 +271,7 @@ input::placeholder{
     color: #aaaaaa;
     font-size: 11px;
 }
+
+textarea{
+    padding: 15px;
+}
