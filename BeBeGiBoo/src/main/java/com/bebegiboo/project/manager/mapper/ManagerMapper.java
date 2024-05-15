@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 
 import com.bebegiboo.project.certification.model.dto.Certification;
 import com.bebegiboo.project.donateInfo.dto.DonationProduct;
@@ -52,7 +53,7 @@ public interface ManagerMapper {
 	/** 피기부자 목록 조회
 	 * @return
 	 */
-	List<Member> selectAcceptorList();
+	List<Member> selectAcceptorList(int recordNo);
 
 	/** 피기부자 등록
 	 * @param connectObj
@@ -61,14 +62,21 @@ public interface ManagerMapper {
 	int connectDonate(Map<String, Object> connectObj);
 
 	/** 봉사 인증 신청서 목록 조회 
+	 * @param rowBounds 
 	 * @return
 	 */
-	List<Certification> certificationList();
+	List<Certification> certificationList(RowBounds rowBounds);
 
 	/** 봉사 인증 신청서 정보 수정 
 	 * @param inputInfo
 	 * @return
 	 */
 	int infoUpdate(Certification inputInfo);
+
+	/** 리스트카운트
+	 * @return
+	 */
+	int getListCount();
+
 
 }

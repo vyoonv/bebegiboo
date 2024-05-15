@@ -18,6 +18,14 @@ public class MainController {
 		
 		ra.addFlashAttribute("message", "로그인 후 이용해주세요"); 
 		
-		return "/member/login/login"; 
+		return "redirect:/"; 
+	}
+	
+	
+	@GetMapping("acceptorError")
+	public String authorityError(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "권한이 없습니다");
+		
+		return "redirect:/";
 	}
 }

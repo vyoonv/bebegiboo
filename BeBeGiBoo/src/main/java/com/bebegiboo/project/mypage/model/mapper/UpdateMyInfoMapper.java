@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.bebegiboo.project.member.model.dto.Member;
-
 @Mapper
 public interface UpdateMyInfoMapper {
 

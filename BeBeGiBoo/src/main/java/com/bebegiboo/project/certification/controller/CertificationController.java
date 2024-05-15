@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bebegiboo.project.certification.model.dto.Certification;
-import com.bebegiboo.project.certification.model.dto.CertificationImg;
 import com.bebegiboo.project.certification.model.service.CertificationService;
 import com.bebegiboo.project.member.model.dto.Member;
 
@@ -82,6 +81,7 @@ public class CertificationController {
 					
 					String address = String.join(" ", memberAddress);
 					inputCertification.setAddress(address);
+					
 				} else {
 					
 					inputCertification.setAddress(null);
@@ -90,7 +90,8 @@ public class CertificationController {
 
 		log.info("memberAddress" + Arrays.toString(memberAddress));
 		
-		model.addAttribute("address", memberAddress); 
+		model.addAttribute("address", memberAddress);
+		session.setAttribute("address", memberAddress);
 		session.setAttribute("certification", inputCertification);
 		session.setAttribute("address", memberAddress);
 		session.setAttribute("images", images);

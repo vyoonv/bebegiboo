@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 body {
-    background-color: lightgray;
+    background-color: rgb(230, 230, 230);
 }
 
 .membershipContainer {
-    height: 1500px;
+    height: 1300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +19,7 @@ body {
     align-items: center;
     margin-bottom: 100px;
     width: 300px;
-    height: 60px;
+    height: 100px;
     background-color: rgb(208, 227, 241);
 
     box-shadow :rgba(0, 0, 0, 0.07) 0px 1px 2px,
@@ -29,7 +29,8 @@ body {
 }
 
 #membershipBoard {
-    height: 10px;
+    overflow: auto;
+    margin-bottom: 200px;
 }
 
 
@@ -86,8 +87,8 @@ body {
 /* 수정 모달창 */
 .popup-layer {
     display: none;
-    top: 100px;
-    position: sticky;
+    top: 200px;
+    position: fixed;
     height: 600px;
     width: 400px;
     background-color: rgba(0, 0, 0, 0);
@@ -144,71 +145,3 @@ input {
 
 
 
-
-
-
-
-#membershipPagenation {
-    height: 300px;
-}
-
-
-.pagination{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin-bottom: 60px;
-}
-
-.pagination li{
-    width: 20px;
-    margin: 0 5px;
-    text-align: center;
-}
-
-.pagination a{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-#boardSearch {
-    display : flex;
-    flex-direction: row;
-}
-#searchKey {
-    width: 120px;
-    height: 35px;
-    border-radius: 5px;
-    text-align: center;
-    border : 1px solid #dddd;
-}
-
-#searchQuery {
-    width: 400px;
-    height: 20px;
-    text-align: center;
-    border:none;
-}
-#searchQuery:focus{
-    outline: none;
-}
-
-#boardSearch button {
-    width : 35px;
-    height: 35px;
-    border: none;
-    background-color: transparent;
-    border-radius: 5px;
-}
-#serchArea{
-    height: 35px;
-    border : 1px solid #dddd;
-    margin-bottom: 60px;
-    margin-left: 20px;
-}
-.current{
-    font-weight: bold;
-    color: rgb(0, 149, 255) !important;
-    text-decoration: underline;
-}

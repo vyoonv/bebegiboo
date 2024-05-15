@@ -10,96 +10,138 @@
     <link rel="stylesheet" href="/css/manager/certificationInfo.css">
 </head>
 <body>
+    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/manager-bar}"></th:block>
+    
     <main>
-        <th:block th:replace="~{common/header}"></th:block>
-        <th:block th:replace="~{common/manager-bar}"></th:block>
+        
+        <section>
+            <div class="certificationInfoContainer">
 
-        <div class="certificationInfoContainer">
+                <div id="certificationInfoTitle" class="text" style="color: #6987C9; font-size: 15px;">
+                    기부내역 관리
+                </div>
 
-            <div id="certificationInfoTitle" class="text" style="color: black;">
-                기부내역 관리
-            </div>
+                <div class="viewLayer">
 
-            <div class="viewLayer">
-                <div id="certificationInfoBoard"></div>
+                    <div id="certificationInfoBox">
+                        <table class="list">
+                            <tr>
+                                <td style="width: 200px; margin-left: 30px; color: #6987C9;">신청인 ID</td>
+                                <td style="width: 500px; color: #6987C9;">신청일</td>
+                                <td style="width: 100px;"></td>
+                            </tr>                  
+                                      
+                            <tr class="listTr" th:each="certification : ${certification}">
+                                <td th:text="${certification.memberId}"></td>
+                                <td th:text="${certification.cDate}"></td>
+                                <td>
+                                    <!-- 확인하기 버튼에 모달창 불러오기 -->
+                                    <button class="select" 
+                                        th:attr="data-memberName=${certification.memberName}, 
+                                                data-certificationId=${certification.certificationId}, 
+                                                data-memberBirth=${certification.memberBirth}, 
+                                                data-phone=${certification.phone}, 
+                                                data-address=${certification.address},
+                                                data-memberNo=${certification.memberNo}">확인하기</button>
+                                </td>
+                            </tr>                  
+                        </table>
+                    </div>
+                </div>
 
-                <div id="certificationInfoBox">
-                    <div id="viewTitle" class="text" style="text-align: center; margin: 30px;"></div>
-                    <table>
-                        <tr class="text" style="border: none; font-size: 15px; text-align: center;">
-                            <td style="width: 130px;">신청인 ID</td>
-                            <td style="width: 120px;">신청일</td>
-                        </tr>                    
-                        <tr th:each="certification : ${certification}">
-                            <td th:text="${certification.memberId}"></td>
-                            <td th:text="${certification.cDate}"></td>
+            
+                <!-- 수정 모달창 -->
+                <div id="modal" class="hidden">
+                    <button class="popup-close">x</button>
+
+                    <div style="text-align: center; margin-bottom: 30px;" class="text">신청 정보 확인</div>
+
+                    <table class="modalTable">
+                        <tr>
+                            <td>이름</td>
                             <td>
-                                 <!-- 확인하기 버튼에 모달창 불러오기 -->
-                                <button class="select" 
-                                    th:attr="data-memberName=${certification.memberName}, 
-                                            data-certificationId=${certification.certificationId}, 
-                                            data-memberBirth=${certification.memberBirth}, 
-                                            data-phone=${certification.phone}, 
-                                            data-address=${certification.address},
-                                            data-memberNo=${certification.memberNo}">확인하기</button>
-                            </td>
+                                <input id="name" name="memberName">
                             </td>
                         </tr>
-                    
+                        <tr>
+                            <td>1365 ID</td>
+                            <td>
+                                <input id="certificationId" name="certificationId">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>생년월일</td>
+                            <td>
+                                <input id="birth" name="memberBirth">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>핸드폰번호</td>
+                            <td>
+                                <input id="phone" name="phone">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>주소</td>
+                            <td><input id="postcode" name="address"></td>                           
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input id="mainAddress" name="address"></td>                              
+                        </tr> 
+                        <tr>
+                            <td></td>
+                            <td><input id="detailAddress" name="address"></td>
+                        </tr>
                     </table>
 
-                    <div id="certifications" style="margin-right: 10px;"></div>
+                    <input id="memberNo" type="hidden" name="memberNo">
+
+                    <div id="button-container">
+                        <button id="updateButton" style="margin-top: 20px; width: 100px;">수정하기</button>
+                    </div>
                 </div>
-            </div>
 
-           
-            <!-- 수정 모달창 -->
-            <div id="modal" class="hidden">
-                <button class="popup-close">x</button>
 
-                <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;" class="text">신청 정보 확인</div>
+                 <!-- 페이지네이션 -->
+			<div class="pagination-area" id="pagination">
 
-                <table class="text" style="margin-left: 20px;">
-                    <tr>
-                        <td>이름</td>
-                        <td>
-                            <input id="name" name="memberName">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1365 ID</td>
-                        <td>
-                            <input id="certificationId" name="certificationId">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>생년월일</td>
-                        <td>
-                            <input id="birth" name="memberBirth">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>핸드폰번호</td>
-                        <td>
-                            <input id="phone" name="phone">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>주소</td>
-                        <td>
-                            <input id="postcode" name="address">
-                            <input id="mainAddress" name="address">
-                            <input id="detailAddress" name="address">
-                        </td>
-                    </tr>
-                </table>
+				<ul class="pagination" th:object="${pagination}">
 
-                <input id="memberNo" type="hidden" name="memberNo">
+					<!-- 첫 페이지로 -->
+					<li><a th:href="@{/manager/certificationInfo(cp=1)}">&lt;&lt;</a></li>
 
-                <div id="button-container">
-                    <button id="updateButton" style="margin-top: 30px; width: 100px;">수정하기</button>
-                </div>
-            </div>
+					<!-- 이전 목록 마지막 번호로-->
+					<li><a th:href="@{/manager/certificationInfo(cp=*{prevPage})}">&lt;</a></li>
+
+					<!-- 특정 페이지로 -->
+					
+					<th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+						
+						<!-- 현재 페이지 -->
+						<li th:if="${i} == *{currentPage}">
+							<a class="current" th:text="${i}">현재페이지</a>
+						</li>
+						
+						<!-- 나머지 페이지 -->
+						<li th:unless="${i} == *{currentPage}">
+							<a th:href="@{/manager/certificationInfo(cp=${i})}" 
+								th:text="${i}">이동할 페이지</a>
+						</li>
+					</th:block>
+						
+
+
+					
+					<!-- 다음 목록 시작 번호로 -->
+					<li><a th:href="@{/manager/certificationInfo(cp=*{nextPage})}">&gt;</a></li>
+
+					<!-- 끝 페이지로-->
+					<li><a th:href="@{/manager/certificationInfo(cp=*{maxPage})}">&gt;&gt;</a></li>
+				</ul>
+			</div>
+        </section>        
     </main>    
 
     <th:block th:replace="~{common/footer}"></th:block>

@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bebegiboo.project.donate.dto.DeliveryInfo;
-import com.bebegiboo.project.donate.dto.DonationThings;
 import com.bebegiboo.project.donateInfo.dto.PaymentInfo;
 
 @Mapper

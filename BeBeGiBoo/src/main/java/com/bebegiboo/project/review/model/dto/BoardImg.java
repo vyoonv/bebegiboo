@@ -21,6 +21,7 @@ public class BoardImg {
 	private String imgPath;
 	private String imgOriginalName;
 	private String imgRename;
+	private int imgOrder;
 	private int boardNo;
 	
 	//게시글 이미지 삽입, 수정

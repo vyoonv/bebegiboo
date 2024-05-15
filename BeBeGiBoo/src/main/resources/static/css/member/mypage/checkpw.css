@@ -1,4 +1,28 @@
-main{
+@font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+
+
+
+*{
+    font-family: 'ONE-Mobile-Regular';
+}
+
+
+
+.main-section{
     margin: 150px auto;
     width: 800px;
     min-height: 700px;
@@ -51,11 +75,11 @@ input{
 
     margin-top: 90px;
   
-    width: 280px;
-    height: 80px;
+    width: 250px;
+    height: 60px;
     
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
     background-color: #E5EDF8;
   
@@ -67,4 +91,9 @@ input{
     cursor: pointer;
     background-color: white;
     border: 2px solid #E5EDF8;
+}
+
+
+#memberPw{
+    font-family: 'Pretendard-Regular';
 }

@@ -115,6 +115,14 @@ nextButton.addEventListener("click", e=>{
     const memo = document.querySelector("#memo").value;
 
 
+    var ddate = new Date();
+    var year = ddate.getFullYear();
+    var month = ("0" + (1 + ddate.getMonth())).slice(-2);
+    var day = ("0" + ddate.getDate()).slice(-2);
+
+    document.querySelector("#date").min = year + "-" + month + "-" + day;
+
+
 
 
     /* 나이선택칸 */

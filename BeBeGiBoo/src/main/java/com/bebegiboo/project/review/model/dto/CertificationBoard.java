@@ -24,7 +24,6 @@ public class CertificationBoard {
 	private int readCount;
 	private String boardDelFl;
 	private int memberNo;
-	private int recordNo;
 	
 	//목록 조회 시 상관 서브 쿼리 결과
 	private int commentCount;

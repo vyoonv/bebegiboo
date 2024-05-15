@@ -12,93 +12,96 @@
      <!-- 헤더 -->
      <th:block th:replace="~{common/header}"></th:block>
 
-
     <main>
-
-        <!-- 로고 -->
-        <div id="font-logo-area">
-            <a href="/" id="font-logo">
-                <img src="/images/font-logo.png" alt="font-logo">
-            </a>
-        </div>
         
-        <div class="text">
-            <span>회원정보 수정</span>
-        </div>
+        <section class="main-section">
 
-      <section class="update">
-        <form action="updateMyInfo" method="post" name="update-form" id="updateForm">
-            <table class="info-input-area">
-                <tr>
-                    <td>이메일</td>
-                    <td><input name="email" id="email" th:value="${session.loginMember.email}"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>핸드폰 번호</td>
-                    <td><input name="phone" id="phone" th:value="${session.loginMember.phone}"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>비밀번호 수정</td>
-                    <td><input type="password" name="newPw" id="newPw" placeholder="수정할 비밀번호"></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>비밀번호 확인</td>
-                    <td><input type="password" name="newPwConfirm" id="newPwConfirm" placeholder="다시 한 번 입력해주세요"></td>
-                    <td></td>
-                </tr>
-            </table>
-            <table class="address-input-area">                                
-                <tr>
-                    <td>주소</td>
-                    <td>
-                        <input name="address" id="postcode" th:value="${postcode}">
-                    </td>
-                    <td>
-                        <button id="searchBtn">주소 검색</button>
-                    </td>
-                </tr>
-            </table>
-            <table class="detail-input-area">
-                <tr>
-                    <td class="detail-address">
-                        <input name="address" id="mainAddress" th:value="${mainAddress}">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="detail-address" >
-                        <input name="address" id="detailAddress" th:value="${detailAddress}">
-                    </td>
-                </tr>
-            </table>
-            <div>
-                <button id="editBtn">수정하기</button>
+            <!-- 로고 -->
+            <div id="font-logo-area">
+                <a href="/" id="font-logo">
+                    <img src="/images/font-logo.png" alt="font-logo" style="width: 200px;">
+                </a>
             </div>
-        </form>
-      </section>
+            
+            <div class="text">
+                <span>회원정보 수정</span>
+            </div>
 
-      <div class="text">
-        <span>회원 탈퇴</span>
-      </div>
-
-      <section class="resign">
-      
-        <form action="resign" method="post" name="resignForm" id="resignForm" >
-            <div class="resign-input-area">
-                <div>
-                    <div class="inputPw">
-                        <span>비밀번호를 입력해주세요</span>
-                        <input name="memberPw" type="password" id="memberPw">
+            <section class="update">
+                <form action="updateMyInfo" method="post" name="update-form" id="updateForm">
+                    <table class="info-input-area">
+                        <tr>
+                            <td>이메일</td>
+                            <td><input name="email" id="email" th:value="${session.loginMember.email}"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>핸드폰 번호</td>
+                            <td><input name="phone" id="phone" th:value="${session.loginMember.phone}"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호</td>
+                            <td><input type="password" name="newPw" id="newPw" placeholder="수정할 비밀번호"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호 확인</td>
+                            <td><input type="password" name="newPwConfirm" id="newPwConfirm" placeholder="다시 한 번 입력해주세요"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <table class="address-input-area">                                
+                        <tr>
+                            <td>주소</td>
+                            <td>
+                                <input name="address" id="postcode" th:value="${postcode}">
+                            </td>
+                            <td>
+                                <button id="searchBtn">주소 검색</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="detail-input-area">
+                        <tr>
+                            <td class="detail-address">
+                                <input name="address" id="mainAddress" th:value="${mainAddress}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="detail-address" >
+                                <input name="address" id="detailAddress" th:value="${detailAddress}">
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <button id="editBtn">수정하기</button>
                     </div>
-                </div>
-                <div>
-                    
-                    <button id="openBtn" style="font-weight: bold; font-size: 15px;">탈퇴 약관</button> 동의 체크
-                    <div id="modal" class="hidden">
-                        <button id="closeBtn">X</button>
-                        <textarea id="textArea">
+                </form>
+            </section>
+
+            <div class="text">
+                <span>회원 탈퇴</span>
+            </div>
+
+            <section class="resign">
+            
+                <form action="resign" method="post" name="resignForm" id="resignForm" >
+                    <div class="resign-input-area">
+                        <div>
+                            <div class="inputPw">
+                                <span>비밀번호를 입력해주세요</span>
+                                <input name="memberPw" type="password" id="memberPw">
+                            </div>
+                        </div>
+                        <div>
+                            
+                            <button id="openBtn">탈퇴 약관</button>
+                            <span style="font-size: 15px;"> 동의 체크</span>
+                            <input type="checkbox" id="agree">
+                            <div id="modal" class="hidden">
+                                <button id="closeBtn">X</button>
+                                <textarea id="textArea">
 BeBeGiBoo 회원(이하 "회원")을 탈퇴하기 전에 반드시 읽어 주십시오.
 
 본 약관은 BeBeGiBoo (이하 “당사”)가 BeBeGiBoo 회원(이하 “회원”)의 탈퇴에 관한 모든 조건을 규정한 것입니다. 
@@ -112,15 +115,16 @@ BeBeGiBoo 회원(이하 "회원")을 탈퇴하기 전에 반드시 읽어 주십
 탈퇴 후에도 카드결제 등으로 발생한 이용요금 지불책임은 이행해야 합니다.
 회원 탈퇴 수속이 수리된 후에도 회원정보에 대해서는 당사가 관리하게 됩니다.
 탈퇴 후에 회원정보를 삭제하는 경우도 있으므로 양해해 주십시오.
-                        </textarea>  
+                                </textarea>  
+                            </div>
+                            
+                                <button id="resignBtn">회원탈퇴</button>
+                        </div>
                     </div>
-                    <input type="checkbox" id="agree">
-                        <button id="resignBtn">회원탈퇴</button>
-                </div>
-            </div>
-        </form>
+                </form>
 
-      </section>
+            </section>
+        </section>
 
     </main>   
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.review.model.mapper.EditReviewMapper">
+	
+ 	<insert id="boardInsert" useGeneratedKeys="true" parameterType="CertificationBoard">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "CERTIFICATION_BOARD" VALUES(
+			#{boardNo},
+			#{boardTitle},
+			#{boardContent},
+			DEFAULT, NULL, DEFAULT, DEFAULT,
+			#{memberNo}) 
+		
+	</insert>
+
+	<!--게시글 이미지 모두 삽입-->
+	<insert id="insertUploadList" parameterType="list">
+		INSERT INTO "BOARD_IMG"
+		
+		<foreach collection="list" item="img"
+
+			open ="(" close=")" separator=" UNION ">
+		SELECT 
+		NEXT_IMG_NO(),
+		#{img.imgPath},
+		#{img.imgOriginalName},
+		#{img.imgRename},
+		#{img.boardNo},
+		#{img.imgOrder}
+		FROM DUAL	
+		</foreach>
+	</insert>
+	
+	<update id="boardUpdate">
+		UPDATE "CERTIFICATION_BOARD"
+		SET BOARD_TITLE =#{boardTitle},
+		BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_NO=#{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<delete id="deleteImage">
+		DELETE FROM "BOARD_IMG"
+		WHERE IMG_ORDER IN (${deleteOrder})
+		AND BOARD_NO = #{boardNo}
+	</delete>
+	
+	<update id="updateImage"> 
+		UPDATE "BOARD_IMG" SET
+		IMG_ORIGINAL_NAME = #{imgOriginalName},
+		IMG_RENAME = #{imgRename}
+		WHERE BOARD_NO = #{boardNo}
+		AND IMG_ORDER = #{imgOrder}		
+	</update>
+	
+	<insert id="insertImage"> 
+		INSERT INTO "BOARD_IMG" 
+		VALUES(
+				NEXT_IMG_NO(),
+				#{imgPath},
+				#{imgOriginalName},
+				#{imgRename},
+				#{boardNo},
+				#{imgOrder})	
+	</insert>
+	
+	<update id="boardDelete"> 
+		UPDATE "CERTIFICATION_BOARD"
+		SET BOARD_DEL_FL = 'Y'
+		WHERE BOARD_NO =#{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+</mapper>

@@ -13,46 +13,49 @@
     <th:block th:replace="~{common/header}"></th:block>
 
     <main>
-        <div class="instructions">
-            <div>
-                <img id="checkImg" src="/images/check-icon.png">
+        <section>
+            <div class="instructions">
+                <div>
+                    <img id="checkImg" src="/images/check-icon.png">
+                </div>
+                <div class="where">
+                    <div>봉사 인증 신청이 완료되었습니다.</div>
+                    <div>신청 정보는 <a href="https://www.1365.go.kr/vols/main.do" style="font-weight: bold;" id="page">1365 자원봉사 포털 페이지</a>에서 확인 가능합니다.</div>
+                </div>
             </div>
-            <div class="where">
-                <div>봉사 인증 신청이 완료되었습니다.</div>
-                <div>신청 정보는 <a href="https://www.1365.go.kr/vols/main.do" style="font-weight: bold;" id="page">1365 자원봉사 포털 페이지</a>에서 확인 가능합니다.</div>
-            </div>
-        </div>
 
-        <!-- 간단한 신청정보 -->
-        <div class="info-area">
-            <div>신청 내역</div>
-            <div class="info-box">
-                <div>
-                    <div>아이디</div>
-                    <div th:text="${session.certification.memberId}">봉사자 아이디</div>
-                </div>
-                <div>
-                    <div>이름</div>
-                    <div th:text="${session.certification.memberName}">이름</div>
-                </div>
-                <div>
-                    <div>1365 아이디</div>
-                    <div th:text="${session.certification.certificationId}">1365 아이디</div>
-                </div>
-                <div>
-                    <div>생년월일</div>
-                    <div th:text="${session.certification.memberBirth}">생년월일</div>
-                </div>
-                <div>
-                    <div>핸드폰 번호</div>
-                    <div th:text="${session.certification.phone}">핸드폰번호</div>
-                </div>
-                <div>
-                    <div>주소</div>
-                    <div name="address" th:text="${session.certification.address}">주소</div>
+            <!-- 간단한 신청정보 -->
+            <div class="info-area">
+                <div>신청 내역</div>
+                <div class="info-box">
+                    <div>
+                        <div>아이디</div>
+                        <div th:text="${session.certification.memberId}">봉사자 아이디</div>
+                    </div>
+                    <div>
+                        <div>이름</div>
+                        <div th:text="${session.certification.memberName}">이름</div>
+                    </div>
+                    <div>
+                        <div>1365 아이디</div>
+                        <div th:text="${session.certification.certificationId}">1365 아이디</div>
+                    </div>
+                    <div>
+                        <div>생년월일</div>
+                        <div th:text="${session.certification.memberBirth}">생년월일</div>
+                    </div>
+                    <div>
+                        <div>핸드폰 번호</div>
+                        <div th:text="${session.certification.phone}">핸드폰번호</div>
+                    </div>
+                    <div>
+                        <div>주소</div>
+                        <div name="address" th:text="${session.certification.address}">주소</div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </section>
     </main>
     
     <!-- FOOTER -->

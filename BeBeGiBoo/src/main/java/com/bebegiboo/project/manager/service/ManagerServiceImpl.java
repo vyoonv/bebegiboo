@@ -1,23 +1,25 @@
 package com.bebegiboo.project.manager.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.bebegiboo.project.certification.model.dto.Certification;
-import com.bebegiboo.project.donateInfo.dto.DonationProduct;
 import com.bebegiboo.project.donateInfo.dto.DonationRecord;
+import com.bebegiboo.project.faqboard.model.dto.FaqBoard;
+
 import com.bebegiboo.project.manager.dto.DetailProduct;
 import com.bebegiboo.project.manager.mapper.ManagerMapper;
+import com.bebegiboo.project.manager.pagination.ManagerPagination;
 import com.bebegiboo.project.member.model.dto.Member;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class ManagerServiceImpl implements ManagerService{
 	
 	private final ManagerMapper mapper;
@@ -43,11 +45,8 @@ public class ManagerServiceImpl implements ManagerService{
 	@Override
 	public List<DonationRecord> selectDonationThingsList(int memberNo) {
 
-
 		return mapper.selectDonationThingsList(memberNo);
 	}
-
-
 
 
 
@@ -66,9 +65,9 @@ public class ManagerServiceImpl implements ManagerService{
 
 	// 피기부자 목록 조회
 	@Override
-	public List<Member> selectAcceptorList() {
+	public List<Member> selectAcceptorList(int recordNo) {
 
-		return mapper.selectAcceptorList();
+		return mapper.selectAcceptorList(recordNo);
 	}
 
 
@@ -84,9 +83,25 @@ public class ManagerServiceImpl implements ManagerService{
 	 * 봉사인증신청서 목록 조회 
 	 */
 	@Override
-	public List<Certification> certificationList() {
+	public Map<String, Object> certificationList(int cp) {
 		
-		return mapper.certificationList();
+		int listCount = mapper.getListCount(); 
+		
+		ManagerPagination pagination = new ManagerPagination(cp, listCount); 
+		
+		int limit = pagination.getLimit(); 
+		int offset = (cp-1)*limit; 
+		
+		RowBounds rowBounds= new RowBounds(offset, limit); 
+		
+		List<Certification> certificationList = mapper.certificationList(rowBounds); 
+		
+		Map<String, Object> map = new HashMap<>(); 
+		
+		map.put("pagination", pagination); 
+		map.put("certificationList", certificationList); 
+		
+		return map;
 	}
 
 
@@ -100,5 +115,8 @@ public class ManagerServiceImpl implements ManagerService{
 		
 		return mapper.infoUpdate(inputInfo);
 	}
+
+
+
 
 }

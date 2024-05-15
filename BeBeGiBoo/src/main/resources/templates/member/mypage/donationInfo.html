@@ -13,6 +13,7 @@
          <th:block th:replace="~{common/header}"></th:block>
 
         <main>
+
             <section class="form-area">
 
                 <div class="donationList-logo"><a href="/member/mypage/donationInfo">기부 내역</a></div>
@@ -62,10 +63,10 @@
                                             <tr>
                                                 <td>기부 물품 전달 여부</td>
                                                 <td th:if="${record.acceptorNo}">
-                                                    <span>매칭 성공하여 전달하였습니다.</span>
+                                                    <span>성공적으로 전달됨</span>
                                                 </td>
                                                 <td th:unless="${record.acceptorNo}">
-                                                    <span>아직 피기부자가 정해지지 않았습니다.</span>
+                                                    <span>피기부자가 정해지지 않음.</span>
                                                 </td>
                                             </tr>
                                         </table>  

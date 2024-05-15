@@ -50,9 +50,10 @@ function selectMember() {
 
                     donationThings.innerHTML = "";
 
-                    tbody.style.transform = "translateX(-350px)";
-                    donationThingsBox.style.transform = "translateX(-350px)";
+                    tbody.style.transform = "translateX(-320px)";
+                    donationThingsBox.style.transform = "translateX(-320px)";
                     donationThingsBox.style.visibility = 'visible';
+                    donationThingsBox.style.position = "sticky";
 
                     fetch("/manager/selectDonationThings", {
                         method : "POST",
@@ -63,7 +64,10 @@ function selectMember() {
                     .then(result => {
                         const donationThingsList = JSON.parse(result);
 
-                        console.log(donationThingsList);
+
+                        if(donationThingsList.length == 0) {
+                            donationThings.innerHTML = "<p>기부한 물품이 존재하지 않습니다.</p>";
+                        }
 
                         donationThingsList.forEach( (product) => {
                             if(product.acceptorNo == 0) {
@@ -83,6 +87,7 @@ function selectMember() {
 
                             const tr = document.createElement("tr");
                             tr.classList.add("shadow");
+                            tr.style.border = "1px gray solid";
                             for(let key of arr){
                                 const td = document.createElement("td");
                                 td.innerText = key;
@@ -108,8 +113,6 @@ function selectMember() {
                                 .then(resp => resp.text())
                                 .then(result => {
                                     const donationDetailThingsList = JSON.parse(result);
-            
-                                    console.log(donationDetailThingsList);
 
                                     donationDetailThingsList.forEach( (detailProduct) => {
             
@@ -124,7 +127,7 @@ function selectMember() {
                                         extr.classList.add("text");
                                         extr.style.fontSize = "12px";
                                         extr.style.color = "rgb(0,149,250)";
-                                        extr.style.margin = "15px 0";
+                                        extr.style.marginTop = "10px";
                                         const nametd = document.createElement("td");
                                         const phonetd = document.createElement("td");
                                         const addresstd = document.createElement("td");
@@ -140,6 +143,7 @@ function selectMember() {
                                         extr.append(addresstd);
                                         extr.append(producttd);
                                         detailDiv.append(extr);
+                                        detailDiv.style.border = "1px gray solid";
 
                                         const tr = document.createElement("tr");
                                         for(let key of arr){
@@ -147,12 +151,12 @@ function selectMember() {
                                             td.innerText = key;
                                             tr.append(td);
                                             tr.classList.add("text");
+                                            detailDiv.append(tr);
                                         }
-                                        tr.style.marginBottom = "20px";
-                                        detailDiv.append(tr);
+                                        tr.style.marginBottom = "10px";                                        
                                         if(detailProduct.acceptorNo == 0) {
                                             const acceptorButton = document.createElement("button");
-                                            acceptorButton.innerText = "피기부자 연결하기";
+                                            acceptorButton.innerText = "피기부자 지정";
                                             acceptorButton.classList.add("acceptorButton");
                                             detailDiv.append(acceptorButton);
 
@@ -163,10 +167,20 @@ function selectMember() {
                                                 donatorName.innerText = detailProduct.donatorName;
                                                 donateThings.innerText = detailProduct.productName;
     
-                                                fetch("/manager/selectAcceptor")
+                                                fetch("/manager/selectAcceptor", {
+                                                    method : "POST",
+                                                    headers : {"Content-Type" : "application/json"},
+                                                    body : JSON.stringify(product.recordNo)
+                                                })
                                                 .then(resp => resp.text())
                                                 .then(result => {
                                                     const acceptorList = JSON.parse(result);
+
+                                                    if(acceptorList.length == 0) {
+                                                        acceptorBox.style.textAlign = "center";
+                                                        acceptorBox.style.fontWeight = "bold";
+                                                        acceptorBox.innerText = "신청자 없음";
+                                                    }
                             
                                                     console.log(acceptorList);
                 

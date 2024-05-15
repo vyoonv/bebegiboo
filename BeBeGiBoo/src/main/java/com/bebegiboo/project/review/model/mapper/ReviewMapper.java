@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
-import com.bebegiboo.project.certification.model.dto.Certification;
 import com.bebegiboo.project.review.model.dto.CertificationBoard;
 @Mapper
 public interface ReviewMapper {
@@ -46,5 +45,10 @@ public interface ReviewMapper {
 	 * @return
 	 */
 	int upadateReadCount(int boardNo);
+
+	/** 메인용 보드 조회
+	 * @return
+	 */
+	List<CertificationBoard> selectBoardList();
 
 }

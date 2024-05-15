@@ -1,4 +1,22 @@
 
+.header-main {
+  color: white;
+}
+#logoutstyle {
+  color: white;
+}
+
+@font-face {
+  font-family: 'ONE-Mobile-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'ONE-Mobile-Regular';
+}
+
 .main	{
   overflow: auto;
 }
@@ -14,7 +32,7 @@
     -moz-filter: blur(10px); 
     -o-filter: blur(10px); 
     -ms-filter: blur(10px); 
-    filter: blur(10px);
+    filter: blur(10px) brightness(80%);
     transform: scale(1.02);
     z-index: -1; 
     content: "";
@@ -61,6 +79,7 @@ input {
   justify-content: center;
   align-items: center;
   transition-duration: 1s;
+  margin-bottom: 50px;
 
 }
 
@@ -74,6 +93,7 @@ input {
 }
 
 .order-container {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -124,6 +144,13 @@ input {
   display: flex;
 }
 
+#memo::placeholder {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  margin: 10px;
+  padding: 3px;
+}
+
 
 .preNext {
   position: fixed;
@@ -168,9 +195,21 @@ input:disabled {
   background-color: white;
 }
 
+#searchKey {
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  border : 1px solid #dddd;
+}
 
-
-
+#payment {
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  border : 1px solid #dddd;
+}
 
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,600);
@@ -257,4 +296,13 @@ figure.snip1425.hover:after {
   -webkit-transform: rotate3d(0, 0, 0, 0deg);
   transform: rotate3d(0, 0, 0, 0deg);
   opacity: 0.9;
+}
+
+#hover {
+  position: absolute;
+  top: 32%;
+  left: 43%;
+  color: white;
+  width: 250px;
+  font-size: 15px;
 }

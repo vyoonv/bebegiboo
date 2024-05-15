@@ -17,18 +17,17 @@
 			#{memberBirth},
 			#{phone},
 			#{address}, 
-			#{memberNo}	)
+			#{memberNo},
+			DEFAULT	)
 	</insert>
-	
-	
-	
+		
 
 	<!-- 이미지  -->
 	<insert id="insertUploadList" parameterType="list">
 	    INSERT INTO "CERTIFICATION_IMG"
 	    <foreach collection="list" item="img" open="(" close=")"
 		 		 separator=" UNION ">
-		 SELECT NEXT_IMG_NO(), 
+		 SELECT NEXT_C_IMG_NO(), 
 		 		#{img.cImgPath}, 
 		 		#{img.cImgOriginalName}, 
 		 		#{img.cImgRename}, 

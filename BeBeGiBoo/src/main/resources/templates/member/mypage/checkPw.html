@@ -15,45 +15,47 @@
 
 
     <main>
-        <!-- 로고 -->
-    <div id="font-logo-area">
-        <a href="/" id="font-logo">
-            <img src="/images/font-logo.png" alt="font-logo">
-        </a>
-    </div>
 
-        <!-- 비밀번호 확인-->
-        <div id="check-text">
-            <span>비밀번호 확인</span>
-        </div>
+        <section class="main-section">
+            <!-- 로고 -->
+            <div id="font-logo-area">
+                <a href="/" id="font-logo">
+                    <img src="/images/font-logo.png" alt="font-logo" style="width: 200px;">
+                </a>
+            </div>
 
-        <!-- 비밀번호 체크 폼-->
-        <section class="checkpw">
-           <div>
-                <form action="/member/mypage/checkPw" method="POST" class="checkPwForm">
-                    <table>
-                        <tr>
-                            <td id="text">
-                                <span>비밀번호를 입력해주세요</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div id="input-area">
-                                    <input type="password" name="memberPw" required>
-                                </div>
-                            </td>
-                        </tr>                      
-                    </table>
+                <!-- 비밀번호 확인-->
+                <div id="check-text">
+                    <span>비밀번호 확인</span>
+                </div>
 
-                    <!-- 버튼 -->
-                    <div>
-                        <button id="submitBtn">제출하기</button>
-                    </div>
-                </form>    
-           </div>
+                <!-- 비밀번호 체크 폼-->
+                <section class="checkpw">
+                <div>
+                        <form action="/member/mypage/checkPw" method="POST" class="checkPwForm">
+                            <table>
+                                <tr>
+                                    <td id="text">
+                                        <span>비밀번호를 입력해주세요</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="input-area">
+                                            <input type="password" name="memberPw" id="memberPw" required>
+                                        </div>
+                                    </td>
+                                </tr>                      
+                            </table>
+
+                            <!-- 버튼 -->
+                            <div>
+                                <button id="submitBtn">제출하기</button>
+                            </div>
+                        </form>    
+                </div>
+                </section>
         </section>
-
 
 
 

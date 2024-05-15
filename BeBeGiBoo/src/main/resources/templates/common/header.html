@@ -1,14 +1,24 @@
 <header>
 
     <div class="header-main">
-        <!-- 로고사진 -->
-        <span><img src="/images/logo-black.PNG" id="logo" onclick="location.href='/';"></span>
     
         <!-- BeBeGiBoo 글씨부분 -->
-        <span onclick="location.href='/';" style="cursor: pointer;">BeBeGiBoo</span>
+        <img onclick="location.href='/';" src="/images/font-logo.png" id="font-logo"style="cursor: pointer;">
+
     
         <!-- 가운데 여백부분 -->
-        <span></span>
+        <span id="middle-header" style="padding-left: 150px; display: flex; justify-content: center;">
+			<span th:if="${session.loginMember != null}"><a href="/member/mypage/checkPw">회원정보 수정</a></span>
+			<span th:if="${session.loginMember != null}"><a href="/member/mypage/donationInfo">기부내역 조회</a></span>
+			<span th:unless="${session.loginMember != null}"><a href="/member/signup/signupMain">회원가입</a></span>
+			<span><a href="/donation">기부하기</a></span>
+			<span><a href="/page/info">페이지 소개</a></span>
+			<span><a href="/page/approach">이용방법</a></span>
+			<span><a href="/review">후기게시판</a></span>
+			<span><a href="/certification/certification-main">봉사 인증 신청</a></span>
+			<span><a href="/faqBoard/faqBoard">FAQ</a></span>
+			<span th:if="${session.loginMember != null and session.loginMember.authority == 2}"><a href="/acceptor/main">기부물품 신청하기</a></span>
+		</span>
     
         <!-- 환영합니다 문구 -->
 
@@ -20,45 +30,70 @@
 		
 		<!--로그인 O-->
 		<th:block th:unless="${session.loginMember == null}">
-			<span th:text="|${session.loginMember.memberName}님 안녕하세요|">회원이름</span>
-			<span class="text" style="width: 80px;"><a style="font-size: 15px;" href="/member/logout">로그아웃</a></span>
+			<span style="margin: 0; font-weight: 600;" th:text="${session.loginMember.memberName}">회원이름</span>
+			<span style="width: 80px; font-size: 12px; margin-right: 20px;">님 안녕하세요</span>
+
+			<span class="text" style="width: 80px; font-weight: 600;"><a style="font-size: 15px;" href="/member/logout" id="logoutstyle">로그아웃</a></span>
 
 		</th:block>
 		
-		<!-- 햄버거 버튼 -->
+		
+		<!-- 햄버거 버튼
 		<span><img src="/images/hamburger.png" style="width: 40px;" id="hamburger"></span>
+		-->
     </div>
   
+	<!--
 	<th:block th:if="${session.loginMember == null}">
 		<div id="nav-container-null">
-		    <div class="text"><a href="/member/signup/signupMain">회원가입</a></div>
-		    <div class="text"><a href="/donation">기부하기</a></div>
-		    <div class="text"><a href="/page/info">페이지 소개</a></div>
-		    <div class="text"><a href="/page/approach">이용방법</a></div>
-		    <div class="text"><a href="/review">후기게시판</a></div>
-			<div class="text"><a href="/certification/certification-main">봉사 인증 신청</a></div>
-		    <div class="text"><a href="/faqBoard/faqBoard">FAQ</a></div>
+		    <div class="text"><a href="/member/signup/signupMain" class="noHover">회원가입</a></div>
+		    <div class="text"><a href="/donation" class="noHover">기부하기</a></div>
+		    <div class="text"><a href="/page/info" class="noHover">페이지 소개</a></div>
+		    <div class="text"><a href="/page/approach" class="noHover">이용방법</a></div>
+		    <div class="text"><a href="/review" class="noHover">후기게시판</a></div>
+			<div class="text"><a href="/certification/certification-main" class="noHover">봉사 인증 신청</a></div>
+		    <div class="text"><a href="/faqBoard/faqBoard" class="noHover">FAQ</a></div>
 		</div>
 	</th:block>
 
 	<th:block th:unless="${session.loginMember==null}">
-		<div id="nav-container">
-			<div class="nav-container-child">
-				<div class="text nav-child" style="visibility: hidden;" id="hover1"><a href="/member/mypage/checkPw">회원정보 수정</a></div>
-				<div class="text nav-child" style="visibility: hidden;" id="hover2"><a href="/member/mypage/donationInfo">기부내역 조회</a></div>
+		<th:block th:if="${session.loginMember.authority == 2}">
+			<div id="nav-container">
+				<div class="nav-container-child">
+					<div class="text nav-child" style="visibility: hidden;" id="hover1"><a href="/member/mypage/checkPw">회원정보 수정</a></div>
+					<div class="text nav-child" style="visibility: hidden;" id="hover2"><a href="/member/mypage/donationInfo">기부내역 조회</a></div>
+				</div>
+				<div class="nav-container-child">
+					<div class="text"><a href="#" id="myPage">마이페이지</a></div>
+					<div class="text"><a href="/donation" class="noHover">기부하기</a></div>
+					<div class="text"><a href="/page/info" class="noHover">페이지 소개</a></div>
+					<div class="text"><a href="/page/approach" class="noHover">이용방법</a></div> 
+					<div class="text"><a href="/review" class="noHover">후기게시판</a></div>
+					<div class="text"><a href="/certification/certification-main" class="noHover">봉사 인증 신청</a></div>
+					<div class="text"><a href="/faqBoard/faqBoard" class="noHover">FAQ</a></div>
+					<div class="text"><a href="/acceptor/main">기부물품 신청하기</a></div>
+				</div>
 			</div>
-			<div class="nav-container-child">
-				<div class="text"><a href="#" id="myPage">마이페이지</a></div>
-				<div class="text"><a href="/donation" class="noHover">기부하기</a></div>
-				<div class="text"><a href="/page/info" class="noHover">페이지 소개</a></div>
-				<div class="text"><a href="/page/approach" class="noHover">이용방법</a></div> 
-				<div class="text"><a href="/review" class="noHover">후기게시판</a></div>
-				<div class="text"><a href="/certification/certification-main" class="noHover">봉사 인증 신청</a></div>
-				<div class="text"><a href="/faqBoard/faqBoard" class="noHover">FAQ</a></div>
+		</th:block>
+		<th:block th:unless="${session.loginMember.authority == 2}">
+			<div id="nav-container">
+				<div class="nav-container-child">
+					<div class="text nav-child" style="visibility: hidden;" id="hover1"><a href="/member/mypage/checkPw">회원정보 수정</a></div>
+					<div class="text nav-child" style="visibility: hidden;" id="hover2"><a href="/member/mypage/donationInfo">기부내역 조회</a></div>
+				</div>
+				<div class="nav-container-child">
+					<div class="text"><a href="#" id="myPage">마이페이지</a></div>
+					<div class="text"><a href="/donation" class="noHover">기부하기</a></div>
+					<div class="text"><a href="/page/info" class="noHover">페이지 소개</a></div>
+					<div class="text"><a href="/page/approach" class="noHover">이용방법</a></div> 
+					<div class="text"><a href="/review" class="noHover">후기게시판</a></div>
+					<div class="text"><a href="/certification/certification-main" class="noHover">봉사 인증 신청</a></div>
+					<div class="text"><a href="/faqBoard/faqBoard" class="noHover">FAQ</a></div>
+				</div>
 			</div>
-		</div>
+		</th:block>
 	</th:block>
-
+	-->
     <script src="/js/header.js"></script>
 </header>
   

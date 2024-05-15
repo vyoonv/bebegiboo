@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.bebegiboo.project.member.model.dto.Member;
 
-import lombok.RequiredArgsConstructor;
 
 public interface UpdateMyInfoService {
 

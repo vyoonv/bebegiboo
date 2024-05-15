@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/* 수정하기 */
 document.addEventListener('DOMContentLoaded', function() {
     var updateButton = document.getElementById('updateButton');
 
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.error('There was a problem with your fetch operation:', error);
+            console.error('에러메세지 : ', error);
         });
         
   

@@ -1,7 +1,8 @@
 /* 생년월일 유효성 검사 */
 
 const memberBirth = document.querySelector("#memberBirth"); 
-const formMessage = document.querySelector("#formMessage"); 
+const birthMessage = document.querySelector("#birthMessage"); 
+const phoneMessage = document.querySelector("#phoneMessage"); 
 
 memberBirth.addEventListener("input", e => {
 
@@ -16,20 +17,20 @@ memberBirth.addEventListener("input", e => {
     }
 
     // 생일 정규식
-    const regExp = /^\d{8}$/; 
+    const regExp = /^(19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/; 
     
     // 유효하지 않은 경우 
     if( !regExp.test(inputBirth) ) {
-        formMessage.innerText = "생년월일 8자리 '-' 없이 입력해주세요"; 
-        formMessage.classList.add('error'); 
-        formMessage.classList.remove('confirm'); 
+        birthMessage.innerText = "생년월일 8자리 '-' 없이 입력해주세요"; 
+        birthMessage.classList.add('error'); 
+        birthMessage.classList.remove('confirm'); 
         return; 
     }
 
     // 유효한 경우 
-    formMessage.innerText = ""; 
-    formMessage.classList.add('confirm'); 
-    formMessage.classList.remove('error'); 
+    birthMessage.innerText = ""; 
+    birthMessage.classList.add('confirm'); 
+    birthMessage.classList.remove('error'); 
 
 
 }); 
@@ -46,8 +47,8 @@ phone.addEventListener("input", e => {
 
      // 입력되지 않은 경우 
      if(inputPhone.trim().length === 0) {
-        formMessage.innerText = "핸드폰번호 '-'포함해서 입력해주세요"; 
-        formMessage.classList.remove('confirm', 'error'); 
+        phoneMessage.innerText = "핸드폰번호 '-'포함해서 입력해주세요"; 
+        phoneMessage.classList.remove('confirm', 'error'); 
         phone.value = ""; 
         return; 
     }
@@ -57,16 +58,16 @@ phone.addEventListener("input", e => {
     
     // 유효하지 않은 경우 
     if( !regExp.test(inputPhone) ) {
-        formMessage.innerText = "핸드폰번호 '-'포함해서 입력해주세요"; 
-        formMessage.classList.add('error'); 
-        formMessage.classList.remove('confirm'); 
+        phoneMessage.innerText = "핸드폰번호 '-'포함해서 입력해주세요"; 
+        phoneMessage.classList.add('error'); 
+        phoneMessage.classList.remove('confirm'); 
         return; 
     }
 
     // 유효한 경우 
-    formMessage.innerText = ""; 
-    formMessage.classList.add('confirm'); 
-    formMessage.classList.remove('error'); 
+    phoneMessage.innerText = ""; 
+    phoneMessage.classList.add('confirm'); 
+    phoneMessage.classList.remove('error'); 
 
 }); 
 
@@ -96,7 +97,11 @@ function DaumPostcode() {
     }).open();
 }
 
-document.querySelector("#searchBtn").addEventListener("click", DaumPostcode);
+// 주소 검색 버튼 클릭 시
+document.querySelector("#searchBtn").addEventListener("click", e => {
+    e.preventDefault(); 
+    DaumPostcode(); 
+});
 
 
 /* 모달 */
@@ -107,17 +112,21 @@ const closeBtn = document.getElementById('closeBtn');
 const closeBtn2 = document.getElementById('closeBtn2');
 const modal = document.getElementById('modal');
 
-openBtn.addEventListener('click', () => {
+openBtn.addEventListener('click', e => {
+    e.preventDefault(); 
   modal.classList.remove('hidden');
 });
-openBtn2.addEventListener('click', () => {
+openBtn2.addEventListener('click', e => {
+    e.preventDefault(); 
   modal.classList.remove('hidden');
 });
 
-closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', e => {
+    e.preventDefault(); 
   modal.classList.add('hidden');
 });
-closeBtn2.addEventListener('click', () => {
+closeBtn2.addEventListener('click', e => {
+    e.preventDefault(); 
   modal.classList.add('hidden');
 });
 

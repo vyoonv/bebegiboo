@@ -43,7 +43,10 @@
 	</select>
 	
 	<select id="selectAcceptorList">
-		SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, EMAIL, PHONE, ADDRESS FROM "MEMBER" WHERE AUTHORITY = 2
+		SELECT M.MEMBER_NO, MEMBER_ID, MEMBER_NAME, EMAIL, PHONE, ADDRESS
+		FROM "MEMBER" m LEFT JOIN "WISH_LIST" w ON(m.MEMBER_NO = w.MEMBER_NO)
+		WHERE AUTHORITY = 2
+		AND RECORD_NO = #{recordNo}
 	</select>
 	
 	<update id="connectDonate">
@@ -61,6 +64,7 @@
 		ORDER BY C_DATE DESC
 	</select>
 	
+	<!-- 봉사인증신청 수정 -->
 	<update id="infoUpdate">
 		UPDATE CERTIFICATION SET
 		MEMBER_NAME = #{memberName},
@@ -70,5 +74,12 @@
 		ADDRESS = #{address}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<!-- 봉사인증신청서 수 조회 -->
+	<select id="getListCount">
+		SELECT COUNT(*)
+		FROM CERTIFICATION
+	</select>
+	
 
 </mapper>

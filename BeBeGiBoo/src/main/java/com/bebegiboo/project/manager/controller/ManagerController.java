@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bebegiboo.project.certification.model.dto.Certification;
@@ -109,9 +110,9 @@ public class ManagerController {
 	 * @return
 	 */
 	@ResponseBody
-	@GetMapping("selectAcceptor")
-	public List<Member> selectAcceptorList() {
-		List<Member> acceptorList = service.selectAcceptorList();
+	@PostMapping("selectAcceptor")
+	public List<Member> selectAcceptorList(@RequestBody int recordNo) {
+		List<Member> acceptorList = service.selectAcceptorList(recordNo);
 		
 		log.info("왜"+acceptorList);
 		
@@ -130,20 +131,29 @@ public class ManagerController {
 	}
 	
 	
+	/** 인증신청서 목록 조회 
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("certificationInfo")
-	public String certificationInfoPage( Model model ) {
+	public String certificationInfoPage( Model model,
+									@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
 		
-		List<Certification> certificationList = service.certificationList(); 
+		Map<String, Object> map = service.certificationList(cp); 
+		 
 		
-		log.info("출력좀.." + certificationList);
+		log.info("출력좀.." + map);
 		
-		model.addAttribute("certification", certificationList); 
-		
-		
-		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("certification", map.get("certificationList"));
+			
 		return "/manager/certificationInfo"; 
 	}
 	
+	/** 인증신청서 수정 
+	 * @param inputInfo
+	 * @return
+	 */
 	@ResponseBody
 	@PutMapping("certificationUpdate")
 	public int certificationInfoUpdate( @RequestBody Certification inputInfo ) {

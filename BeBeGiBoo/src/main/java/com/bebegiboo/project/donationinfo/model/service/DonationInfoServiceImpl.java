@@ -21,26 +21,28 @@ public class DonationInfoServiceImpl implements DonationInfoService{
 	
 	private final DonationInfoMapper mapper;
 
+	// 기부 레코드 리스트 가져오기
 	@Override
 	public List<DonationRecord> getDonationRecord(int memberNo) {
 		
 		return mapper.getDonationRecord(memberNo);
 	}
 
+	// 기부 배송 정보 가져오기 
 	@Override
 	public List<DeliveryInfoList> getDeliveryInfo(int memberNo) {
 		
 		return mapper.getDeliveryInfo(memberNo);
 	}
 
+	// 기부 물품 정보 가져오기 
 	@Override
 	public List<DonationProduct> getProductInfo(int memberNo) {
 		
-		return mapper.getProductInfo(memberNo);
-		
-		
+		return mapper.getProductInfo(memberNo);		
 	}
 
+	// 기부 결제 정보 가져오기 
 	@Override
 	public List<PaymentInfo> getPaymentInfo(int memberNo) {
 		

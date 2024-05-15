@@ -144,7 +144,7 @@ if(resignForm != null) {
             e.preventDefault(); 
             return; 
         }
-
+        
         if(!agree.checked) { // 체크 안됐을 때
             alert("약관에 동의해주세요");
             e.preventDefault();
@@ -167,12 +167,14 @@ const openBtn = document.getElementById('openBtn');
 const closeBtn = document.getElementById('closeBtn');
 const modal = document.getElementById('modal');
 
-openBtn.addEventListener('click', () => {
-  modal.classList.remove('hidden');
+openBtn.addEventListener('click', e => {
+    e.preventDefault(); 
+    modal.classList.remove('hidden');
 });
 
-closeBtn.addEventListener('click', () => {
-  modal.classList.add('hidden');
+closeBtn.addEventListener('click', e => {
+    e.preventDefault(); 
+    modal.classList.add('hidden');
 });
 
 

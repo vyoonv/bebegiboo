@@ -10,8 +10,8 @@ const checkObj = {
     "phone" : false, 
     "email" : false, 
     "authKey" : false,
-    "address" : false
-}; 
+    "address" :false
+}    
 
 /* 권한 깂 확인 용도 */
 const authority = document.querySelector("#authority"); 
@@ -243,7 +243,7 @@ memberBirth.addEventListener("input", e => {
     }
 
     // 생일 정규식
-    const regExp = /^\d{8}$/; 
+    const regExp = /^(19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/; 
     
     // 유효하지 않은 경우 
     if( !regExp.test(inputBirth) ) {
@@ -531,10 +531,21 @@ function DaumPostcode() {
 // 주소 검색 버튼 클릭 시
 document.querySelector("#searchAddress").addEventListener("click", DaumPostcode);
 
+/* 주소 유효성 검사 */
+const postcode = document.querySelector("#postcode"); 
+const mainAddress = document.querySelector("#mainAddress");
+const detailAddress = document.querySelector("#detailAddress"); 
 
+function checkAddress() {
+    // 모든 필드가 비어 있지 않은지 확인
+    if (postcode.value.trim() && mainAddress.value.trim() && detailAddress.value.trim()) {
+        checkObj.address = true;
+    } else {
+        checkObj.address = false;
+    }
+}
 
-
-
+detailAddress.addEventListener("input", checkAddress);
 
 
 
@@ -543,11 +554,8 @@ document.querySelector("#searchAddress").addEventListener("click", DaumPostcode)
 const signUpBtn = document.querySelector("#signUpBtn");
 
 // 회원 가입 폼 제출 시
-signUpBtn.addEventListener("submit", e => {
+signUpBtn.addEventListener("click", e => {
 
-
-    e.preventDefault(); 
-    
     for(let key in checkObj) { // checkObj 요소의 key 값을 순서대로 꺼내옴
 
         if( !checkObj[key] ) { // false 인 경우 (유효하지 않음)
@@ -571,8 +579,8 @@ signUpBtn.addEventListener("submit", e => {
                     str = "이메일을 확인해주세요"; break;               
                 case "authKey" : 
                     str = "이메일이 인증되지 않았습니다"; break;
-                case "address" : 
-                    str = "주소를 확인해주세요"; break; 
+                case "address" :
+                    str = "주소를 확인해주세요"; break;
             }
 
             alert(str);
@@ -583,6 +591,8 @@ signUpBtn.addEventListener("submit", e => {
             return;
         }
     }
+    const form = document.querySelector("#signUpForm");
+    form.submit();
 });
 
 

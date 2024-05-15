@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
 html,
 body {
     height: 100vh;
@@ -8,14 +16,34 @@ body {
 }
 
 *{
+    font-family: "Noto Sans KR", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /*border: 1px black solid;*/
 }
+.popup{
+    position:absolute;
+    z-index : 85;
+    top : 100px;
+    left: 50px;
+}
 
-
-
+.popup > img {
+    width : 400px;
+    margin : 0;
+}
+.popup-footer{
+    width : 400px;
+    background-color: black;
+    color : white;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.closeBtn {
+    color: white;
+}
 main {
     display: flex;
     flex-direction: column;
@@ -54,7 +82,6 @@ a {
     position: fixed;
     top: 20px;
     right: 20px;
-    font-family: "Noto Sans KR", sans-serif;
     font-weight: 800;
     font-size: 0.7rem;
   }
@@ -73,7 +100,6 @@ a {
   }
   
   h2 {
-    font-family: "Noto Sans KR", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     -webkit-text-stroke: 2px white;
@@ -84,7 +110,7 @@ a {
     left: 5%;
     width: 90%;
     height: 50%;
-    z-index: 99;
+    z-index: 80;
     display: grid;
     place-items: center;
   }
@@ -133,11 +159,6 @@ a {
     -webkit-text-stroke: 2px rgb(255, 255, 255);
 }
 
-#line-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 #line {
     width: 1500px;
@@ -153,11 +174,13 @@ a {
 }
 
 #who-container {
-    margin-top: 100px;
+    margin-top: 40px;
     display: flex;
-    height: 600px;
+    height: 400px;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 #who-logo {
@@ -173,7 +196,6 @@ a {
 }
 
 #who-title {
-    font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
     font-weight: 600;
     font-size: 60px;
@@ -191,8 +213,9 @@ a {
 }
 
 .line {
-    width: 600px;
-    border: 1px rgb(134, 134, 134) solid;
+    margin: 0 100px;
+    width: 1700px;
+    border: 1px rgb(185, 185, 185) solid;
 }
 
 #confirm-button {
@@ -210,6 +233,73 @@ a {
     color: white;
 }
 
+.cl-button {
+    background-color: rgb(208, 227, 241);
+    border: none;
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.cl-button:hover {
+    box-shadow: 3px 3px 3px lightgray;
+}
+
+#donateThingss {
+    width: 1500px;
+    display: flex;
+    overflow: scroll;
+    justify-content: center;
+}
+
+.productInfo {
+    height: 300px;
+    width: 400px;
+    margin-right: 20px;
+    box-shadow: 5px 5px 5px gray;
+    transition-duration: 0.4s;
+}
+
+
+.donateDate {
+    text-align: center;
+    font-weight: bold;
+}
+
+#review-board thead {
+    font-weight: bold;
+    font-size: 18px;
+    height: 60px;
+}
+
+#review-board thead td {
+    background-color: rgb(254, 245, 220);
+}
+
+#review-board tbody tr {
+    height: 40px;
+}
+
+#review-board tr > td:nth-child(1) {
+    width: 80px;
+}
+
+#review-board tr > td:nth-child(2) {
+    width: 370px;
+}
+
+#review-board tr > td:nth-child(3) {
+    width: 150px;
+}
+
+#review-board tr > td:nth-child(4) {
+    width: 100px;
+}
+
+#review-board tr > td:nth-child(5) {
+    width: 80px;
+}
 
 
 
@@ -269,7 +359,6 @@ a {
 }
 
 .title {
-    font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
     font-size: 40px;
     margin-bottom: 20px;
@@ -291,6 +380,9 @@ a {
     width: 900px;
 }
 
+#review-board {
+    cursor: pointer;
+}
 
 
 
@@ -299,7 +391,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 200px 0;
+    margin: 100px 0;
     margin-bottom: 150px;
 }
 
@@ -353,34 +445,50 @@ a {
 }
 
 #logo {
-    width: 45px;
+    width: 40px;
     margin: 0 15px;
     cursor: pointer;
 }
-
-.header-main span:nth-child(2) {
-    font-family: "Noto Sans KR", sans-serif;
+#font-logo {
+    width :100px;
+    margin-left: 20px;
+}
+.header-main > span:nth-child(1) {
     font-weight: 600;
     font-size: 30px;
 }
 
-.header-main span:nth-child(3) {
+.header-main > span:nth-child(2) {
     flex-basis: 80%;
 }
 
-.header-main span:nth-child(4) {
-    font-family: "Noto Sans KR", sans-serif;
+.header-main > span:nth-child(3) {
     text-align: end;
     width: 200px;
     margin: 0 10px;
     font-size: 15px;
 }
 
-.header-main span:nth-child(5){                                      
+.header-main > span:nth-child(4){                                      
     width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#middle-header > span {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 55px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-weight: bold;
+    transition-duration: 0.5s;
+}
+
+#middle-header > span:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 @keyframes fadeInDown {
@@ -430,7 +538,7 @@ a {
     background-color: rgb(254, 245, 220);
 }
 
-#nav-container-null > div > a:hover {
+#nav-container-null > div > .noHover:hover {
     color: rgb(44, 178, 255);
     text-decoration: underline;
     transition-duration: 0.5s;
@@ -450,7 +558,18 @@ a {
     background-color: rgb(254, 245, 220);
 }
 
-#nav-container > div > div > a:hover {
+#nav-container > div > div > .noHover:hover {
+    color: rgb(44, 178, 255);
+    text-decoration: underline;
+    transition-duration: 0.5s;
+}
+
+#nav-container > div > #hover1 > a:hover {
+    color: rgb(44, 178, 255);
+    text-decoration: underline;
+    transition-duration: 0.5s;
+}
+#nav-container > div > #hover2 > a:hover {
     color: rgb(44, 178, 255);
     text-decoration: underline;
     transition-duration: 0.5s;
@@ -458,6 +577,8 @@ a {
 
 .nav-child {
     font-size: 13px;
+    margin-right: 5px;
+    margin-bottom: 2px;
     height: 33px;
     width: 110px;
     background-color: rgb(254, 245, 220);
@@ -474,13 +595,23 @@ a {
     cursor: pointer;
 }
 
+::-webkit-scrollbar {
+    width: 10px;  /* 스크롤바의 너비 */
+}
+
+::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: rgb(254, 245, 220); /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
 
 
 /************************푸터부분*****************/
 
 
 .footer-main {
-    border-top: 1px rgb(85, 85, 85) solid;
+    border-top: 1px #858585 solid;
     height: 200px;
     display: flex;
 }
@@ -495,11 +626,10 @@ a {
 
 #logo img {
     height: 100px;
-    margin-bottom: 13px;
+
 }
 
 #title {
-    font-family: "Noto Sans KR", sans-serif;
     font-size: 30px;
     font-weight: 600;
 }
@@ -517,7 +647,6 @@ a {
 }
 
 #text > div:first-child {
-    font-family: "Noto Sans KR", sans-serif;
     font-weight: bold;
     font-size: 17px;
     margin: 20px;
@@ -533,7 +662,6 @@ a {
 
 
 #text > div:last-child {
-    font-family: "Noto Sans KR", sans-serif;
     font-size: 12px;
     line-height: 25px;
 }
@@ -583,7 +711,7 @@ a {
 
 .donation-container-1 {
     border: 1px black solid;
-    width: 1500px;
+    width: 1300px;
     height: 150px;
     margin-bottom: 100px;
     display: flex;
@@ -597,9 +725,9 @@ a {
 
 .donation-container-2 {
     border: 1px black solid;
-    width: 1500px;
+    width: 1300px;
     height: 600px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;

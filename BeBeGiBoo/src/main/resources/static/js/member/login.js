@@ -49,9 +49,9 @@ loginForm.addEventListener("submit", e=>{
 
             switch(key){
                 case "loginId" : 
-                    str = "아이디가 유효하지 않습니다"; break;
+                    str = "아이디 조건이 충족되지 않았습니다"; break;
                 case "loginPw":
-                    str = "비밀번호가 유효하지 않습니다"; break;
+                    str = "비밀번호 조건이 충족되지 않았습니다"; break;
             }
 
             alert(str);

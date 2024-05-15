@@ -22,7 +22,10 @@ public class DonationRecord {
 	private int donatorNo; 
 	private int acceptorNo;
 	private String acceptorName;
+	private String memberId;
+	private String memberName;
 	
 	private List<DonationRecord> recordList;
 	private List<DonationProduct> productList;
+	private List<String> productName;
 }

@@ -17,109 +17,192 @@
           <th:block th:replace="~{common/manager-bar}"></th:block>
         </th:block>
 
-        <section class="faqList">
-            <div class="faqLogo"><a href="/faqBoard/faqBoard">FAQ</a></div>
+        <div th:if="${session.loginMember != null and session.loginMember.authority == 3}">
+            <!-- 관리자용 콘텐츠 -->
             
-            <div class="list-area">
+            <section class="faqList">
+                <div class="faqLogo"><a href="/faqBoard/faqBoard">FAQ</a></div>
+                
+                <div class="list-area">
 
-                <div class="btn-area">
-                    <!-- 로그인 상태일 때만 글쓰기 버튼 노출 -->
-                    <button id="insertBtn" 
-                            th:if="${session.loginMember != null and session.loginMember.authority == 3}">
-                            글쓰기</button>
+                    <div class="btn-area">
+                        <!-- 관리자 권한 로그인 상태일 때만 글쓰기 버튼 노출 -->
+                        <button id="insertBtn">글쓰기</button>
+                    </div>
+                    <input type="hidden" id="loginMemberAuthority" th:value="${session.loginMember.authority}">
+        
+                    <table class="faqHeader">
+                        <tbody>
+                        <tr>
+                            <td><a href="/faqBoard/faqBoard" id="selectAll">전체</a></td>
+                            <td>|</td>
+                            <td><a class="category-link" data-category="1">1.기부</a></td>
+                            <td><a class="category-link" data-category="2">2.택배관련</a></td>
+                            <td><a class="category-link" data-category="3">3.봉사활동 인증</a></td>
+                            <td><a class="category-link" data-category="4">4.홈페이지</a></td>
+                            <td><a class="category-link" data-category="5">5.기타</a></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>      
+                    <table class="faq-list">  
+                        <tbody id="faqListTable">
+                        <tr th:each="faqBoard : ${faqList}">
+                            <td>
+                                <details id="faqDetails">
+                                    <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
+                                    <summary id="question">
+                                        <div>
+                                            <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
+                                            <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
+                                        </div>
+                                        <span id="plus">+</span>
+                                    </summary>
+                                        <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
+                                        <div id="buttons">
+                                        <form><a th:href="@{editFaq(qNo=${faqBoard.qNo})}" id="editBtn">수정</a></form>
+                                        <form th:action="@{deleteFaq/{qNo}(qNo=${faqBoard.qNo})}" method="post" id="deleteForm">
+                                            <a id="deleteBtn">삭제</a>
+                                        </form>
+                                        </div> 
+                                    <figure>
+                                        <pre th:text="${faqBoard.answer}" id="answer">답변</pre>                                   
+                                    </figure>
+                                    
+                                </details>
+                            </td>
+                        </tr>
+                        </tbody>   
+                    </table>      
+                </div>
+
+                <!-- 페이지네이션 -->
+                <div class="pagination-area" id="pagination">
+
+                    <ul class="pagination" th:object="${pagination}">
+
+                        <!-- 첫 페이지로 -->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=1)}">&lt;&lt;</a></li>
+
+                        <!-- 이전 목록 마지막 번호로-->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{prevPage})}">&lt;</a></li>
+
+                        <!-- 특정 페이지로 -->
+                        
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            
+                            <!-- 현재 페이지 -->
+                            <li th:if="${i} == *{currentPage}">
+                                <a class="current" th:text="${i}">현재페이지</a>
+                            </li>
+                            
+                            <!-- 나머지 페이지 -->
+                            <li th:unless="${i} == *{currentPage}">
+                                <a th:href="@{/faqBoard/faqBoard(cp=${i})}" 
+                                    th:text="${i}">이동할 페이지</a>
+                            </li>
+                        </th:block>
+                    
+                        <!-- 다음 목록 시작 번호로 -->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{nextPage})}">&gt;</a></li>
+
+                        <!-- 끝 페이지로-->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
+                    </ul>
+                </div>
+
+            </section>    
+            
+
+
+
+        </div>
+        <div th:if="${session.loginMember == null or session.loginMember.authority != 3}">
+            <!-- 비관리자용 콘텐츠 -->
+
+            <section class="faqList">
+                <div class="faqLogo"><a href="/faqBoard/faqBoard">FAQ</a></div>
+                
+                <div class="list-area">
+        
+                    <table class="faqHeader">
+                        <tbody>
+                        <tr>
+                            <td><a href="/faqBoard/faqBoard" id="selectAll">전체</a></td>
+                            <td>|</td>
+                            <td><a class="category-link" data-category="1">1.기부</a></td>
+                            <td><a class="category-link" data-category="2">2.택배관련</a></td>
+                            <td><a class="category-link" data-category="3">3.봉사활동 인증</a></td>
+                            <td><a class="category-link" data-category="4">4.홈페이지</a></td>
+                            <td><a class="category-link" data-category="5">5.기타</a></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>      
+                    <table class="faq-list">  
+                        <tbody id="faqListTable">
+                        <tr th:each="faqBoard : ${faqList}">
+                            <td>
+                                <details id="faqDetails">
+                                    <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
+                                    <summary id="question">
+                                        <div>
+                                            <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
+                                            <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
+                                        </div>
+                                        <span id="plus">+</span>
+                                    </summary>
+                                    <figure>
+                                        <pre th:text="${faqBoard.answer}" id="answer">답변</pre>                                   
+                                    </figure>
+                                    
+                                </details>
+                            </td>
+                        </tr>
+                        </tbody>   
+                    </table>      
                 </div>
     
-                <table class="faqHeader">
-                    <tbody>
-                    <tr>
-                        <td><a href="/faqBoard/faqBoard" id="selectAll">전체</a></td>
-                        <td>|</td>
-                        <td><a class="category-link" data-category="1">1.기부</a></td>
-                        <td><a class="category-link" data-category="2">2.택배관련</a></td>
-                        <td><a class="category-link" data-category="3">3.봉사활동 인증</a></td>
-                        <td><a class="category-link" data-category="4">4.홈페이지</a></td>
-                        <td><a class="category-link" data-category="5">5.기타</a></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>      
-                <table class="faq-list">  
-                    <tbody id="faqListTable">
-                    <tr th:each="faqBoard : ${faqList}">
-                        <td>
-                            <details id="faqDetails">
-                                <input type="hidden" name="qNo" th:value="${faqBoard.qNo}">
-                                <summary id="question">
-                                    <div>
-                                        <span th:text="|[${faqBoard.categoryNo}]|" id="cateNo">카테고리번호</span>
-                                        <span th:text="${faqBoard.question}" id="qTitle">질문명</span>
-                                    </div>
-                                    <span id="plus">+</span>
-                                </summary>
-
-                                <!-- 관리자인 경우 수정/삭제 버튼 노출 -->
-                                <div th:if="${session.loginMember != null and session.loginMember.authority == 3}"
-                                    id="buttons">
-                                    <form><a th:href="@{editFaq(qNo=${faqBoard.qNo})}" id="editBtn">수정</a></form>
-                                    <form th:action="@{deleteFaq/{qNo}(qNo=${faqBoard.qNo})}" method="post" id="deleteForm">
-                                        <a id="deleteBtn">삭제</a>
-                                    </form>
-                                </div>  
-                                <figure>
-                                    <pre th:text="${faqBoard.answer}" id="answer">답변</pre>
-                                </figure>
-                                
-                            </details>
-                        </td>
-                    </tr>
-                    </tbody>   
-                </table>      
-            </div>
-
-            <!-- 페이지네이션 -->
-			<div class="pagination-area" id="pagination">
-
-				<ul class="pagination" th:object="${pagination}">
-
-					<!-- 첫 페이지로 -->
-					<li><a th:href="@{/faqBoard/faqBoard(cp=1)}">&lt;&lt;</a></li>
-
-					<!-- 이전 목록 마지막 번호로-->
-					<li><a th:href="@{/faqBoard/faqBoard(cp=*{prevPage})}">&lt;</a></li>
-
-					<!-- 특정 페이지로 -->
-					
-					<th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-						
-						<!-- 현재 페이지 -->
-						<li th:if="${i} == *{currentPage}">
-							<a class="current" th:text="${i}">현재페이지</a>
-						</li>
-						
-						<!-- 나머지 페이지 -->
-						<li th:unless="${i} == *{currentPage}">
-							<a th:href="@{/faqBoard/faqBoard(cp=${i})}" 
-								th:text="${i}">이동할 페이지</a>
-						</li>
-					</th:block>
-						
-
-
-					
-					<!-- 다음 목록 시작 번호로 -->
-					<li><a th:href="@{/faqBoard/faqBoard(cp=*{nextPage})}">&gt;</a></li>
-
-					<!-- 끝 페이지로-->
-					<li><a th:href="@{/faqBoard/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
-				</ul>
-			</div>
-
-        </section>    
-        
-
-
-
-
+                <!-- 페이지네이션 -->
+                <div class="pagination-area" id="pagination">
+    
+                    <ul class="pagination" th:object="${pagination}">
+    
+                        <!-- 첫 페이지로 -->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=1)}">&lt;&lt;</a></li>
+    
+                        <!-- 이전 목록 마지막 번호로-->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{prevPage})}">&lt;</a></li>
+    
+                        <!-- 특정 페이지로 -->
+                        
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            
+                            <!-- 현재 페이지 -->
+                            <li th:if="${i} == *{currentPage}">
+                                <a class="current" th:text="${i}">현재페이지</a>
+                            </li>
+                            
+                            <!-- 나머지 페이지 -->
+                            <li th:unless="${i} == *{currentPage}">
+                                <a th:href="@{/faqBoard/faqBoard(cp=${i})}" 
+                                    th:text="${i}">이동할 페이지</a>
+                            </li>
+                        </th:block>
+                            
+    
+    
+                        
+                        <!-- 다음 목록 시작 번호로 -->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{nextPage})}">&gt;</a></li>
+    
+                        <!-- 끝 페이지로-->
+                        <li><a th:href="@{/faqBoard/faqBoard(cp=*{maxPage})}">&gt;&gt;</a></li>
+                    </ul>
+                </div>
+    
+            </section>    
+        </div>
 
     </main>
 
@@ -130,61 +213,10 @@
             var loginMemberAuthority = /*[[${session.loginMember?.authority}]]*/ "관리자모드";
             var categoryLinks = document.querySelectorAll('.category-link');
 
-            // 권한이 3인 멤버인 경우 배경색 변경
             if (loginMemberAuthority === 3) {
-                document.body.classList.add('authority3');
+                document.body.classList.add('authority3');   
             }
-
-            categoryLinks.forEach(function(link) {
-                
-            link.addEventListener('click', function() {
-            var categoryNo = this.getAttribute('data-category');
-            var pagination = document.getElementById('pagination');
-            pagination.style.display = 'none';
-
-            fetch("/faqBoard/getFaqByCategory?categoryNo=" + categoryNo)
-                .then(resp => resp.json())
-                .then(list => {
-                    var faqListTable = document.getElementById('faqListTable');
-                    faqListTable.innerHTML = '';
-
-                    list.forEach((faqBoard, index) => {
-                        const tr = document.createElement('tr');
-                        const details = document.createElement('details');
-                        const summary = document.createElement('summary');
-                        const figure = document.createElement('figure');
-                        const questionText = `<div>
-                                                <span class='category-no'>[${faqBoard.categoryNo}]</span> 
-                                                <span>${faqBoard.question}</span>
-                                            </div>`;
-
-                        summary.innerHTML = questionText;
-                        figure.innerHTML = faqBoard.answer.replace(/\n/g, "<br>");
-                        
-                        details.appendChild(summary);
-
-                        // 관리자 권한이 3인 경우 버튼 추가
-                        if (loginMemberAuthority === 3) {
-                            const buttonsDiv = document.createElement('div');
-                            buttonsDiv.innerHTML = `<form><a href='editFaq?qNo=${faqBoard.qNo}' id='editBtn'>수정</a></form>
-                                                    <form method='post' action='deleteFaq/${faqBoard.qNo}'><a href='javascript:;' id='deleteBtn'>삭제</a></form>`;
-                            buttonsDiv.id = 'buttons';
-                            details.appendChild(buttonsDiv);
-                        }
-
-                        details.appendChild(figure);
-                        tr.appendChild(details);
-                        faqListTable.appendChild(tr);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        });
-    });
-
-
-        });
+        }); 
         /*]]>*/
     </script>
 

@@ -1,0 +1,110 @@
+
+  ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+  
+  ::-webkit-scrollbar-button {
+    width: 1px;
+    height: 1px;
+  }
+  .external {
+    overflow: hidden;
+    height: 100vh;
+    background-color: rgb(208, 227, 241);
+  }
+
+  #acceptor-title {
+    position: absolute;
+    font-weight: bold;
+    font-size: 25px;
+    top: 10%;
+    left: 50%;
+  }
+  
+  .horizontal-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vh;
+    transform: rotate(-90deg) translate3d(0,-100vh,0);
+    transform-origin: right top;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    height: 100vw;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    padding-bottom: 10rem;
+  }
+  .img-wrapper {
+    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    transform-origin: 50% 50%;
+    transform: rotate(90deg) translateZ(.1px) scale(0.9) translateX(0px) translateY(-3vh);
+    transition: 1s;
+  }
+  
+  .img-wrapper:hover {
+   min-height: 65vh;
+  }
+  
+  .slower {
+    transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(0%) translateY(-10vh);
+  }
+
+  .vertical {
+     transform: rotate(90deg) translateZ(-.15px) scale(1.15) translateX(0%) translateY(0%) ;
+  }
+
+
+  .scroll-info {
+    top: 1rem;
+  }
+
+  .img-wrapper > div {
+    overflow: hidden;
+    display: block;
+    background-color: white;
+    box-shadow: 5px 5px 15px gray;
+  }
+
+
+  .scroll-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .productInfo {
+    height: 600px;
+    width: 400px;
+  }
+
+  .donateDate {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: rgb(0,149,250);
+    margin-top: 80px;
+  }
+
+  .acceptorButton {
+    cursor: pointer;
+    background-color: white;
+    font-family: "Noto Sans KR", sans-serif;
+    color: rgb(0,149,250);
+    border: 2px rgb(0,149,250) solid;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    margin-left: 150px;
+  }
+
+  .wish {
+    display: flex;
+    flex-direction: column;
+  }

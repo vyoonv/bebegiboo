@@ -1,9 +1,70 @@
+@font-face {
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'ONE-Mobile-Regular';
+    font-size: 15px;
+}
+
+main{
+    background-color: rgb(230, 230, 230);
+}
+
+section{
+    margin: 120px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list {
+    border-collapse: collapse;
+    width: 800px;
+}
+
+.listTr {
+    border-bottom : 1px solid rgb(190, 190, 190);
+
+}
+
+
+.list> tbody > tr > td{
+    padding: 18px;
+}
+.list> tbody > tr > td:nth-of-type(1){
+    padding-left: 35px;
+}
+.list > tbody > tr > td:nth-of-type(2) {
+    width: 220px;
+
+}
+#certificationInfoTitle{
+    margin-bottom: 40px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.select{
+    border: 0;
+    background-color: transparent;
+    color: #6987C9;
+    cursor: pointer;
+}
+.select:hover{
+    color: #303f5e;
+}
+
 
 /* 모달 */
   
 #modal {
-    width: 700px;
-    height: 500px;
+    width: 560px;
+    height: 420px;
     position:fixed;
     top: 50%;
     left: 50%;
@@ -14,9 +75,89 @@
     justify-content: center;
     align-items: center;
     background: rgb(255, 255, 255);
-    border: 1px solid rgb(150, 150, 150);
+    border: 1px solid #9faecf;
+    border-radius: 25px;
 }
 
 #modal.hidden {
     display: none;
 }
+
+
+.popup-close{
+    position: relative;
+    left: 243px;
+    top: -11px;
+    border: none;
+    background-color: transparent;
+    font-size: 17px;
+    cursor: pointer;
+}
+.popup-close:hover{
+    color: #6987C9;
+}
+
+.text{
+    font-size: 15px;
+}
+
+input{
+    border: 1px solid rgb(208, 208, 208);
+    height: 26px;
+    width: 220px;
+    margin-left: 40px;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.modalTable{
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+
+#updateButton{
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#updateButton:hover{
+    color: #6987C9;
+}
+
+/* Pagination */
+
+
+.pagination-area{
+    margin-top: 80px;
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    color: #447794;
+    font-weight: bold;
+
+}
+
+.pagination li{
+    width: 20px;
+    margin: 0 7px;
+    text-align: center;
+}
+
+.pagination a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.current{
+    color: #6987C9;
+    text-decoration: underline;  
+    text-underline-offset: 5px; 
+}
+

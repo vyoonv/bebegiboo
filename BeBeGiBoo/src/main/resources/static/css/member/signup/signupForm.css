@@ -1,15 +1,27 @@
 @font-face {
-  font-family: 'NEXON Lv1 Gothic OTF';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-family: 'ONE-Mobile-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 * {
-  font-family: 'NEXON Lv1 Gothic OTF';
+  font-family: 'ONE-Mobile-Regular';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+#memberPw, #memberPwConfirm {
+  font-family: 'Pretendard-Regular';
 }
 
 /* 베베기부 로고 */
@@ -44,7 +56,6 @@
   background: #FFFFFF;
   border: 1px solid #AFAFAF;
   width: 800px;
-
   border-spacing: 3px;
 }
 
@@ -75,17 +86,18 @@
 
   margin-bottom: 2px;
   margin-top: 4px;
-
+  padding: 10px;
 
   border : 1px solid #AFAFAF;
   outline: none;
+
 }
 
 .signUp-input::placeholder {
   font-size: 12px;
   font-weight: lighter;
   color: #bbbbbb;
-
+  
 
 }
 
@@ -94,7 +106,6 @@
 .signUp-content button{
   width: 80px;
   height: 30px;
-  font-weight: bold;
   color: #6987C9;
   background-color: white;
   border: 1.5px solid #6987C9;
@@ -144,7 +155,7 @@
 
   font-size: 12px;
   font-weight: lighter;
-
+  padding: 10px;
   border : 1px solid #AFAFAF;
   outline: none;
 }
@@ -156,7 +167,7 @@
 
   margin-left: 100px;
   margin-bottom: 7px;
-
+  padding: 10px;
   font-size: 12px;
   font-weight: lighter;
 

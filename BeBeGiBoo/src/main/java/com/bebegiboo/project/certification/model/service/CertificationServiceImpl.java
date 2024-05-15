@@ -19,9 +19,7 @@ import com.bebegiboo.project.certification.model.mapper.CertificationMapper;
 import com.bebegiboo.project.common.util.Utility;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Transactional(rollbackFor=Exception.class)
 @PropertySource("classpath:/config.properties")
 @RequiredArgsConstructor

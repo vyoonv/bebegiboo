@@ -2,11 +2,6 @@ package com.bebegiboo.project.manager.dto;
 
 import java.util.List;
 
-import com.bebegiboo.project.donateInfo.dto.DeliveryInfoList;
-import com.bebegiboo.project.donateInfo.dto.DonationInfo;
-import com.bebegiboo.project.donateInfo.dto.DonationProduct;
-import com.bebegiboo.project.donateInfo.dto.DonationRecord;
-import com.bebegiboo.project.donateInfo.dto.PaymentInfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

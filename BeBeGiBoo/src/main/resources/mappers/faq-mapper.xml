@@ -14,7 +14,7 @@
 		SELECT Q_NO, QUESTION, ANSWER, CATEGORY_NO
 		FROM FAQ
 		WHERE FAQ_DEL_FL = 'N'
-		ORDER BY Q_NO
+		ORDER BY CATEGORY_NO
 	</select>
 	
 	<!-- faq 작성 -->

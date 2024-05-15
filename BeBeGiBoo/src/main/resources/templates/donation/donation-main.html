@@ -24,6 +24,7 @@
 
 
             <div>
+                <span class="text" id="hover">※사진 위에 마우스를 올려주세요</span>
                 <figure class="snip1425">
                     <img src="/images/deliveryBox.jpg" alt="box" />
                     <figcaption><i class="ion-podium"></i>
@@ -109,7 +110,7 @@
 
                 <div id="parentsNumber" style="margin-bottom: 50px;">
                     <label for="option2" class="text text2">휴대전화</label>
-                    <select name="firstNumber" style="margin-right: 5px;">
+                    <select name="firstNumber" style="margin-right: 5px;" id="searchKey">
                         <option value="010">010</option>
                         <option value="011">011</option>
                         <option value="019">019</option>
@@ -163,24 +164,24 @@
             <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 700px; display: none;">
                 <table>
                     <tr name="content-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">생활용품</td>
-                        <td><input name="content-thing-input" id="daily" type="text" style="height: 30px; padding: 3px;"></td>
+                        <td class="text text2" style="width: 200px;">생활용품</td>
+                        <td><input name="content-thing-input" id="daily" type="text" style="height: 30px; padding: 3px; width: 250px;"></td>
                     </tr>
                     <tr name="content-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">의류</td>
-                        <td><input name="content-thing-input" id="cloth" type="text" style="height: 30px; padding: 3px;"></td>
+                        <td class="text text2" style="width: 200px;">의류</td>
+                        <td><input name="content-thing-input" id="cloth" type="text" style="height: 30px; padding: 3px; width: 250px;"></td>
                     </tr>
                     <tr name="content-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">식기</td>
-                        <td><input name="content-thing-input" id="dish" type="text" style="height: 30px; padding: 3px;"></td>
+                        <td class="text text2" style="width: 200px;">식기</td>
+                        <td><input name="content-thing-input" id="dish" type="text" style="height: 30px; padding: 3px; width: 250px;"></td>
                     </tr>
                     <tr name="content-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">가전</td>
-                        <td><input name="content-thing-input" id="electronic" type="text" style="height: 30px; padding: 3px;"></td>
+                        <td class="text text2" style="width: 200px;">가전</td>
+                        <td><input name="content-thing-input" id="electronic" type="text" style="height: 30px; padding: 3px; width: 250px;"></td>
                     </tr>
                     <tr name="content-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">장난감</td>
-                        <td><input name="content-thing-input" id="toy" type="text" style="height: 30px; padding: 3px;"></td>
+                        <td class="text text2" style="width: 200px;">장난감</td>
+                        <td><input name="content-thing-input" id="toy" type="text" style="height: 30px; padding: 3px; width: 250px;"></td>
                     </tr>
                 </table>
                 <div class="text text2" style="font-size: 15px;">※유아용품을 작성하실 때에는 ','(콤마)로 구분해서 띄어쓰기 없이 작성해주세요</div>
@@ -192,29 +193,29 @@
             <div class="donation-box donation-box-up14 donation-box-under14" style="height: 500px; width: 700px; display: none;">
                 <table>
                     <tr name="count-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">생활용품</td>
-                        <td><input id="dailyBox" type="number" name="count-thing-value" value="1" min="1"></td>
-                        <td class="text text2">개</td>
+                        <td class="text text2" style="width: 200px;">생활용품</td>
+                        <td><input id="dailyBox" type="number" name="count-thing-value" value="1" min="1" style="height: 30px; width: 100px;"></td>
+                        <td class="text text2" style="width: 35px; text-align: center;">개</td>
                     </tr>
                     <tr name="count-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">의류</td>
-                        <td><input id="clothBox" type="number" name="count-thing-value" value="0" min="1"></td>
-                        <td class="text text2">개</td>
+                        <td class="text text2" style="width: 200px;">의류</td>
+                        <td><input id="clothBox" type="number" name="count-thing-value" value="0" min="1" style="height: 30px; width: 100px;"></td>
+                        <td class="text text2" style="width: 35px; text-align: center;">개</td>
                     </tr>
                     <tr name="count-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">식기</td>
-                        <td><input id="dishBox" type="number" name="count-thing-value" value="0" min="1"></td>
-                        <td class="text text2">개</td>
+                        <td class="text text2" style="width: 200px;">식기</td>
+                        <td><input id="dishBox" type="number" name="count-thing-value" value="0" min="1" style="height: 30px; width: 100px;"></td>
+                        <td class="text text2" style="width: 35px; text-align: center;">개</td>
                     </tr>
                     <tr name="count-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">가전</td>
-                        <td><input id="electronicBox" type="number" name="count-thing-value" value="0" min="1"></td>
-                        <td class="text text2">개</td>
+                        <td class="text text2" style="width: 200px;">가전</td>
+                        <td><input id="electronicBox" type="number" name="count-thing-value" value="0" min="1" style="height: 30px; width: 100px;"></td>
+                        <td class="text text2" style="width: 35px; text-align: center;">개</td>
                     </tr>
                     <tr name="count-thing" style="margin-bottom: 10px;">
-                        <td class="text text2" style="width: 150px;">장난감</td>
-                        <td><input id="toyBox" type="number" name="count-thing-value" value="0" min="1"></td>
-                        <td class="text text2">개</td>
+                        <td class="text text2" style="width: 200px;">장난감</td>
+                        <td><input id="toyBox" type="number" name="count-thing-value" value="0" min="1" style="height: 30px; width: 100px;"></td>
+                        <td class="text text2" style="width: 35px; text-align: center;">개</td>
                     </tr>
                 </table>
 
@@ -246,7 +247,7 @@
                             <input type="text" name="address" placeholder="우편번호" 
                                                                 maxlength="6" id="postcode" style="height: 20px; width: 190px;" disabled>
                         </td>
-                        <td><button type="button" id="searchAddress" class="button">검색</button></td>
+                        <td><button type="button" id="searchAddress" class="button" style="padding: 3px 5px;">검색</button></td>
                     </tr>
                     
                     <tr>
@@ -258,7 +259,7 @@
                     <tr>
                         <td style="width: 200px;"></td>
                         <td>
-                            <input type="text" name="address" placeholder="상세주소" style="height: 20px; width: 190px;" id="detailAddress">
+                            <input type="text" name="address" placeholder="상세주소" style="height: 20px; width: 190px; resize: none;" id="detailAddress">
                         </td>
                     </tr>
 
@@ -289,10 +290,10 @@
                         <option value="무통장입금">무통장입금</option>
                     </select>
 
-                    <button id="paymentButton" type="button" class="button">결제하기</button>
+                    <button id="paymentButton" type="button" class="button" style="padding: 3px 5px;">결제하기</button>
                 </div>
 
-                <div>
+                <div style="margin-top: 20px;">
                     <input id="paymentAgree" type="checkbox">
                     <label class="text text2" style="font-size: 10px;">이용약관과 개인정보취급방침에 동의합니다.</label>
                 </div>
@@ -300,10 +301,10 @@
 
 
             <!-- 이전, 다음버튼 -->
-            <button type="button" id="previous" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer;">← 이전</button>
-            <button type="button" id="next" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer;">다음 →</button>
+            <button type="button" id="previous" class="text text2" style="font-size: 18px; background: none; border: none; cursor: pointer;">← 이전</button>
+            <button type="button" id="next" class="text text2" style="font-size: 18px; background: none; border: none; cursor: pointer;">다음 →</button>
 
-            <button id="submit" class="text text2" style="font-size: 15px; background: none; border: none; cursor: pointer; margin-left: 100px; display: none;">제출하기</button>
+            <button id="submit" class="text text2" style="font-size: 18px; background: none; border: none; cursor: pointer; margin-left: 100px; display: none;">제출하기</button>
 
 
         </div>

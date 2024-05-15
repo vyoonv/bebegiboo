@@ -12,11 +12,9 @@ import com.bebegiboo.project.donate.mapper.DonateMapper;
 import com.bebegiboo.project.donateInfo.dto.PaymentInfo;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class DonateServiceImpl implements DonateService{
 
 	private final DonateMapper mapper;

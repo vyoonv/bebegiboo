@@ -172,7 +172,7 @@ public class FaqController {
 		String path = null; 
 		
 		if(result > 0) {
-			message = "faq 수정 완~!"; 
+			message = "faq 수정 완료!"; 
 			path = "faqBoard"; 
 		} else {
 			message = "faq 수정 실패!"; 

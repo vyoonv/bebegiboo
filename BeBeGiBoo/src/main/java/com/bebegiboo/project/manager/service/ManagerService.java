@@ -38,7 +38,7 @@ public interface ManagerService {
 	/** 피기부자 목록 조회
 	 * @return
 	 */
-	List<Member> selectAcceptorList();
+	List<Member> selectAcceptorList(int recordNo);
 
 	/** 피기부자 연결
 	 * @param connectObj
@@ -47,9 +47,10 @@ public interface ManagerService {
 	int connectDonate(Map<String, Object> connectObj);
 
 	/** 봉사 인증 신청 목록 조회 
+	 * @param cp 
 	 * @return
 	 */
-	List<Certification> certificationList();
+	Map<String, Object> certificationList(int cp);
 
 	/** 인증신청 내용 수정 
 	 * @param inputInfo
@@ -57,5 +58,6 @@ public interface ManagerService {
 	 * @return
 	 */
 	int infoUpdate(Certification inputInfo, int memberNo);
+
 
 }

@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&display=swap');
-
 @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
+    font-family: 'ONE-Mobile-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+    font-weight: normal;
     font-style: normal;
 }
 *{
@@ -14,20 +12,21 @@
 }
 .l-text{
 	font-size : 20px;
-	font-family: 'Pretendard-Regular';
 	font-weight: 400;
+	font-family: 'ONE-Mobile-Regular';
 }
 .text {
-    font-family: 'Pretendard-Regular';
-    font-size: 15px;
+    font-size: 17px;
 	margin : 0 10px;
+	font-family: 'ONE-Mobile-Regular';
 }
 .s-text {
-	font-family: 'Pretendard-Regular';
-    font-size: 17px;
+	font-family: 'ONE-Mobile-Regular';
+    font-size: 13px;
 	text-decoration: none;
 	color:#858585;
 }
+
 .divider {
 	font-size: 20px;
 	margin: 0 20px;
@@ -48,7 +47,9 @@ main {
 	margin-bottom: 40px;
 }
 
-
+#font-logo{
+	width:200px;
+}
 
 main div:nth-child(2) {
 	display : flex;
@@ -104,10 +105,13 @@ tbody tr:nth-child(4) {
 }
 .loginInput{
 	width: 270px;
-	height: 25px;
-
+	height: 30px;
+	padding:10px;
+	font-size: 15px;
 }
-
+#loginId {
+	font-family: 'ONE-Mobile-Regular';
+}
 .error {
 	color : red;
 }

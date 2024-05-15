@@ -8,8 +8,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bebegiboo.project.certification.model.dto.Certification;
-import com.bebegiboo.project.faqboard.pagination.Pagination;
 import com.bebegiboo.project.review.model.dto.CertificationBoard;
 import com.bebegiboo.project.review.model.dto.ReviewPagination;
 import com.bebegiboo.project.review.model.mapper.ReviewMapper;
@@ -99,6 +97,14 @@ public class ReviewServiceImpl implements ReviewService{
 	public int updateReadCount(int boardNo) {
 		
 		return mapper.upadateReadCount(boardNo);
+	}
+
+
+	// 메인용 조회수 증가
+	@Override
+	public List<CertificationBoard> selectBoardList() {
+
+		return mapper.selectBoardList();
 	}
 
 }

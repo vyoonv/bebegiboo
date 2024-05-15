@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bebegiboo.project.acceptor.mapper.AcceptorMapper">
+	
+	<select id="selectProduct">
+		SELECT RECORD_NO, TO_CHAR(RECORD_DATE, 'YYYY-MM-DD') RECORD_DATE, DONATOR_NO
+		FROM DONATION_RECORD
+		WHERE ACCEPTOR_NO IS NULL
+		AND RECORD_NO = #{number}
+	</select>
+
+	<select id="productName">
+		SELECT PRODUCT_NAME, MEMBER_NO
+		FROM "DONATION_PRODUCT" pr LEFT JOIN DONATION_RECORD rd ON(MEMBER_NO = DONATOR_NO)
+		WHERE MEMBER_NO = #{donatorNo}
+		AND pr.RECORD_NO = rd.RECORD_NO
+		AND pr.RECORD_NO = #{recordNo}
+		AND ACCEPTOR_NO IS NULL
+	</select>
+	
+	<select id="selectRecordNo">
+		SELECT RECORD_NO
+		FROM DONATION_RECORD
+		WHERE ACCEPTOR_NO IS NULL
+	</select>
+	
+	<insert id="insertWish">
+		INSERT INTO "WISH_LIST"
+		VALUES(SEQ_WISH_LIST_NO.NEXTVAL, #{recordNo}, #{memberNo})
+	</insert>
+</mapper>

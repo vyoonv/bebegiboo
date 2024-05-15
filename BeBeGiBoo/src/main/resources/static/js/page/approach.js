@@ -1,38 +1,25 @@
-const container1 = document.querySelector("#container1");
-const container2 = document.querySelector("#container2");
-const container3 = document.querySelector("#container3");
-const container4 = document.querySelector("#container4");
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
+const button4 = document.querySelector("#button4");
 
 
-container1.addEventListener("click", () => {
-
-    window.scrollTo({top:2300, behavior: 'smooth'});
+button1.addEventListener("click", () => {
+    window.scrollTo({top:0, behavior: 'smooth'});
 });
 
-container2.addEventListener("click", () => {
-
-    window.scrollTo({top:2900, behavior: 'smooth'});
+button2.addEventListener("click", () => {
+    window.scrollTo({top:500, behavior: 'smooth'});
 });
 
-container3.addEventListener("click", () => {
-
-    window.scrollTo({top:3600, behavior: 'smooth'});
+button3.addEventListener("click", () => {
+    window.scrollTo({top:1300, behavior: 'smooth'});
 });
 
-container4.addEventListener("click", () => {
-
-    window.scrollTo({top:4700, behavior: 'smooth'});
+button4.addEventListener("click", () => {
+    window.scrollTo({top:3000, behavior: 'smooth'});
 });
 
-
-
-const showBox = document.querySelectorAll(".showBox");
-const screenH = window.innerHeight/3*2;
-const retVal = ele => ele.getBoundingClientRect().top;
-
-const showTit = x => {
-    let xval = retVal(x);
-    if (xval < screenH && xval > 0) {
-        x.classList.add("on");
-    }
-};
+button5.addEventListener("click", () => {
+    window.scrollTo({top:3800, behavior: 'smooth'});
+});

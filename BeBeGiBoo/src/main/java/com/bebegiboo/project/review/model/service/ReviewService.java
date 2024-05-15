@@ -1,5 +1,6 @@
 package com.bebegiboo.project.review.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.bebegiboo.project.review.model.dto.CertificationBoard;
@@ -30,5 +31,10 @@ public interface ReviewService {
 	 * @return
 	 */
 	int updateReadCount(int boardNo);
+
+	/** 메인페이지용 보드조회
+	 * @return
+	 */
+	List<CertificationBoard> selectBoardList();
 
 }
