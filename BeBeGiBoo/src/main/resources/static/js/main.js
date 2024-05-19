@@ -93,45 +93,57 @@ document.getElementById('reviewBtn').addEventListener('click', ()=> {
   location.href = '/review';
 });
 
+
+
+
+
 //*******팝업 쿠키 설정********* */
-const popup= document.querySelector(".popup");
 
-function getCookie(name) {
-  const value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return value?value[2]:null;
-}
+const popupList= document.querySelectorAll(".popup");
 
-function closePopup() {
-  const cookieCheckBox = document.querySelector("#cookieCheckBox");
-  if(cookieCheckBox.checked){
-    checkPopup();
+
+
+function closePopup(num) {
+  const cookieCheckBoxList = document.querySelectorAll(".cookieCheckBox");
+  if(cookieCheckBoxList[num].checked){
+
+    checkPopup(num);
   }else{//그냥 X 누른 경우
-    popup.style.display = "none";
+
+    popupList[num].style.display = "none";
   }
 }
 
 
 //체크박스 클릭하고 x누른 경우
-function checkPopup() { 
-  var cookieCheck = getCookie("modalClose");
+function checkPopup(num) { 
+  var cookieCheck = getCookie(num);
+
+
 
   if (cookieCheck == null){
-    console.log(cookieCheck.checked);
     //쿠키 설정하기
-    setCookie();
-    popup.style.display = "none";
+    setCookie(num);
+    popupList[num].style.display = "none";
   }else{
     return;
   }
 
 }
+
+function getCookie(num) {
+  const name = "modalClose"+num;
+  const value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+
+  return value?value[2]:null;
+}
 //하루동안 안보이기 체크하는 경우
 //쿠키 설정하기
-function setCookie() {
+function setCookie(num) {
   let date = new Date(Date.now() + 86400e3);
   date = date.toUTCString();
-
-  document.cookie = `modalClose=T; expires=${date}`;
+  let name = "modalClose"+num;
+  document.cookie = `${name}=T; expires=${date}`;
 
   console.log(document.cookie);
 }
@@ -139,14 +151,74 @@ function setCookie() {
 
 function openPopup(){
   //쿠키가 있으면 팝업이 안열리고
-  if(getCookie('modalClose')==null){
-    popup.style.display = "none";
-
-  }else{//쿠키가 없으면 팝업이 열리도록
-    popup.style.display = "block";
-  }
   
+  //팝업 개수 만큼 돌면서 확인하기
+  for(let i =0;i<popupList.length;i++){
+	
+    if(getCookie(i)==null){
+      popupList[i].style.display = "block";
+    }else{//쿠키가 없으면 팝업이 열리도록
+        popupList[i].style.display = "none";
+    }
+  
+  }
 
+
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  openPopup();
+})
+
+
+
+const donateThings = document.querySelector("#donateThingss");
+let i = 1;
+
+
+/* 기부물품 출력칸 */
+if(donateThings != null) {
+  function donateThingsFuntion() {
+    donateThings.innerHTML = "";
+  
+      fetch("/acceptor/selectproductList")
+      .then(resp => resp.json())
+      .then(productList => {
+  
+        console.log(productList);
+  
+          //const productList = JSON.parse(result);
+          
+  
+          if(productList == null) {
+              productList.innerText = "기부물품이 존재하지 않습니다.";
+          } else {
+              productList.forEach( (product) => {
+  
+                  
+                  let arr = [ product.productName];
+  
+  
+                      const productInfo = document.createElement("div");
+                      productInfo.classList.add("productInfoo");
+  
+                      for(let key of arr){
+                      const div = document.createElement("div");
+                      div.style.textAlign = "center";
+                      div.style.fontSize = "15px";
+                      div.style.fontWeight = "bold";
+                      div.innerText = key;
+                      productInfo.append(div);
+                      donateThings.append(productInfo);
+                  };
+                });
+              };
+        });
+  };
+  
+  donateThingsFuntion();
+  
 }
 
 
@@ -159,13 +231,13 @@ function selectBoard() {
   .then(resp => resp.json())
   .then(boardList => {
 
-    
+
   if(boardList == null) {
-    boardList.innerText = "기부물품이 존재하지 않습니다.";
+    boardList.innerText = "게시글이 존재하지 않습니다.";
   } else {
     boardList.forEach( (board) => {
 
-          
+
           let arr = [ board.boardNo,
               board.boardTitle,
               board.boardWriteDate,
@@ -188,72 +260,3 @@ function selectBoard() {
 }
 
 selectBoard();
-
-
-
-
-const donateThings = document.querySelector("#donateThingss");
-let i = 1;
-
-if(donateThings != null) {
-  function donateThingsFuntion() {
-    donateThings.innerHTML = "";
-  
-      fetch("/acceptor/selectproductList")
-      .then(resp => resp.json())
-      .then(productList => {
-  
-        console.log(productList);
-  
-          //const productList = JSON.parse(result);
-          
-  
-          if(productList == null) {
-              productList.innerText = "기부물품이 존재하지 않습니다.";
-          } else {
-              productList.forEach( (product) => {
-  
-                  
-                  let arr = [ product.recordDate,
-                      product.productName];
-  
-                      const infoBox = document.createElement("div");
-                      infoBox.classList.add("img-wrapper");
-  
-  
-                      const productInfo = document.createElement("div");
-                      productInfo.classList.add("productInfo");
-  
-                      const donateDate = document.createElement("div");
-                      donateDate.innerText = "기부날짜";
-                      donateDate.classList.add("donateDate");
-                      productInfo.append(donateDate);
-  
-                      for(let key of arr){
-                      const div = document.createElement("div");
-                      div.style.textAlign = "center";
-                      div.style.fontSize = "20px";
-                      div.style.fontWeight = "bold";
-                      div.style.marginBottom = "80px";
-                      productInfo.style.backgroundImage = `url("/images/layette-${i}.jpg")`;
-                      productInfo.style.backgroundSize = "cover";
-                      productInfo.style.backgroundRepeat = "no-repeat";
-                      if(i == 10) {
-                        i = 1;
-                      }else {
-                        i++;
-                      }
-                      div.innerText = key;
-                      productInfo.append(div);
-                      donateThings.append(productInfo);
-                  };
-                });
-              };
-        });
-  };
-  
-  donateThingsFuntion();
-
-}
-
-

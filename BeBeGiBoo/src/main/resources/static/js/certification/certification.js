@@ -206,4 +206,40 @@ for(let i=0; i<inputImageList.length; i++){
 
 
 
+/** 
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("#certificationForm"); 
+    const submitBtn = document.querySelector("#submitBtn"); 
+    submitBtn.addEventListener('click', function(e) {
+        const img1 = document.getElementById('img1').files.length;
+        const img2 = document.getElementById('img2').files.length;
+        const img3 = document.getElementById('img3').files.length;
 
+        if (img1 === 0 || img2 === 0 || img3 === 0) {
+            alert('모든 이미지를 업로드해야 합니다.');
+            form.preventDefault(); // 폼 제출 방지
+        }
+    });
+});*/
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("#certificationForm"); 
+    const submitBtn = document.querySelector("#submitBtn"); 
+
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // 기본 폼 제출 방지
+
+         // 이미지 파일 검사
+         const img1 = document.getElementById('img1').files.length;
+         const img2 = document.getElementById('img2').files.length;
+         const img3 = document.getElementById('img3').files.length;
+ 
+         if (img1 === 0 || img2 === 0 || img3 === 0) {
+             alert('전부 입력하셔야 제출 가능합니다.');
+             return; // 여기서 함수 실행을 중단
+         }
+
+        // 모든 검사를 통과하면 폼 제출 처리
+        form.submit();
+    });
+});

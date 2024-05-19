@@ -68,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var detailAddress = detailAddressInput.value;
         var memberNo = memberNoInput.value;
 
+        if (!postcode || !mainAddress || !detailAddress) {
+            alert("우편번호, 기본 주소, 상세 주소를 모두 입력해주세요.");
+            return; // 함수 실행 중지
+        }
+
         var address = `${postcode}^^^${mainAddress}^^^${detailAddress}`;
 
         var data = {

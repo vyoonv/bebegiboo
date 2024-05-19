@@ -134,7 +134,7 @@ function selectMember() {
                                         const producttd = document.createElement("td");
 
                                         nametd.innerText = "배송자";
-                                        phonetd.innerText = "배송자 전화번호";
+                                        phonetd.innerText = "전화번호";
                                         addresstd.innerText = "출발지";
                                         producttd.innerText = "기부물품";
 
@@ -227,53 +227,11 @@ function selectMember() {
                                                                     alert("기부연결 성공!");
                                                                     popup.style.display = 'none';
                                                                     
+
+
+                                                                    /************************** */
                                                                     
-                                                                    viewTitle.innerText = member.memberId;
-
-                                                                    donationThings.innerHTML = "";
-
-                                                                    tbody.style.transform = "translateX(-350px)";
-                                                                    donationThingsBox.style.transform = "translateX(-350px)";
-                                                                    donationThingsBox.style.visibility = 'visible';
-
-                                                                    fetch("/manager/selectDonationThings", {
-                                                                        method : "POST",
-                                                                        headers : {"Content-Type" : "application/json"},
-                                                                        body : JSON.stringify(member.memberNo)
-                                                                    })
-                                                                    .then(resp => resp.text())
-                                                                    .then(result => {
-                                                                        const donationThingsList = JSON.parse(result);
-
-                                                                        console.log(donationThingsList);
-
-                                                                        donationThingsList.forEach( (product) => {
-                                                                            if(product.acceptorNo == 0) {
-                                                                                product.acceptorName = "피기부자 없음";
-                                                                            }
-
-                                                                            let arr = [product.recordNo,
-                                                                                product.recordDate,
-                                                                                product.acceptorName];
-
-                                                                            console.log(product.recordNo, product.recordDate, product.acceptorName);
-
-                                                                            const div = document.createElement("div");
-                                                                            div.classList.add("duration");
-                                                                            const tr = document.createElement("tr");
-                                                                            tr.classList.add("shadow");
-                                                                            for(let key of arr){
-                                                                                const td = document.createElement("td");
-                                                                                td.innerText = key;
-                                                                                tr.append(td);
-                                                                                tr.classList.add("text");
-                                                                            }
-                                                                            div.append(tr);
-                                                                            tr.style.cursor = "pointer";
-                                                                            donationThings.append(div);
-
-                                                                        });
-                                                                    });
+                                                                    location.reload();
                                                                 } else {
                                                                     alert("기부연결 실패");
                                                                 }

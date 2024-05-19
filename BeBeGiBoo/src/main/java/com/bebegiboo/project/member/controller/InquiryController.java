@@ -34,6 +34,7 @@ public class InquiryController {
 	@PostMapping("idInquiry")
 	public String checkEmail(Member inputMember,
 			RedirectAttributes ra) {
+		log.info("ets");
 		String path = "/member/inquiry/idInquiry";
 		String message = null;
 		Map<String, String> map = new HashMap<>();
@@ -110,7 +111,7 @@ public class InquiryController {
 				if(result == 0) {
 					message="이메일 전송 실패\n다시 시도해주세요";
 				}else {
-					message="입력한 이메일로 아이디 정보를 전송했습니다";
+					message="입력한 이메일로 비밀번호 정보를 전송했습니다";
 					path = "/";
 				}
 			}
@@ -125,7 +126,7 @@ public class InquiryController {
 				 result = service.checkPhone(inputMember.getPhone());
 				 
 				 if(result >0) {
-					 message="입력한 휴대폰 번호로 아이디 정보를 전송했습니다";
+					 message="입력한 휴대폰 번호로 비밀번호 정보를 전송했습니다";
 					 path = "/";
 				 }else {
 					 message="입력한 휴대폰 번호가 정보와 일치하지 않습니다";

@@ -37,6 +37,7 @@ const selectCommentList=()=>{
                 infoArea.classList.add("infoArea");
 
                 const memberId = document.createElement("span");
+                memberId.classList.add("memberId");
                 memberId.innerText = "@"+comment.memberId;
 
                 const commentDate = document.createElement("span");
@@ -390,7 +391,7 @@ const showUpdateComment = (commentNo, btn) => {
   const textarea = document.createElement("textarea");
   textarea.classList.add("update-textarea");
   textarea.value = beforeContent;
-
+  console.log(infoArea)
   // 6. 댓글 행에 textarea 추가
   commentRow.append(infoArea,textarea);
 

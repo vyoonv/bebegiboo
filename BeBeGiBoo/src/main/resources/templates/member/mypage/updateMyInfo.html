@@ -55,7 +55,7 @@
                         <tr>
                             <td>주소</td>
                             <td>
-                                <input name="address" id="postcode" th:value="${postcode}">
+                                <input name="address" id="postcode" th:value="${postcode}" required readonly>
                             </td>
                             <td>
                                 <button id="searchBtn">주소 검색</button>
@@ -65,12 +65,12 @@
                     <table class="detail-input-area">
                         <tr>
                             <td class="detail-address">
-                                <input name="address" id="mainAddress" th:value="${mainAddress}">
+                                <input name="address" id="mainAddress" th:value="${mainAddress}" required readonly>
                             </td>
                         </tr>
                         <tr>
                             <td class="detail-address" >
-                                <input name="address" id="detailAddress" th:value="${detailAddress}">
+                                <input name="address" id="detailAddress" th:value="${detailAddress}" required>
                             </td>
                         </tr>
                     </table>

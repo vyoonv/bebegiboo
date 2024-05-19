@@ -32,6 +32,8 @@ function DaumPostcode() {
 const updateForm = document.querySelector("#updateForm"); 
 
 if(updateForm != null) {
+
+
     
     updateForm.addEventListener("submit", e => {
         
@@ -113,20 +115,28 @@ if(updateForm != null) {
         }
 
 
-        /* 주소 유효성 검사 */
-        const addr0 = address[0].value.trim().length == 0; 
-        const addr1 = address[1].value.trim().length == 0; 
-        const addr2 = address[2].value.trim().length == 0; 
-
-        const result = addr0 && addr1 && addr2; // 아무것도 입력하지 않은 상태 
-
-        if( !result ) {
-            alert("주소를 모두 입력해주세요"); 
-            e.preventDefault(); 
-        }
-
     });
 }; 
+
+const editBtn = document.querySelector("#editBtn"); 
+
+editBtn.addEventListener('click', ()=> {
+
+       /* 주소 유효성 검사 */
+       const detailAddress = document.querySelector("#detailAddress"); 
+
+       if ( detailAddress.value == "") {
+           alert("우편번호, 기본 주소, 상세 주소를 모두 입력해주세요.");
+           e.preventDefault(); 
+           return; 
+       }
+
+});
+
+
+
+
+     
 
 /* 회원 탈퇴시 */
 
